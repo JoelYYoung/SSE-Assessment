@@ -9,7 +9,10 @@ import json
 # SSE Report
 #
 # Note: use this script by executing the following command
-#       python sse-report.py <sse db name> <ikos db name> <raw metadata>
+#       python sse-report.py arg1 arg2 arg3
+#       arg1: sse db filepath
+#       arg2: ikos db filepath
+#       arg3: raw metadata filepath
 #
 ###############################################################################
 
@@ -69,6 +72,7 @@ def merge_as_highest_level(res_list):
             loc_status_map[loc] = res[2]
     return loc_status_map
 
+
 def color_status(status):
     if status == -1:
         return "\033[34m{}\033[0m".format(status)
@@ -109,7 +113,7 @@ def main(argv):
         counter[sse_result] += 1
 
         ikos_result = -1 if key not in ikos_merged else ikos_merged[key]
-        counter[ikos_result+3] += 1
+        counter[ikos_result + 3] += 1
 
     if meta_num != counter[5]:
         print("{}".format("\033[1mresult\033[0m: different!"))
@@ -133,13 +137,16 @@ def main(argv):
         sse_result = -1 if key not in sse_merged else sse_merged[key]
         ikos_result = -1 if key not in ikos_merged else ikos_merged[key]
         if key[0] in meta_list:
-            print("{:>10}|{:^14}|{:^14}|{:^14}".format(str(key), color_status(sse_result), color_status(ikos_result), color_status(2)))
+            print("{:>10}|{:^14}|{:^14}|{:^14}".format(str(key), color_status(sse_result), color_status(ikos_result),
+                                                       color_status(2)))
             meta_list.remove(key[0])
         else:
-            print("{:>10}|{:^14}|{:^14}|{:^14}".format(str(key), color_status(sse_result), color_status(ikos_result), color_status(0)))
+            print("{:>10}|{:^14}|{:^14}|{:^14}".format(str(key), color_status(sse_result), color_status(ikos_result),
+                                                       color_status(0)))
 
     for meta_unit in meta_list:
-        print("{:>10}|{:^14}|{:^14}|{:^14}".format(str((meta_unit, '?')), color_status(-1), color_status(-1), color_status(2)))
+        print("{:>10}|{:^14}|{:^14}|{:^14}".format(str((meta_unit, '?')), color_status(-1), color_status(-1),
+                                                   color_status(2)))
 
 
 if __name__ == "__main__":

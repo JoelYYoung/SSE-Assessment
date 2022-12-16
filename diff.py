@@ -7,6 +7,9 @@ import subprocess
 #
 # SSE Diff
 #
+# Note: use this script by the following command:
+#       python diff.py arg1
+#       arg1: the directory containing all ikos, sse and raw metadata results
 ###############################################################################
 
 
@@ -19,7 +22,7 @@ def main(argv):
         if diff_dir_path[-1] != '/':
             print("=== {:^30}.c ===".format(diff_name))
             subprocess.call(
-                "python sse-assessment.py {0}/{1}.db {0}/{1}.ikos.db {0}/{1}.sarif".format(diff_dir_path, diff_name))
+                "python sse-assessment.py {0}/{1}.sse.db {0}/{1}.ikos.db {0}/{1}.sarif".format(diff_dir_path, diff_name))
         else:
             subprocess.call(
                 "python sse-assessment.py {0}{1}.db {0}{1}.ikos.db {0}{1}.sarif".format(diff_dir_path, diff_name))
