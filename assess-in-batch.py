@@ -25,9 +25,9 @@ def main(argv):
     result_str = ""
     for diff_name in diff_name_list:
         diff_name = diff_name[:-6]
-        one_result_str = "=== {:^30}.c ===".format(diff_name)+"\n"
+        one_result_str = "\033[1m=== {:^30}.c ===\033[0m".format(diff_name)+"\n"
         one_result_str += subprocess.run("python assess-single-testcase.py {0}{1}.sse.db {0}{1}.ikos.db {0}{1}.sarif".format(diff_dir_path, diff_name), capture_output=True, text=True).stdout
-        result_str += (one_result_str+"\n")
+        result_str += (one_result_str+"\n\n\n")
 
     conv = Ansi2HTMLConverter(dark_bg=False, markup_lines=True)
     html = conv.convert(result_str)

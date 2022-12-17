@@ -86,6 +86,20 @@ def color_status(status):
         return "\033[34m{}\033[0m".format(status)
 
 
+def is_pos_same(sse_result):
+    if sse_result == -1:
+        return "not checked flaw"
+    elif sse_result == 0:
+        return "false neg"
+    else:
+        return "true pos"
+
+def is_neg_same(sse_result):
+    if sse_result in (-1, 0):
+        return "true neg"
+    else:
+        return "false pos"
+
 def main(argv):
     db_sse = open_db_file(argv[1])
     db_ikos = open_db_file(argv[2])
@@ -117,40 +131,40 @@ def main(argv):
         counter[ikos_result + 3] += 1
 
     if meta_num != counter[5]:
-        print("{}".format("\033[1mresult\033[0m: different!"))
+        print("\033[1mresult\033[0m: different!")
     else:
-        print("result: same!")
+        print("\033[1mresult\033[0m: same!")
 
-    print("---------- \033[1mtable\033[0m  -----------")
-    print("\033[1m{:>10}|{:^5}|{:^5}|{:^8}\033[0m".format("(ln, cl)", "SSE", "ikos", "artifact"))
-    print("---------- summary ----------")
+    print("-----------------------  table  -----------------------")
+    print("{:>10}|{:^5}|{:^5}|{:^15}|{:^15}".format("(ln, cl)", "SSE", "ikos", "artifact", "diagnose"))
+    print("----------------------- summary -----------------------")
 
     status_str_map = {0: "safe", 1: "warning", 2: "error"}
     for i in range(3):
         if i != 2:
-            print("{:>10}|{:^5}|{:^5}|  0".format(status_str_map[i], counter[i], counter[i + 3]))
+            print("{:>10}|{:^5}|{:^5}|       0".format(status_str_map[i], counter[i], counter[i + 3]))
         else:
-            print("{:>10}|{:^5}|{:^5}|{:^5}".format(status_str_map[i], counter[i], counter[i + 3], meta_num))
+            print("{:>10}|{:^5}|{:^5}|{:^15}".format(status_str_map[i], counter[i], counter[i + 3], meta_num))
 
-    print("---------- detail -----------")
+    print("----------------------- detail ------------------------")
 
     for key in keys_list:
         sse_result = -1 if key not in sse_merged else sse_merged[key]
         ikos_result = -1 if key not in ikos_merged else ikos_merged[key]
         if key[0] in meta_union:
-            print("{:>10}|{:^14}|{:^14}|{:^14}".format(str(key), color_status(sse_result), color_status(ikos_result),
-                                                       color_status(2)))
+            print("{:>10}|{:^14}|{:^14}|{:^24}|{:^15}".format(str(key), color_status(sse_result), color_status(ikos_result),
+                                                          color_status(2), is_pos_same(sse_result)))
             try:
                 meta_list.remove(key[0])
             except:
                 pass
         else:
-            print("{:>10}|{:^14}|{:^14}|{:^14}".format(str(key), color_status(sse_result), color_status(ikos_result),
-                                                       color_status(0)))
+            print("{:>10}|{:^14}|{:^14}|{:^24}|{:^15}".format(str(key), color_status(sse_result), color_status(ikos_result),
+                                                       color_status(0), is_neg_same(sse_result)))
 
     for meta_unit in meta_list:
-        print("{:>10}|{:^14}|{:^14}|{:^14}".format(str((meta_unit, '?')), color_status(-1), color_status(-1),
-                                                   color_status(2)))
+        print("{:>10}|{:^14}|{:^14}|{:^24}|{:^15}".format(str((meta_unit, '?')), color_status(-1), color_status(-1),
+                                                   color_status(2), "not checked flaw"))
 
 
 if __name__ == "__main__":
