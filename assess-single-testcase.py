@@ -101,6 +101,7 @@ def main(argv):
         metadic = json.load(f)
     meta_list = get_ln_metadata(metadic)
     meta_list.sort()
+    meta_union = set(meta_list)
     meta_num = len(meta_list)
 
     keys_union = set(sse_merged.keys()).union(ikos_merged.keys())
@@ -108,7 +109,7 @@ def main(argv):
     keys_list.sort()
 
     counter = [0, 0, 0, 0, 0, 0, 0]
-    for key in keys_union:
+    for key in keys_list:
         sse_result = -1 if key not in sse_merged else sse_merged[key]
         counter[sse_result] += 1
 
@@ -133,13 +134,16 @@ def main(argv):
 
     print("---------- detail -----------")
 
-    for key in keys_union:
+    for key in keys_list:
         sse_result = -1 if key not in sse_merged else sse_merged[key]
         ikos_result = -1 if key not in ikos_merged else ikos_merged[key]
-        if key[0] in meta_list:
+        if key[0] in meta_union:
             print("{:>10}|{:^14}|{:^14}|{:^14}".format(str(key), color_status(sse_result), color_status(ikos_result),
                                                        color_status(2)))
-            meta_list.remove(key[0])
+            try:
+                meta_list.remove(key[0])
+            except:
+                pass
         else:
             print("{:>10}|{:^14}|{:^14}|{:^14}".format(str(key), color_status(sse_result), color_status(ikos_result),
                                                        color_status(0)))
