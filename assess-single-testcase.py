@@ -122,13 +122,13 @@ def main(argv):
     keys_list = list(keys_union)
     keys_list.sort()
 
-    counter = [0, 0, 0, 0, 0, 0, 0]
+    counter = [0, 0, 0, 0, 0, 0, 0, 0]
     for key in keys_list:
         sse_result = -1 if key not in sse_merged else sse_merged[key]
         counter[sse_result] += 1
 
         ikos_result = -1 if key not in ikos_merged else ikos_merged[key]
-        counter[ikos_result + 3] += 1
+        counter[ikos_result + 4] += 1
 
     if meta_num != counter[5]:
         print("\033[1mresult\033[0m: different!")
@@ -142,9 +142,9 @@ def main(argv):
     status_str_map = {0: "safe", 1: "warning", 2: "error"}
     for i in range(3):
         if i != 2:
-            print("{:>10}|{:^5}|{:^5}|       0".format(status_str_map[i], counter[i], counter[i + 3]))
+            print("{:>10}|{:^5}|{:^5}|       0".format(status_str_map[i], counter[i], counter[i + 4]))
         else:
-            print("{:>10}|{:^5}|{:^5}|{:^15}".format(status_str_map[i], counter[i], counter[i + 3], meta_num))
+            print("{:>10}|{:^5}|{:^5}|{:^15}".format(status_str_map[i], counter[i], counter[i + 4], meta_num))
 
     print("----------------------- detail ------------------------")
 
