@@ -154,8 +154,8 @@ def main(argv):
         if key in meta_union:
             print("{:>10}|{:^14}|{:^14}|{:^24}|{:^15}".format(str(key), color_status(sse_result), color_status(ikos_result),
                                                           color_status(2), is_pos_same(sse_result)))
-            if sse_result in (1, 2):
-                meta_union.remove(key)
+            meta_union.remove(key)
+
         else:
             print("{:>10}|{:^14}|{:^14}|{:^24}|{:^15}".format(str(key), color_status(sse_result), color_status(ikos_result),
                                                        color_status(0), is_neg_same(sse_result)))
