@@ -22,12 +22,15 @@ def main(argv):
     if diff_dir_path[-1] != '/':
         diff_dir_path += '/'
 
-    result_str = ""
-    for i in range(10):
-        for diff_name in diff_name_list[i*10:i*10+10]:
+    batch_num = 10  # batch num
+    starting_batch = 0  # start from ()th batch
+    testcase_num_per_batch = 100
+    for i in range(starting_batch, batch_num+starting_batch):
+        result_str = ""
+        for diff_name in diff_name_list[i*testcase_num_per_batch:i*testcase_num_per_batch+testcase_num_per_batch]:
             diff_name = diff_name[:-6]
             one_result_str = "\033[1m=== {:^30}.c ===\033[0m".format(diff_name)+"\n"
-            one_result_str += subprocess.run("python assess-single-testcase.py {0}{1}.sse.db {0}{1}.ikos.db {0}{1}.sarif".format(diff_dir_path, diff_name), capture_output=True, text=True).stdout
+            one_result_str += subprocess.run("python assess-single-testcase-by-ln.py {0}{1}.sse.db {0}{1}.ikos.db {0}{1}.sarif".format(diff_dir_path, diff_name), capture_output=True, text=True).stdout
             result_str += (one_result_str+"\n\n\n")
 
         conv = Ansi2HTMLConverter(dark_bg=False, markup_lines=True)
