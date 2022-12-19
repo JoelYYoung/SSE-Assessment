@@ -15,5 +15,21 @@ This project contains 3 sub-directories and 3 python scripts.
 ## Note
 Presently, we just assessed 10 batches of testcases, and each batch contains 100 testcases. The output htmls are available in `./results/` dir.
 
+
+| **Status** id | meaning                      |
+|---------------|------------------------------|
+| -1            | not checked                  |
+| 0             | checked to be safe           |
+| 1             | checked and raise warning    |
+| 2             | checked and must be an error |
+
+| Diagnose result  | meaning                                |
+|------------------|----------------------------------------|
+| true pos         ||
+| false pos        ||
+| true neg         ||
+| false neg        ||
+| not checked flaw | NIST error line but not checked by SSE |
+
 ## Dependency
 - https://github.com/pycontribs/ansi2html
