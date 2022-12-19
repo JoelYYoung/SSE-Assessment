@@ -10,7 +10,7 @@ This project contains 3 sub-directories and 3 python scripts.
 **Python Scripts**
 - `./assess-single-testcase.py` (aborted): A script that take output dbs and metadata of a single testcase as input, and output the diff result.
 - `./assess-single-testcase-by-ln.py`: Basically the same as `./assess-single-testcase.py`, except that this script uses only the line number as the id of each check.
-- `./assess-in-batch.py` : Runs ./assess-single-testcase.py on files under ./diff_dir/ in batch, and output a result.html file.
+- `./assess-in-batch.py` : Runs `./assess-single-testcase.py` on files under `./diff_dir/` in batch, and output a result{i}.html file.
 
 ## Note
 Presently, we just assessed 10 batches of testcases, and each batch contains 100 testcases. The output htmls are available in `./results/` dir.
