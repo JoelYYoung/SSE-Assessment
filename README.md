@@ -15,7 +15,7 @@ This project contains 3 sub-directories and 3 python scripts, and 2 bash scripts
 **Bash Scripts**
 
 - `assess.sh`: specify source dir, dst dir, metadata dir and report dir, and the script will pull from the specified branch of sse and then build it and run.
-- `run_assess.sh`: this script is basically runs `assess.sh` on a *default configuration*, with `./juliet_testcases/src/` to be the source dir, `./juliet_testcases/metadata/` to be metadata dir and `./diff_dir/` to be the dst dir, `./reports/` to be the report dir.
+- `run_assess_default.sh`: this script is basically runs `assess.sh` on a *default configuration*, with `./juliet_testcases/src/` to be the source dir, `./juliet_testcases/metadata/` to be metadata dir and `./diff_dir/` to be the dst dir, `./reports/` to be the report dir.
 
 ## Note
 Presently, we just assessed 10 batches of testcases, and each batch contains 100 testcases. The output htmls are available in `./results/` dir.
