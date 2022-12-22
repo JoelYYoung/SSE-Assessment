@@ -50,9 +50,9 @@ then
 	do
 		srcfilename="${srcfile##*/}"
 		srcfilename_short="${srcfilename%.*}"
-		/usr/lib/llvm-9/bin/clang -c -emit-llvm -Wall -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -D__IKOS__ -g -O0 -Xclang -disable-O0-optnone -isystem /opt/ikos/include -I./testcasesupport/ -fcolor-diagnostics -DINCLUDEMAIN  $srcfile -o ${srcdir}/ikos_tmp/${srcfilename_short}.bc
+		/usr/lib/llvm-9/bin/clang -c -emit-llvm -Wall -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -D__IKOS__ -g -O0 -Xclang -disable-O0-optnone -isystem /opt/ikos/include -I./testcasesupport/ -fcolor-diagnostics -DINCLUDEMAIN  $srcfile -o ${srcdir}/ikos_tmp/${srcfilename_short}.bc > /dev/null
 
-		ikos-pp -opt=basic -entry-points=main ${srcdir}/ikos_tmp/${srcfilename_short}.bc -o ${srcdir}/ikos_tmp/${srcfilename_short}.pp.bc
+		ikos-pp -opt=basic -entry-points=main ${srcdir}/ikos_tmp/${srcfilename_short}.bc -o ${srcdir}/ikos_tmp/${srcfilename_short}.pp.bc > /dev/null
 
 		ikos-analyzer -a=boa  -d=interval -entry-points=main -globals-init=skip-big-arrays -proc=inter -j=1 -widening-strategy=widen -widening-delay=1 -widening-period=1 -narrowing-strategy=narrow -allow-dbg-mismatch -display-checks=no -display-inv=no -log=debug -progress=auto ${srcdir}/ikos_tmp/${srcfilename_short}.pp.bc -o ${dstdir}/${srcfilename_short}.ikos.db > /dev/null
 
@@ -65,6 +65,7 @@ fi
 #################################
 # pull designated branch of sse #
 #################################
+
 
 
 
@@ -107,4 +108,4 @@ else
 	rm $reportdir/* -f
 fi
 
-python3 ./utils/assess-in-batch.py $dstdir $metadatadir $reportdir
+python3.7 ./utils/assess-in-batch.py $dstdir $metadatadir $reportdir
