@@ -53,7 +53,7 @@ def get_ln_metadata(metadic):
     ln_list = []
     for run in metadic['runs']:
         for res in run['results']:
-            if res['ruleId'] in ('CWE-121', 'CWE-122'):
+            if res['ruleId'] in ('CWE-121', 'CWE-122', 'CWE-126'):
                 for loc in res['locations']:
                     ln_list.append(loc['physicalLocation']['region']['startLine'])
     return ln_list
