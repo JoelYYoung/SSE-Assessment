@@ -40,3 +40,7 @@ Presently, we just assessed 10 batches of testcases, and each batch contains 100
 - https://github.com/pycontribs/ansi2html
 
 You should run `pip3 install ansi2html` to install the dependency.
+
+## Trouble Shooting
+### python3.7 error
+you should install python3.7 first, or is you have installed python3.x, x>=7, then you can modify both `assess.sh` and `assess-in-batch.py` to adapt to your python edition.

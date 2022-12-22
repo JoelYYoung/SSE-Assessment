@@ -23,6 +23,8 @@ def main(argv):
     
     diff_dir_content = os.listdir(diff_dir_path)
     diff_name_list = [diff_unit for diff_unit in diff_dir_content if ".sse.db" == diff_unit[-7:]]
+    diff_name_list.sort()
+
 
     if diff_dir_path[-1] != '/':
         diff_dir_path += '/'
