@@ -33,3 +33,5 @@ Presently, we just assessed 10 batches of testcases, and each batch contains 100
 
 ## Dependency
 - https://github.com/pycontribs/ansi2html
+
+You should run `pip3 install ansi2html` to install the dependency.
