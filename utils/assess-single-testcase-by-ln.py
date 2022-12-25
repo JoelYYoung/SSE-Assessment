@@ -75,13 +75,13 @@ def merge_as_highest_level(res_list):
 
 def color_status(status):
     if status == -1:
-        return "\033[34m{}\033[0m".format(status)
+        return "\033[34mignore\033[0m"
     elif status == 0:
-        return "\033[32m{}\033[0m".format(status)
+        return "\033[32msafe\033[0m".format(status)
     elif status == 1:
-        return "\033[33m{}\033[0m".format(status)
+        return "\033[33mwarning\033[0m".format(status)
     elif status == 2:
-        return "\033[31m{}\033[0m".format(status)
+        return "\033[31mbug\033[0m".format(status)
     else:
         return "\033[34m{}\033[0m".format(status)
 
@@ -136,15 +136,15 @@ def main(argv):
         print("\033[1mresult\033[0m: same!")
 
     print("-----------------------  table  -----------------------")
-    print("{:>10}|{:^5}|{:^5}|{:^15}|{:^15}".format("ln", "SSE", "ikos", "artifact", "diagnose"))
+    print("{:>10}|{:^9}|{:^9}|{:^15}|{:^15}".format("ln", "SSE", "ikos", "ground_truth", "diagnose"))
     print("----------------------- summary -----------------------")
 
     status_str_map = {0: "safe", 1: "warning", 2: "error"}
     for i in range(3):
         if i != 2:
-            print("{:>10}|{:^5}|{:^5}|       0".format(status_str_map[i], counter[i], counter[i + 4]))
+            print("{:>10}|{:^9}|{:^9}|       0".format(status_str_map[i], counter[i], counter[i + 4]))
         else:
-            print("{:>10}|{:^5}|{:^5}|{:^15}".format(status_str_map[i], counter[i], counter[i + 4], meta_num))
+            print("{:>10}|{:^9}|{:^9}|{:^15}".format(status_str_map[i], counter[i], counter[i + 4], meta_num))
 
     print("----------------------- detail ------------------------")
 
@@ -152,16 +152,16 @@ def main(argv):
         sse_result = -1 if key not in sse_merged else sse_merged[key]
         ikos_result = -1 if key not in ikos_merged else ikos_merged[key]
         if key in meta_union:
-            print("{:>10}|{:^14}|{:^14}|{:^24}|{:^15}".format(str(key), color_status(sse_result), color_status(ikos_result),
+            print("{:>10}|{:^18}|{:^18}|{:^24}|{:^15}".format(str(key), color_status(sse_result), color_status(ikos_result),
                                                           color_status(2), is_pos_same(sse_result)))
             meta_union.remove(key)
 
         else:
-            print("{:>10}|{:^14}|{:^14}|{:^24}|{:^15}".format(str(key), color_status(sse_result), color_status(ikos_result),
+            print("{:>10}|{:^18}|{:^18}|{:^24}|{:^15}".format(str(key), color_status(sse_result), color_status(ikos_result),
                                                        color_status(0), is_neg_same(sse_result)))
 
     for meta_unit in meta_union:
-        print("{:>10}|{:^14}|{:^14}|{:^24}|{:^15}".format(str(meta_unit), color_status(-1), color_status(-1),
+        print("{:>10}|{:^18}|{:^18}|{:^24}|{:^15}".format(str(meta_unit), color_status(-1), color_status(-1),
                                                    color_status(2), "not checked flaw"))
 
 
