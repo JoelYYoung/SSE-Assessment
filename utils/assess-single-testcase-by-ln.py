@@ -6,10 +6,10 @@ import json
 
 ###############################################################################
 #
-# SSE Report
+# assess-single-testcase-by-ln.py
 #
 # Note: use this script by executing the following command
-#       python sse-report.py arg1 arg2 arg3
+#       python assess-single-testcase-by-ln.py arg1 arg2 arg3
 #       arg1: sse db filepath
 #       arg2: ikos db filepath
 #       arg3: raw metadata filepath

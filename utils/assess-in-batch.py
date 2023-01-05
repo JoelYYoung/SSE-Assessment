@@ -6,10 +6,10 @@ from ansi2html import Ansi2HTMLConverter
 
 ###############################################################################
 #
-# SSE Diff
+# assess-in-bath.py
 #
 # Note: use this script by the following command:
-#       python diff.py arg1
+#       python assess-in-bath.py arg1
 #       arg1: ikos and sse output db directory
 #       arg2: metadata directory
 #       arg3: result directory
@@ -57,7 +57,7 @@ def main(argv):
         for diff_name in diff_name_list[start_file_id:max_file_id]:
             diff_name = diff_name[:-7]
             one_result_str = "\033[1m=== {:^30}.c ===\033[0m".format(diff_name)+"\n"
-            one_result_str += subprocess.run("python3.7 ./utils/assess-single-testcase-by-ln.py {0}{2}.sse.db {0}{2}.ikos.db {1}{2}.sarif".format(diff_dir_path, metadata_dir_path, diff_name), capture_output=True, text=True, shell=True).stdout
+            one_result_str += subprocess.run("python3 ./utils/assess-single-testcase-by-ln.py {0}{2}.sse.db {0}{2}.ikos.db {1}{2}.sarif".format(diff_dir_path, metadata_dir_path, diff_name), capture_output=True, text=True, shell=True).stdout
             result_str += (one_result_str+"\n\n\n")
 
         conv = Ansi2HTMLConverter(dark_bg=False, markup_lines=True)
