@@ -114,6 +114,9 @@ def main(argv):
 
     print_check_context(parsed_check_context_list)
 
+    # close db
+    sse_db.close()
+
 
 if __name__ == "__main__":
     assert len(sys.argv) == 2
