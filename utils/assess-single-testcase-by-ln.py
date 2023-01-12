@@ -135,7 +135,7 @@ def main(argv):
         ikos_result = -1 if key not in ikos_merged else ikos_merged[key]
         counter[ikos_result + 4] += 1
 
-    if meta_num != counter[5]:
+    if meta_num != (counter[1]+counter[2]):
         print("\033[1mresult\033[0m: different!")
     else:
         print("\033[1mresult\033[0m: same!")
