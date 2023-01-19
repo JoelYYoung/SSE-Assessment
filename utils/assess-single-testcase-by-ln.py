@@ -37,6 +37,7 @@ def get_ln_list_sse(db):
             loc_list.append((int(search_res[1]), check_loc[1]))
         else:
             loc_list.append((-1, 0))
+    cur.close()
     return loc_list
 
 
@@ -46,6 +47,7 @@ def get_ln_list_ikos(db):
     res = cur.execute("SELECT s.line, c.status FROM checks as c INNER JOIN "
                       "statements as s WHERE s.id = c.statement_id AND c.status IN(0, 1, 2)")
     res_all = res.fetchall()
+    cur.close()
     return res_all
 
 
@@ -111,6 +113,9 @@ def main(argv):
     ikos_list = get_ln_list_ikos(db_ikos)
     ikos_merged = merge_as_highest_level(ikos_list)
 
+    db_sse.close()
+    db_ikos.close()
+
     with open(metadata_path, "r") as f:
         metadic = json.load(f)
     meta_list = get_ln_metadata(metadic)
@@ -130,7 +135,7 @@ def main(argv):
         ikos_result = -1 if key not in ikos_merged else ikos_merged[key]
         counter[ikos_result + 4] += 1
 
-    if meta_num != counter[5]:
+    if meta_num != (counter[1]+counter[2]):
         print("\033[1mresult\033[0m: different!")
     else:
         print("\033[1mresult\033[0m: same!")
