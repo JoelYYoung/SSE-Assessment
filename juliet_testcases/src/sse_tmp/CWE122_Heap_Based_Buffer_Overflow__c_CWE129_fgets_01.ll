@@ -3,8 +3,10 @@ source_filename = "./juliet_testcases/src/CWE122_Heap_Based_Buffer_Overflow__c_C
 target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
-%struct._IO_FILE = type { i32, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, %struct._IO_marker*, %struct._IO_FILE*, i32, i32, i64, i16, i8, [1 x i8], i8*, i64, i8*, i8*, i8*, i8*, i64, i32, [20 x i8] }
-%struct._IO_marker = type { %struct._IO_marker*, %struct._IO_FILE*, i32 }
+%struct._IO_FILE = type { i32, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, %struct._IO_marker*, %struct._IO_FILE*, i32, i32, i64, i16, i8, [1 x i8], i8*, i64, %struct._IO_codecvt*, %struct._IO_wide_data*, %struct._IO_FILE*, i8*, i64, i32, [20 x i8] }
+%struct._IO_marker = type opaque
+%struct._IO_codecvt = type opaque
+%struct._IO_wide_data = type opaque
 
 @stdin = external dso_local global %struct._IO_FILE*, align 8
 @.str = private unnamed_addr constant [16 x i8] c"fgets() failed.\00", align 1
@@ -416,7 +418,7 @@ attributes #9 = { noreturn nounwind }
 !llvm.ident = !{!13}
 
 !0 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1, producer: "clang version 13.0.0", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !2, retainedTypes: !3, splitDebugInlining: false, nameTableKind: None)
-!1 = !DIFile(filename: "juliet_testcases/src/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_01.c", directory: "/root/SSE-Assessment")
+!1 = !DIFile(filename: "juliet_testcases/src/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_01.c", directory: "/home/joelyang/SSE-Assessment")
 !2 = !{}
 !3 = !{!4, !5, !7}
 !4 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: null, size: 64)
@@ -430,7 +432,7 @@ attributes #9 = { noreturn nounwind }
 !12 = !{i32 7, !"frame-pointer", i32 2}
 !13 = !{!"clang version 13.0.0"}
 !14 = distinct !DISubprogram(name: "CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_01_bad", scope: !15, file: !15, line: 24, type: !16, scopeLine: 25, spFlags: DISPFlagDefinition, unit: !0, retainedNodes: !2)
-!15 = !DIFile(filename: "./juliet_testcases/src/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_01.c", directory: "/root/SSE-Assessment")
+!15 = !DIFile(filename: "./juliet_testcases/src/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_01.c", directory: "/home/joelyang/SSE-Assessment")
 !16 = !DISubroutineType(types: !17)
 !17 = !{null}
 !18 = !DILocalVariable(name: "data", scope: !14, file: !15, line: 26, type: !6)

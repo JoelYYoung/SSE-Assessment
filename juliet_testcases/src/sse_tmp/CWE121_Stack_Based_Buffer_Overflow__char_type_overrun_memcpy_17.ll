@@ -157,7 +157,7 @@ attributes #5 = { nounwind }
 !llvm.ident = !{!13}
 
 !0 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1, producer: "clang version 13.0.0", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !2, retainedTypes: !3, splitDebugInlining: false, nameTableKind: None)
-!1 = !DIFile(filename: "juliet_testcases/src/CWE121_Stack_Based_Buffer_Overflow__char_type_overrun_memcpy_17.c", directory: "/root/SSE-Assessment")
+!1 = !DIFile(filename: "juliet_testcases/src/CWE121_Stack_Based_Buffer_Overflow__char_type_overrun_memcpy_17.c", directory: "/home/joelyang/SSE-Assessment")
 !2 = !{}
 !3 = !{!4, !5, !7}
 !4 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: null, size: 64)
@@ -171,7 +171,7 @@ attributes #5 = { nounwind }
 !12 = !{i32 7, !"frame-pointer", i32 2}
 !13 = !{!"clang version 13.0.0"}
 !14 = distinct !DISubprogram(name: "CWE121_Stack_Based_Buffer_Overflow__char_type_overrun_memcpy_17_bad", scope: !15, file: !15, line: 34, type: !16, scopeLine: 35, spFlags: DISPFlagDefinition, unit: !0, retainedNodes: !2)
-!15 = !DIFile(filename: "./juliet_testcases/src/CWE121_Stack_Based_Buffer_Overflow__char_type_overrun_memcpy_17.c", directory: "/root/SSE-Assessment")
+!15 = !DIFile(filename: "./juliet_testcases/src/CWE121_Stack_Based_Buffer_Overflow__char_type_overrun_memcpy_17.c", directory: "/home/joelyang/SSE-Assessment")
 !16 = !DISubroutineType(types: !17)
 !17 = !{null}
 !18 = !DILocalVariable(name: "j", scope: !14, file: !15, line: 36, type: !19)

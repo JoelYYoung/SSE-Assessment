@@ -273,7 +273,7 @@ attributes #5 = { nounwind }
 !llvm.ident = !{!11}
 
 !0 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1, producer: "clang version 13.0.0", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !2, retainedTypes: !3, splitDebugInlining: false, nameTableKind: None)
-!1 = !DIFile(filename: "juliet_testcases/src/CWE126_Buffer_Overread__CWE129_rand_44.c", directory: "/root/SSE-Assessment")
+!1 = !DIFile(filename: "juliet_testcases/src/CWE126_Buffer_Overread__CWE129_rand_44.c", directory: "/home/joelyang/SSE-Assessment")
 !2 = !{}
 !3 = !{!4, !5}
 !4 = !DIBasicType(name: "int", size: 32, encoding: DW_ATE_signed)
@@ -285,7 +285,7 @@ attributes #5 = { nounwind }
 !10 = !{i32 7, !"frame-pointer", i32 2}
 !11 = !{!"clang version 13.0.0"}
 !12 = distinct !DISubprogram(name: "CWE126_Buffer_Overread__CWE129_rand_44_bad", scope: !13, file: !13, line: 39, type: !14, scopeLine: 40, spFlags: DISPFlagDefinition, unit: !0, retainedNodes: !2)
-!13 = !DIFile(filename: "./juliet_testcases/src/CWE126_Buffer_Overread__CWE129_rand_44.c", directory: "/root/SSE-Assessment")
+!13 = !DIFile(filename: "./juliet_testcases/src/CWE126_Buffer_Overread__CWE129_rand_44.c", directory: "/home/joelyang/SSE-Assessment")
 !14 = !DISubroutineType(types: !15)
 !15 = !{null}
 !16 = !DILocalVariable(name: "data", scope: !12, file: !13, line: 41, type: !4)

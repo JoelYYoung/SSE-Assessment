@@ -154,7 +154,7 @@ attributes #7 = { nounwind }
 !llvm.ident = !{!10}
 
 !0 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1, producer: "clang version 13.0.0", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !2, retainedTypes: !3, splitDebugInlining: false, nameTableKind: None)
-!1 = !DIFile(filename: "juliet_testcases/src/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncpy_34.c", directory: "/root/SSE-Assessment")
+!1 = !DIFile(filename: "juliet_testcases/src/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncpy_34.c", directory: "/home/joelyang/SSE-Assessment")
 !2 = !{}
 !3 = !{!4}
 !4 = !DIBasicType(name: "unsigned int", size: 32, encoding: DW_ATE_unsigned)
@@ -165,7 +165,7 @@ attributes #7 = { nounwind }
 !9 = !{i32 7, !"frame-pointer", i32 2}
 !10 = !{!"clang version 13.0.0"}
 !11 = distinct !DISubprogram(name: "CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncpy_34_bad", scope: !12, file: !12, line: 29, type: !13, scopeLine: 30, spFlags: DISPFlagDefinition, unit: !0, retainedNodes: !2)
-!12 = !DIFile(filename: "./juliet_testcases/src/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncpy_34.c", directory: "/root/SSE-Assessment")
+!12 = !DIFile(filename: "./juliet_testcases/src/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncpy_34.c", directory: "/home/joelyang/SSE-Assessment")
 !13 = !DISubroutineType(types: !14)
 !14 = !{null}
 !15 = !DILocalVariable(name: "data", scope: !11, file: !12, line: 31, type: !16)

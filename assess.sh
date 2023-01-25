@@ -90,11 +90,11 @@ find $srcdir -name "*.c" | while read srcfile
 do
 	srcfilename="${srcfile##*/}"
 	srcfilename_short="${srcfilename%.*}"
-	$LLVM_DIR/bin/clang -S -c -Xclang -disable-O0-optnone -fno-discard-value-names -g -emit-llvm -I./testcasesupport/ -DINCLUDEMAIN $srcfile -o $srcdir/sse_tmp/${srcfilename_short}.ll
+	/home/joelyang/SVF/llvm-13.0.0.obj/bin/clang -S -c -Xclang -disable-O0-optnone -fno-discard-value-names -g -emit-llvm -I./testcasesupport/ -DINCLUDEMAIN $srcfile -o $srcdir/sse_tmp/${srcfilename_short}.ll
 
-	sse $srcdir/sse_tmp/${srcfilename_short}.ll -overflow -output=$dstdir/${srcfilename_short}.sse.db > /dev/null
+	/home/joelyang/SVF-Z3/Debug-build/bin/sse $srcdir/sse_tmp/${srcfilename_short}.ll -overflow -output=$dstdir/${srcfilename_short}.sse.db > /dev/null
 	echo "[SSE] file: ${srcfile} done!"
-	rm ./*.ll.stat
+	rm ./*.ll.stat -f
 done
 
 
@@ -108,4 +108,4 @@ else
 	rm $reportdir/* -f
 fi
 
-python3.7 ./utils/assess-in-batch.py $dstdir $metadatadir $reportdir
+python3 ./utils/assess-in-batch.py $dstdir $metadatadir $reportdir

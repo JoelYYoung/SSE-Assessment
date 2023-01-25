@@ -183,7 +183,7 @@ attributes #8 = { noreturn nounwind }
 !llvm.ident = !{!13}
 
 !0 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1, producer: "clang version 13.0.0", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !2, retainedTypes: !3, splitDebugInlining: false, nameTableKind: None)
-!1 = !DIFile(filename: "juliet_testcases/src/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_42.c", directory: "/root/SSE-Assessment")
+!1 = !DIFile(filename: "juliet_testcases/src/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_42.c", directory: "/home/joelyang/SSE-Assessment")
 !2 = !{}
 !3 = !{!4, !5, !7}
 !4 = !DIBasicType(name: "unsigned int", size: 32, encoding: DW_ATE_unsigned)
@@ -197,7 +197,7 @@ attributes #8 = { noreturn nounwind }
 !12 = !{i32 7, !"frame-pointer", i32 2}
 !13 = !{!"clang version 13.0.0"}
 !14 = distinct !DISubprogram(name: "CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_42_bad", scope: !15, file: !15, line: 32, type: !16, scopeLine: 33, spFlags: DISPFlagDefinition, unit: !0, retainedNodes: !2)
-!15 = !DIFile(filename: "./juliet_testcases/src/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_42.c", directory: "/root/SSE-Assessment")
+!15 = !DIFile(filename: "./juliet_testcases/src/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_42.c", directory: "/home/joelyang/SSE-Assessment")
 !16 = !DISubroutineType(types: !17)
 !17 = !{null}
 !18 = !DILocalVariable(name: "data", scope: !14, file: !15, line: 34, type: !5)

@@ -8,17 +8,76 @@ SVF-SSE (SVF Static Symbolic Execution) is a static program analyzer，which tak
 <img src="https://github.com/JoelYYoung/pics/blob/28871fc142138ded91da1009cd5b40763611caf6/SSE-big-picture2.svg" width="100%">
 </div>
 
-SVF Symbolic Execution module basically performs *static symbolic execution*，and finally deducts the possible ranges of the variables in the input program; SSE Defect Checker module then makes use of the deducted ranges of viables, and further deducts possible defects in the input program, e.g., *buffer overflow defect*.imp
+SVF Symbolic Execution module basically performs *static symbolic execution*，and finally deducts the possible ranges of the variables in the input program; SSE Defect Checker module then makes use of the deducted ranges of viables, and further deducts possible defects in the input program, e.g., *buffer overflow defect*.
 
 ## How does SVF-SSE Work?
 
 ***Note:*** Details could be found in [this wiki](https://github.com/JoelYYoung/SVF-Z3/wiki/Design-docs).
 
+Take buffer overflow checker as an example. The main idea is that we perform a check at every usage of memory object, i.e., gep instructions and external memory accessing apis (like `memcpy`). The check process of a gep instruction is simple, for example, when checking `getelementptr inbounds [10 x i32], [10 x i32]* %1, i32 0, i32 1 `, we firstly calculate the size of memory object that pointer `%1` points to, and then we will calculate the offset size of the gep instruction. Then we compare the maximum size with the offset size and decide whether this gep instruction is accessing an invalid address.
+
+The estimated value of **offset** is available instantly by accumulating the estimated value of each offset variable, e.g., the offset of this gep instruciton is calculated by formular $0 \times sizeof([10\times i32]) + 1 \times sizeof(i32) = 4$. The estimated value of the size of memory object is obtained by a more complex process.
+
+Since `%1` could come from multiple sources, they are listed as follows:
+
+| LLVM IR                                                      | Explaination             |
+| ------------------------------------------------------------ | ------------------------ |
+| `call  void foo(%3)`                                         | parameter passing        |
+| `%1 = getelementptr inbounds [10 x [10 x i32]], [10 x [10 x i32]]* %i, i32 0, i32 2 ` | multiple offsets by gep  |
+| `%1 = load i32*, i32** %3`                                   | pointer type load stores |
+| `%1 = bitcast i8* %3 to i32* `                               | type cast                |
+
+In the above situations, SSE have developed an algorithm to track where `%1` comes from, i.e., the offset chain from alloca site to usage site. The algorithm is listed as follows:
+
+```Python
+# Psudo code: tracking offset chain while performing symbolic execution
+vardefs = {}  # map from ptr to its latest def site
+
+def handleBlock():
+    for instruction in block:
+        if instruction is address statement:
+        	vardefs[instruction left hand side] = instruction
+        else if instruction is gep statement:
+            vardefs[instruction left hand side] = instruction
+        else if instruction is store statement:
+            vardefs[instruction left hand side] = vardefs[instruction right hand side]
+        else if instruction is load statement:
+            vardefs[instruction left hand side] = vardefs[instruction right hand side]
+        # ...
+```
+
+After the above efforts, sse can use vardefs information to help performing the checks. The check algorithm is listed as follows:
+
+```Python
+# Psudo code: checking algorithm
+def checkOffsetValid(pointer, offset):
+    previous_total_offset = 0
+    memory_size = 0
+    present_pointer = pointer
+    
+    # calculating total_offset and memory_size
+	while present_pointer in vardefs:
+        if vardefs[present_pointer] is gep statement:
+            previous_total_offset += gep_offset
+        else if vardefs[present_pointer] is address statement:
+            memory_size = alloca size
+        else:
+            present_pointer = vardefs[present_pointer] right hand side
+    
+    # deciding if access out of bound?
+    if total_offset + offset > memory_size:
+        # arouse error
+    else:
+        # safe
+```
+
+## What is SSE_Assessment?
+
+SSE_Assessment provides a set of tools for SSE developers and users to visualize SSE bugs and perform manual check easily.
 
 
 
-
-## Overview of This Project
+## Overview of SSE_Assessment
 
 This project contains 3 sub-directories and 3 python scripts, and 2 bash scripts. **Simply run `run_access.sh` script and wait for report file under `./reports/` dir** (it may take a lot of time, depending on the number source files)!
 
@@ -39,13 +98,13 @@ This project contains 3 sub-directories and 3 python scripts, and 2 bash scripts
 - `assess.sh`: specify source dir, dst dir, metadata dir and report dir, and the script will pull from the specified branch of sse and then build it and run.
 - `run_assess_default.sh`: this script is basically runs `assess.sh` on a *default configuration*, with `./juliet_testcases/src/` to be the source dir, `./juliet_testcases/metadata/` to be metadata dir and `./diff_dir/` to be the dst dir, `./reports/` to be the report dir.
 
-## Usages
+## Usages of SSE_Assessment
 
-All usages is available in the correspondent `.py` or `.sh` file's comments.
+All usages are available in the correspondent `.py` or `.sh` file's comments.
 
 ### Note
 
-Presently, we just assessed 10 batches of testcases, and each batch contains 100 testcases. The output htmls are available in `./results/` dir.
+ The output htmls are available in `./results/` dir.
 
 
 | **Status** id | meaning                      |
