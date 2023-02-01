@@ -5,8 +5,9 @@
 SVF-SSE (SVF Static Symbolic Execution) is a static program analyzer，which takes LLVM bit code as input，and outputs a report of detected defects. It consists of two modules: SVF Symbolic Execution module and SSE Defect Checker module. Their relations are shown in the picture bellow: 
 
 <div align=center>
-<img src="https://github.com/JoelYYoung/pics/blob/28871fc142138ded91da1009cd5b40763611caf6/SSE-big-picture2.svg" width="100%">
+<img src="C:\Users\21018\Desktop\SSE-big-picture2.svg" width="100%">
 </div>
+
 
 SVF Symbolic Execution module basically performs *static symbolic execution*，and finally deducts the possible ranges of the variables in the input program; SSE Defect Checker module then makes use of the deducted ranges of viables, and further deducts possible defects in the input program, e.g., *buffer overflow defect*.
 

@@ -13,6 +13,7 @@ import json
 #       arg1: sse db filepath
 #       arg2: ikos db filepath
 #       arg3: raw metadata filepath
+#       arg4: sparrow .output filepath
 #
 ###############################################################################
 
@@ -23,7 +24,13 @@ def open_db_file(db_filepath):
     return db
 
 
-# input sse output.db and return list of (ln, cl, status) tuple
+# get file str
+def get_file_str(filepath):
+    with open(filepath) as fl:
+        return fl.read()
+
+
+# input sse output.db and return list of (ln, status) tuple
 def get_ln_list_sse(db):
     cur = db.cursor()
     res = cur.execute("SELECT location, status FROM checks")
@@ -36,12 +43,12 @@ def get_ln_list_sse(db):
         if search_res is not None:
             loc_list.append((int(search_res[1]), check_loc[1]))
         else:
-            loc_list.append((-1, 0))
+            loc_list.append((-1, check_loc[1]))
     cur.close()
     return loc_list
 
 
-# input ikos output.db and return list of (ln, cl, status) tuple
+# input ikos output.db and return list of (ln, status) tuple
 def get_ln_list_ikos(db):
     cur = db.cursor()
     res = cur.execute("SELECT s.line, c.status FROM checks as c INNER JOIN "
@@ -49,6 +56,16 @@ def get_ln_list_ikos(db):
     res_all = res.fetchall()
     cur.close()
     return res_all
+
+
+# input sparrow .output file and return list of ln num
+def get_ln_list_sparrow(output_str):
+    ln_list = []
+    search_res = re.findall("[.]c:(\d*)", output_str)
+    if search_res:
+        for res in search_res:
+            ln_list.append(int(res))
+    return ln_list
 
 
 def get_ln_metadata(metadic):
@@ -96,6 +113,7 @@ def is_pos_same(sse_result):
     else:
         return "true pos"
 
+
 def is_neg_same(sse_result):
     if sse_result in (-1, 0):
         return "true neg"
@@ -105,6 +123,7 @@ def is_neg_same(sse_result):
 def main(argv):
     db_sse = open_db_file(argv[1])
     db_ikos = open_db_file(argv[2])
+    output_sparrow = get_file_str(argv[4])
     metadata_path = argv[3]
 
     sse_list = get_ln_list_sse(db_sse)
@@ -112,6 +131,8 @@ def main(argv):
 
     ikos_list = get_ln_list_ikos(db_ikos)
     ikos_merged = merge_as_highest_level(ikos_list)
+
+    sparrow_list = get_ln_list_sparrow(output_sparrow)
 
     db_sse.close()
     db_ikos.close()
@@ -123,11 +144,11 @@ def main(argv):
     meta_union = set(meta_list)
     meta_num = len(meta_list)
 
-    keys_union = set(sse_merged.keys()).union(ikos_merged.keys())
+    keys_union = set(sse_merged.keys()).union(ikos_merged.keys()).union(set(output_sparrow))
     keys_list = list(keys_union)
     keys_list.sort()
 
-    counter = [0, 0, 0, 0, 0, 0, 0, 0]
+    counter = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     for key in keys_list:
         sse_result = -1 if key not in sse_merged else sse_merged[key]
         counter[sse_result] += 1
@@ -135,41 +156,45 @@ def main(argv):
         ikos_result = -1 if key not in ikos_merged else ikos_merged[key]
         counter[ikos_result + 4] += 1
 
+        counter[8] += 1  # sparrow error plus one
+
     if meta_num != (counter[1]+counter[2]):
         print("\033[1mresult\033[0m: different!")
     else:
         print("\033[1mresult\033[0m: same!")
 
     print("-----------------------  table  -----------------------")
-    print("{:>10}|{:^9}|{:^9}|{:^15}|{:^15}".format("ln", "SSE", "ikos", "ground_truth", "diagnose"))
+    print("{:>10}|{:^9}|{:^9}|{:^9}|{:^15}|{:^15}".format("ln", "SSE", "ikos", "sparrow", "ground_truth", "diagnose"))
     print("----------------------- summary -----------------------")
 
     status_str_map = {0: "safe", 1: "warning", 2: "error"}
     for i in range(3):
         if i != 2:
-            print("{:>10}|{:^9}|{:^9}|       0".format(status_str_map[i], counter[i], counter[i + 4]))
+            print("{:>10}|{:^9}|{:^9}|{:^9}|       0".format(status_str_map[i], counter[i], counter[i + 4], 0))
         else:
-            print("{:>10}|{:^9}|{:^9}|{:^15}".format(status_str_map[i], counter[i], counter[i + 4], meta_num))
+            print("{:>10}|{:^9}|{:^9}|{:^9}|{:^15}".format(status_str_map[i], counter[i], counter[i + 4], counter[8], meta_num))
 
     print("----------------------- detail ------------------------")
 
     for key in keys_list:
         sse_result = -1 if key not in sse_merged else sse_merged[key]
         ikos_result = -1 if key not in ikos_merged else ikos_merged[key]
+        sparrow_result = 0 if key not in sparrow_list else 2
+
         if key in meta_union:
-            print("{:>10}|{:^18}|{:^18}|{:^24}|{:^15}".format(str(key), color_status(sse_result), color_status(ikos_result),
-                                                          color_status(2), is_pos_same(sse_result)))
+            print("{:>10}|{:^18}|{:^18}|{:^18}|{:^24}|{:^15}".format(str(key), color_status(sse_result), color_status(ikos_result),
+                                                              color_status(sparrow_result), color_status(2), is_pos_same(sse_result)))
             meta_union.remove(key)
 
         else:
-            print("{:>10}|{:^18}|{:^18}|{:^24}|{:^15}".format(str(key), color_status(sse_result), color_status(ikos_result),
-                                                       color_status(0), is_neg_same(sse_result)))
+            print("{:>10}|{:^18}|{:^18}|{:^18}|{:^24}|{:^15}".format(str(key), color_status(sse_result), color_status(ikos_result),
+                                                              color_status(sparrow_result), color_status(0), is_neg_same(sse_result)))
 
     for meta_unit in meta_union:
-        print("{:>10}|{:^18}|{:^18}|{:^24}|{:^15}".format(str(meta_unit), color_status(-1), color_status(-1),
+        print("{:>10}|{:^18}|{:^18}|{:^18}|{:^24}|{:^15}".format(str(meta_unit), color_status(-1), color_status(-1),
                                                    color_status(2), "not checked flaw"))
 
 
 if __name__ == "__main__":
-    assert len(sys.argv) == 4
+    assert len(sys.argv) == 5
     main(sys.argv)
