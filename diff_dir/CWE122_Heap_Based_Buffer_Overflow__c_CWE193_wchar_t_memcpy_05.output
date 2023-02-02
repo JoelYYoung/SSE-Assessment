@@ -1,0 +1,98 @@
+./juliet_testcases/sparrow_tmp/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_memcpy_05.i 
+
+
+
+--------------------------------------------------------------------------------
+Front-end begins...
+--------------------------------------------------------------------------------
+
+
+Front-end completes: 0.0167790000001
+
+
+
+--------------------------------------------------------------------------------
+Translation to graphs begins...
+--------------------------------------------------------------------------------
+
+
+#nodes all   : 121
+#unreachable : 0
+
+Translation to graphs completes: 0.00111900000001
+
+
+
+--------------------------------------------------------------------------------
+Pre-analysis begins...
+--------------------------------------------------------------------------------
+
+iteration : 1iteration : 2iteration : 3iteration : 4
+mem size : 33
+
+#functions all : 6
+#recursive : 0
+#unreachable   : 0
+
+Pre-analysis completes: 0.00139500000001
+To inline : []
+Excluded variable-arguments functions : []
+Excluded recursive functions : []
+Excluded too large functions : []
+#Procs : 6
+#Nodes : 121
+
+
+
+--------------------------------------------------------------------------------
+Itv Sparse Analysis begins...
+--------------------------------------------------------------------------------
+
+#total abstract locations  = 37
+#flow-sensitive abstract locations  = 37
+Access Analysis begins...
+Access Analysis completes: 0.000552000000001
+Def-use graph construction begins...
+draw intra-procedural edges
+[==========..................................................] (1/6)     [====================........................................] (2/6)     [==============================..............................] (3/6)     [========================================....................] (4/6)     [==================================================..........] (5/6)     [============================================================] (6/6)     
+draw inter-procedural edges
+[=...........................................................] (1/32)     [===.........................................................] (2/32)     [=====.......................................................] (3/32)     [=======.....................................................] (4/32)     [=========...................................................] (5/32)     [===========.................................................] (6/32)     [=============...............................................] (7/32)     [===============.............................................] (8/32)     [================............................................] (9/32)     [==================..........................................] (10/32)     [====================........................................] (11/32)     [======================......................................] (12/32)     [========================....................................] (13/32)     [==========================..................................] (14/32)     [============================................................] (15/32)     [==============================..............................] (16/32)     [===============================.............................] (17/32)     [=================================...........................] (18/32)     [===================================.........................] (19/32)     [=====================================.......................] (20/32)     [=======================================.....................] (21/32)     [=========================================...................] (22/32)     [===========================================.................] (23/32)     [=============================================...............] (24/32)     [==============================================..............] (25/32)     [================================================............] (26/32)     [==================================================..........] (27/32)     [====================================================........] (28/32)     [======================================================......] (29/32)     [========================================================....] (30/32)     [==========================================================..] (31/32)     [============================================================] (32/32)     
+Def-use graph construction completes: 0.001082
+#Nodes in def-use graph : 81
+#Locs on def-use graph : 111
+Workorder computation begins...
+Workorder computation completes: 0.000272
+Fixpoint iteration with widening begins...
+
+#iteration in widening : 81
+Fixpoint iteration with widening completes: 0.00057
+
+
+
+--------------------------------------------------------------------------------
+Generate Alarm Report begins...
+--------------------------------------------------------------------------------
+
+[............................................................] (0/121)     
+Generate Alarm Report completes: 9.7e-05
+
+Itv Sparse Analysis completes: 0.00271400000001
+
+= Alarms =
+1. CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_memcpy_05.c:49 {CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_memcpy_05_bad} UnProven
+  memcpy ((void */* __restrict  */)data, (void const   */* __restrict  */)StartOf(source), (tmp___0+1UL)*SizeOf(wchar_t )) @CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_memcpy_05_bad-47:  offset: [5, +oo], size: [44, 44] UnProven, allocsite: CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_memcpy_05_bad-25
+  memcpy ((void */* __restrict  */)data, (void const   */* __restrict  */)StartOf(source), (tmp___0+1UL)*SizeOf(wchar_t )) @CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_memcpy_05_bad-47:  offset: [5, +oo], size: [40, 40] UnProven, allocsite: CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_memcpy_05_bad-50
+2. CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_memcpy_05.c:79 {goodG2B1} UnProven
+  memcpy ((void */* __restrict  */)data, (void const   */* __restrict  */)StartOf(source), (tmp___0+1UL)*SizeOf(wchar_t )) @goodG2B1-79:  offset: [5, +oo], size: [44, 44] UnProven, allocsite: goodG2B1-56
+  memcpy ((void */* __restrict  */)data, (void const   */* __restrict  */)StartOf(source), (tmp___0+1UL)*SizeOf(wchar_t )) @goodG2B1-79:  offset: [5, +oo], size: [44, 44] UnProven, allocsite: goodG2B1-82
+3. CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_memcpy_05.c:100 {goodG2B2} UnProven
+  memcpy ((void */* __restrict  */)data, (void const   */* __restrict  */)StartOf(source), (tmp___0+1UL)*SizeOf(wchar_t )) @goodG2B2-111:  offset: [5, +oo], size: [44, 44] UnProven, allocsite: goodG2B2-89
+  memcpy ((void */* __restrict  */)data, (void const   */* __restrict  */)StartOf(source), (tmp___0+1UL)*SizeOf(wchar_t )) @goodG2B2-111:  offset: [5, +oo], size: [44, 44] UnProven, allocsite: goodG2B2-114
+
+#queries                 : 6
+#queries mod alarm point : 3
+#proven                  : 0
+#unproven                : 3
+#bot-involved            : 0
+Finished properly.
+0.0229090000001

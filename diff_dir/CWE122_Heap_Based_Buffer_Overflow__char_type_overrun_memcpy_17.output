@@ -1,0 +1,94 @@
+./juliet_testcases/sparrow_tmp/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_17.i 
+
+
+
+--------------------------------------------------------------------------------
+Front-end begins...
+--------------------------------------------------------------------------------
+
+
+Front-end completes: 0.0153540000001
+
+
+
+--------------------------------------------------------------------------------
+Translation to graphs begins...
+--------------------------------------------------------------------------------
+
+
+#nodes all   : 104
+#unreachable : 0
+
+Translation to graphs completes: 0.000811
+
+
+
+--------------------------------------------------------------------------------
+Pre-analysis begins...
+--------------------------------------------------------------------------------
+
+iteration : 1iteration : 2iteration : 3iteration : 4iteration : 5iteration : 6
+mem size : 34
+
+#functions all : 5
+#recursive : 0
+#unreachable   : 0
+
+Pre-analysis completes: 0.00212000000001
+To inline : []
+Excluded variable-arguments functions : []
+Excluded recursive functions : []
+Excluded too large functions : []
+#Procs : 5
+#Nodes : 104
+
+
+
+--------------------------------------------------------------------------------
+Itv Sparse Analysis begins...
+--------------------------------------------------------------------------------
+
+#total abstract locations  = 37
+#flow-sensitive abstract locations  = 37
+Access Analysis begins...
+Access Analysis completes: 0.000473000000001
+Def-use graph construction begins...
+draw intra-procedural edges
+[============................................................] (1/5)     [========================....................................] (2/5)     [====================================........................] (3/5)     [================================================............] (4/5)     [============================================================] (5/5)     
+draw inter-procedural edges
+[==..........................................................] (1/24)     [=====.......................................................] (2/24)     [=======.....................................................] (3/24)     [==========..................................................] (4/24)     [============................................................] (5/24)     [===============.............................................] (6/24)     [=================...........................................] (7/24)     [====================........................................] (8/24)     [======================......................................] (9/24)     [=========================...................................] (10/24)     [===========================.................................] (11/24)     [==============================..............................] (12/24)     [================================............................] (13/24)     [===================================.........................] (14/24)     [=====================================.......................] (15/24)     [========================================....................] (16/24)     [==========================================..................] (17/24)     [=============================================...............] (18/24)     [===============================================.............] (19/24)     [==================================================..........] (20/24)     [====================================================........] (21/24)     [=======================================================.....] (22/24)     [=========================================================...] (23/24)     [============================================================] (24/24)     
+Def-use graph construction completes: 0.000938
+#Nodes in def-use graph : 61
+#Locs on def-use graph : 120
+Workorder computation begins...
+Workorder computation completes: 0.000374
+Fixpoint iteration with widening begins...
+
+#iteration in widening : 75
+Fixpoint iteration with widening completes: 0.000585
+
+
+
+--------------------------------------------------------------------------------
+Generate Alarm Report begins...
+--------------------------------------------------------------------------------
+
+[............................................................] (0/104)     
+Generate Alarm Report completes: 0.000141000000001
+
+Itv Sparse Analysis completes: 0.002671
+
+= Alarms =
+1. CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_17.c:45 {CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_17_bad} UnProven
+  memcpy ((void */* __restrict  */)StartOf(*structCharVoid.charFirst), (void const   */* __restrict  */)__cil_tmp6, SizeOfE(*structCharVoid)) @CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_17_bad-46:  offset: [33, 33], size: [32, 32] UnProven, allocsite: CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_17_bad-48
+  memcpy ((void */* __restrict  */)StartOf(*structCharVoid.charFirst), (void const   */* __restrict  */)__cil_tmp6, SizeOfE(*structCharVoid)) @CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_17_bad-46:  offset: [33, 33], size: [16, 16] UnProven, allocsite: CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_17_bad-41
+2. CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_17.c:71 {good1} UnProven
+  memcpy ((void */* __restrict  */)StartOf(*structCharVoid.charFirst), (void const   */* __restrict  */)__cil_tmp6, SizeOfE(*structCharVoid.charFirst)) @good1-78:  offset: [17, 17], size: [16, 16] UnProven, allocsite: good1-73
+
+#queries                 : 20
+#queries mod alarm point : 13
+#proven                  : 11
+#unproven                : 2
+#bot-involved            : 0
+Finished properly.
+0.0214670000001

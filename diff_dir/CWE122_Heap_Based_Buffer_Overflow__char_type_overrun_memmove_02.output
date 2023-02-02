@@ -1,0 +1,96 @@
+./juliet_testcases/sparrow_tmp/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_02.i 
+
+
+
+--------------------------------------------------------------------------------
+Front-end begins...
+--------------------------------------------------------------------------------
+
+
+Front-end completes: 0.0154060000001
+
+
+
+--------------------------------------------------------------------------------
+Translation to graphs begins...
+--------------------------------------------------------------------------------
+
+
+#nodes all   : 117
+#unreachable : 0
+
+Translation to graphs completes: 0.000903000000001
+
+
+
+--------------------------------------------------------------------------------
+Pre-analysis begins...
+--------------------------------------------------------------------------------
+
+iteration : 1iteration : 2iteration : 3iteration : 4iteration : 5
+mem size : 43
+
+#functions all : 6
+#recursive : 0
+#unreachable   : 0
+
+Pre-analysis completes: 0.00203300000001
+To inline : []
+Excluded variable-arguments functions : []
+Excluded recursive functions : []
+Excluded too large functions : []
+#Procs : 6
+#Nodes : 117
+
+
+
+--------------------------------------------------------------------------------
+Itv Sparse Analysis begins...
+--------------------------------------------------------------------------------
+
+#total abstract locations  = 47
+#flow-sensitive abstract locations  = 47
+Access Analysis begins...
+Access Analysis completes: 0.000578000000001
+Def-use graph construction begins...
+draw intra-procedural edges
+[==========..................................................] (1/6)     [====================........................................] (2/6)     [==============================..............................] (3/6)     [========================================....................] (4/6)     [==================================================..........] (5/6)     [============================================================] (6/6)     
+draw inter-procedural edges
+[==..........................................................] (1/28)     [====........................................................] (2/28)     [======......................................................] (3/28)     [========....................................................] (4/28)     [==========..................................................] (5/28)     [============................................................] (6/28)     [===============.............................................] (7/28)     [=================...........................................] (8/28)     [===================.........................................] (9/28)     [=====================.......................................] (10/28)     [=======================.....................................] (11/28)     [=========================...................................] (12/28)     [===========================.................................] (13/28)     [==============================..............................] (14/28)     [================================............................] (15/28)     [==================================..........................] (16/28)     [====================================........................] (17/28)     [======================================......................] (18/28)     [========================================....................] (19/28)     [==========================================..................] (20/28)     [=============================================...............] (21/28)     [===============================================.............] (22/28)     [=================================================...........] (23/28)     [===================================================.........] (24/28)     [=====================================================.......] (25/28)     [=======================================================.....] (26/28)     [=========================================================...] (27/28)     [============================================================] (28/28)     
+Def-use graph construction completes: 0.00108300000001
+#Nodes in def-use graph : 67
+#Locs on def-use graph : 112
+Workorder computation begins...
+Workorder computation completes: 0.000176
+Fixpoint iteration with widening begins...
+
+#iteration in widening : 67
+Fixpoint iteration with widening completes: 0.000667000000001
+
+
+
+--------------------------------------------------------------------------------
+Generate Alarm Report begins...
+--------------------------------------------------------------------------------
+
+[............................................................] (0/117)     
+Generate Alarm Report completes: 0.000153000000001
+
+Itv Sparse Analysis completes: 0.002782
+
+= Alarms =
+1. CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_02.c:44 {CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_02_bad} UnProven
+  memmove ((void *)StartOf(*structCharVoid.charFirst), (void const   *)__cil_tmp5, SizeOfE(*structCharVoid)) @CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_02_bad-32:  offset: [33, 33], size: [32, 32] UnProven, allocsite: CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_02_bad-34
+  memmove ((void *)StartOf(*structCharVoid.charFirst), (void const   *)__cil_tmp5, SizeOfE(*structCharVoid)) @CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_02_bad-32:  offset: [33, 33], size: [16, 16] UnProven, allocsite: CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_02_bad-27
+2. CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_02.c:73 {good1} UnProven
+  memmove ((void *)StartOf(*structCharVoid.charFirst), (void const   *)__cil_tmp5, SizeOfE(*structCharVoid.charFirst)) @good1-58:  offset: [17, 17], size: [16, 16] UnProven, allocsite: good1-53
+3. CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_02.c:93 {good2} UnProven
+  memmove ((void *)StartOf(*structCharVoid.charFirst), (void const   *)__cil_tmp5, SizeOfE(*structCharVoid.charFirst)) @good2-84:  offset: [17, 17], size: [16, 16] UnProven, allocsite: good2-79
+
+#queries                 : 30
+#queries mod alarm point : 19
+#proven                  : 16
+#unproven                : 3
+#bot-involved            : 0
+Finished properly.
+0.0216410000001

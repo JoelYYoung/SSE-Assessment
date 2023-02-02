@@ -1,0 +1,98 @@
+./juliet_testcases/sparrow_tmp/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_04.i 
+
+
+
+--------------------------------------------------------------------------------
+Front-end begins...
+--------------------------------------------------------------------------------
+
+
+Front-end completes: 0.0153200000001
+
+
+
+--------------------------------------------------------------------------------
+Translation to graphs begins...
+--------------------------------------------------------------------------------
+
+
+#nodes all   : 130
+#unreachable : 0
+
+Translation to graphs completes: 0.001056
+
+
+
+--------------------------------------------------------------------------------
+Pre-analysis begins...
+--------------------------------------------------------------------------------
+
+iteration : 1iteration : 2iteration : 3iteration : 4iteration : 5
+mem size : 42
+
+#functions all : 6
+#recursive : 0
+#unreachable   : 0
+
+Pre-analysis completes: 0.00173900000001
+To inline : []
+Excluded variable-arguments functions : []
+Excluded recursive functions : []
+Excluded too large functions : []
+#Procs : 6
+#Nodes : 130
+
+
+
+--------------------------------------------------------------------------------
+Itv Sparse Analysis begins...
+--------------------------------------------------------------------------------
+
+#total abstract locations  = 43
+#flow-sensitive abstract locations  = 43
+Access Analysis begins...
+Access Analysis completes: 0.000554000000001
+Def-use graph construction begins...
+draw intra-procedural edges
+[==========..................................................] (1/6)     [====================........................................] (2/6)     [==============================..............................] (3/6)     [========================================....................] (4/6)     [==================================================..........] (5/6)     [============================================================] (6/6)     
+draw inter-procedural edges
+[==..........................................................] (1/26)     [====........................................................] (2/26)     [======......................................................] (3/26)     [=========...................................................] (4/26)     [===========.................................................] (5/26)     [=============...............................................] (6/26)     [================............................................] (7/26)     [==================..........................................] (8/26)     [====================........................................] (9/26)     [=======================.....................................] (10/26)     [=========================...................................] (11/26)     [===========================.................................] (12/26)     [==============================..............................] (13/26)     [================================............................] (14/26)     [==================================..........................] (15/26)     [====================================........................] (16/26)     [=======================================.....................] (17/26)     [=========================================...................] (18/26)     [===========================================.................] (19/26)     [==============================================..............] (20/26)     [================================================............] (21/26)     [==================================================..........] (22/26)     [=====================================================.......] (23/26)     [=======================================================.....] (24/26)     [=========================================================...] (25/26)     [============================================================] (26/26)     
+Def-use graph construction completes: 0.00116100000001
+#Nodes in def-use graph : 96
+#Locs on def-use graph : 141
+Workorder computation begins...
+Workorder computation completes: 0.000306000000001
+Fixpoint iteration with widening begins...
+
+#iteration in widening : 123
+Fixpoint iteration with widening completes: 0.000992
+
+
+
+--------------------------------------------------------------------------------
+Generate Alarm Report begins...
+--------------------------------------------------------------------------------
+
+[............................................................] (0/130)     
+Generate Alarm Report completes: 0.000127000000001
+
+Itv Sparse Analysis completes: 0.00329
+
+= Alarms =
+1. CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_04.c:44 {CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_04_bad} UnProven
+  memmove ((void *)StartOf(dest), (void const   *)data, tmp___1*SizeOf(wchar_t )) @CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_04_bad-38:  offset: [1, +oo], size: [400, 400] UnProven, allocsite: CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_04_bad-41
+  memmove ((void *)StartOf(dest), (void const   *)data, tmp___1*SizeOf(wchar_t )) @CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_04_bad-38:  offset: [1, +oo], size: [200, 200] UnProven, allocsite: CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_04_bad-22
+2. CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_04.c:74 {goodG2B1} UnProven
+  memmove ((void *)StartOf(dest), (void const   *)data, tmp___1*SizeOf(wchar_t )) @goodG2B1-63:  offset: [1, +oo], size: [400, 400] UnProven, allocsite: goodG2B1-66
+  memmove ((void *)StartOf(dest), (void const   *)data, tmp___1*SizeOf(wchar_t )) @goodG2B1-63:  offset: [1, +oo], size: [200, 200] UnProven, allocsite: goodG2B1-46
+3. CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_04.c:95 {goodG2B2} UnProven
+  memmove ((void *)StartOf(dest), (void const   *)data, tmp___1*SizeOf(wchar_t )) @goodG2B2-88:  offset: [1, +oo], size: [400, 400] UnProven, allocsite: goodG2B2-91
+  memmove ((void *)StartOf(dest), (void const   *)data, tmp___1*SizeOf(wchar_t )) @goodG2B2-88:  offset: [1, +oo], size: [200, 200] UnProven, allocsite: goodG2B2-72
+
+#queries                 : 18
+#queries mod alarm point : 12
+#proven                  : 9
+#unproven                : 3
+#bot-involved            : 0
+Finished properly.
+0.0220220000001

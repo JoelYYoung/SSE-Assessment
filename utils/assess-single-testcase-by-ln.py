@@ -142,9 +142,9 @@ def main(argv):
     meta_list = get_ln_metadata(metadic)
     meta_list.sort()
     meta_union = set(meta_list)
-    meta_num = len(meta_list)
+    meta_num = len(meta_union)
 
-    keys_union = set(sse_merged.keys()).union(ikos_merged.keys()).union(set(output_sparrow))
+    keys_union = set(sse_merged.keys()).union(ikos_merged.keys()).union(set(sparrow_list))
     keys_list = list(keys_union)
     keys_list.sort()
 
@@ -156,16 +156,17 @@ def main(argv):
         ikos_result = -1 if key not in ikos_merged else ikos_merged[key]
         counter[ikos_result + 4] += 1
 
-        counter[8] += 1  # sparrow error plus one
+        if key in sparrow_list:
+            counter[8] += 1  # sparrow error plus one
 
     if meta_num != (counter[1]+counter[2]):
         print("\033[1mresult\033[0m: different!")
     else:
         print("\033[1mresult\033[0m: same!")
 
-    print("-----------------------  table  -----------------------")
+    print("-------------------------------  table  -------------------------------")
     print("{:>10}|{:^9}|{:^9}|{:^9}|{:^15}|{:^15}".format("ln", "SSE", "ikos", "sparrow", "ground_truth", "diagnose"))
-    print("----------------------- summary -----------------------")
+    print("------------------------------- summary -------------------------------")
 
     status_str_map = {0: "safe", 1: "warning", 2: "error"}
     for i in range(3):
@@ -174,7 +175,7 @@ def main(argv):
         else:
             print("{:>10}|{:^9}|{:^9}|{:^9}|{:^15}".format(status_str_map[i], counter[i], counter[i + 4], counter[8], meta_num))
 
-    print("----------------------- detail ------------------------")
+    print("------------------------------- detail --------------------------------")
 
     for key in keys_list:
         sse_result = -1 if key not in sse_merged else sse_merged[key]

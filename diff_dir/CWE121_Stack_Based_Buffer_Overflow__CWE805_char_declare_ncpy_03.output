@@ -1,0 +1,100 @@
+./juliet_testcases/sparrow_tmp/CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_ncpy_03.i 
+
+
+
+--------------------------------------------------------------------------------
+Front-end begins...
+--------------------------------------------------------------------------------
+
+
+Front-end completes: 0.0259470000001
+
+
+
+--------------------------------------------------------------------------------
+Translation to graphs begins...
+--------------------------------------------------------------------------------
+
+
+#nodes all   : 90
+#unreachable : 0
+
+Translation to graphs completes: 0.000901
+
+
+
+--------------------------------------------------------------------------------
+Pre-analysis begins...
+--------------------------------------------------------------------------------
+
+iteration : 1iteration : 2iteration : 3iteration : 4iteration : 5
+mem size : 34
+
+#functions all : 6
+#recursive : 0
+#unreachable   : 0
+
+Pre-analysis completes: 0.001848
+To inline : []
+Excluded variable-arguments functions : []
+Excluded recursive functions : []
+Excluded too large functions : []
+#Procs : 6
+#Nodes : 90
+
+
+
+--------------------------------------------------------------------------------
+Itv Sparse Analysis begins...
+--------------------------------------------------------------------------------
+
+#total abstract locations  = 34
+#flow-sensitive abstract locations  = 34
+Access Analysis begins...
+Access Analysis completes: 0.001196
+Def-use graph construction begins...
+draw intra-procedural edges
+[==========..................................................] (1/6)     [====================........................................] (2/6)     [==============================..............................] (3/6)     [========================================....................] (4/6)     [==================================================..........] (5/6)     [============================================================] (6/6)     
+draw inter-procedural edges
+[==..........................................................] (1/22)     [=====.......................................................] (2/22)     [========....................................................] (3/22)     [==========..................................................] (4/22)     [=============...............................................] (5/22)     [================............................................] (6/22)     [===================.........................................] (7/22)     [=====================.......................................] (8/22)     [========================....................................] (9/22)     [===========================.................................] (10/22)     [==============================..............................] (11/22)     [================================............................] (12/22)     [===================================.........................] (13/22)     [======================================......................] (14/22)     [========================================....................] (15/22)     [===========================================.................] (16/22)     [==============================================..............] (17/22)     [=================================================...........] (18/22)     [===================================================.........] (19/22)     [======================================================......] (20/22)     [=========================================================...] (21/22)     [============================================================] (22/22)     
+Def-use graph construction completes: 0.00119700000001
+#Nodes in def-use graph : 51
+#Locs on def-use graph : 57
+Workorder computation begins...
+Workorder computation completes: 0.000118000000001
+Fixpoint iteration with widening begins...
+
+#iteration in widening : 51
+Fixpoint iteration with widening completes: 0.000358
+
+
+
+--------------------------------------------------------------------------------
+Generate Alarm Report begins...
+--------------------------------------------------------------------------------
+
+[............................................................] (0/90)     
+Generate Alarm Report completes: 0.000140000000001
+
+Itv Sparse Analysis completes: 0.003154
+
+= Alarms =
+1. CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_ncpy_03.c:40 {CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_ncpy_03_bad} UnProven
+  strncpy ((char */* __restrict  */)data, (char const   */* __restrict  */)StartOf(source), (size_t )99) @CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_ncpy_03_bad-17:  offset: [100, 100], size: [100, 100] UnProven, allocsite: CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_ncpy_03_bad-11
+  strncpy ((char */* __restrict  */)data, (char const   */* __restrict  */)StartOf(source), (size_t )99) @CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_ncpy_03_bad-17:  offset: [100, 100], size: [50, 50] UnProven, allocsite: CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_ncpy_03_bad-9
+2. CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_ncpy_03.c:41 {CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_ncpy_03_bad} UnProven
+  *(data+99) @CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_ncpy_03_bad-18:  offset: [99, 99], size: [50, 50] UnProven, allocsite: CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_ncpy_03_bad-9
+3. CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_ncpy_03.c:72 {goodG2B1} UnProven
+  strncpy ((char */* __restrict  */)data, (char const   */* __restrict  */)StartOf(source), (size_t )99) @goodG2B1-31:  offset: [100, 100], size: [100, 100] UnProven, allocsite: goodG2B1-25
+  strncpy ((char */* __restrict  */)data, (char const   */* __restrict  */)StartOf(source), (size_t )99) @goodG2B1-31:  offset: [100, 100], size: [100, 100] UnProven, allocsite: goodG2B1-23
+4. CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_ncpy_03.c:95 {goodG2B2} UnProven
+  strncpy ((char */* __restrict  */)data, (char const   */* __restrict  */)StartOf(source), (size_t )99) @goodG2B2-45:  offset: [100, 100], size: [100, 100] UnProven, allocsite: goodG2B2-39
+  strncpy ((char */* __restrict  */)data, (char const   */* __restrict  */)StartOf(source), (size_t )99) @goodG2B2-45:  offset: [100, 100], size: [100, 100] UnProven, allocsite: goodG2B2-37
+
+#queries                 : 15
+#queries mod alarm point : 12
+#proven                  : 8
+#unproven                : 4
+#bot-involved            : 0
+Finished properly.
+0.0326700000001

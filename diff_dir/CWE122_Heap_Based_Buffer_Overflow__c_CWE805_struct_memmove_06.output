@@ -1,0 +1,98 @@
+./juliet_testcases/sparrow_tmp/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_06.i 
+
+
+
+--------------------------------------------------------------------------------
+Front-end begins...
+--------------------------------------------------------------------------------
+
+
+Front-end completes: 0.01359
+
+
+
+--------------------------------------------------------------------------------
+Translation to graphs begins...
+--------------------------------------------------------------------------------
+
+
+#nodes all   : 168
+#unreachable : 0
+
+Translation to graphs completes: 0.00141500000001
+
+
+
+--------------------------------------------------------------------------------
+Pre-analysis begins...
+--------------------------------------------------------------------------------
+
+iteration : 1iteration : 2iteration : 3iteration : 4iteration : 5iteration : 6
+mem size : 47
+
+#functions all : 6
+#recursive : 0
+#unreachable   : 0
+
+Pre-analysis completes: 0.00260400000001
+To inline : []
+Excluded variable-arguments functions : []
+Excluded recursive functions : []
+Excluded too large functions : []
+#Procs : 6
+#Nodes : 168
+
+
+
+--------------------------------------------------------------------------------
+Itv Sparse Analysis begins...
+--------------------------------------------------------------------------------
+
+#total abstract locations  = 48
+#flow-sensitive abstract locations  = 48
+Access Analysis begins...
+Access Analysis completes: 0.000708000000001
+Def-use graph construction begins...
+draw intra-procedural edges
+[==========..................................................] (1/6)     [====================........................................] (2/6)     [==============================..............................] (3/6)     [========================================....................] (4/6)     [==================================================..........] (5/6)     [============================================================] (6/6)     
+draw inter-procedural edges
+[==..........................................................] (1/26)     [====........................................................] (2/26)     [======......................................................] (3/26)     [=========...................................................] (4/26)     [===========.................................................] (5/26)     [=============...............................................] (6/26)     [================............................................] (7/26)     [==================..........................................] (8/26)     [====================........................................] (9/26)     [=======================.....................................] (10/26)     [=========================...................................] (11/26)     [===========================.................................] (12/26)     [==============================..............................] (13/26)     [================================............................] (14/26)     [==================================..........................] (15/26)     [====================================........................] (16/26)     [=======================================.....................] (17/26)     [=========================================...................] (18/26)     [===========================================.................] (19/26)     [==============================================..............] (20/26)     [================================================............] (21/26)     [==================================================..........] (22/26)     [=====================================================.......] (23/26)     [=======================================================.....] (24/26)     [=========================================================...] (25/26)     [============================================================] (26/26)     
+Def-use graph construction completes: 0.001418
+#Nodes in def-use graph : 125
+#Locs on def-use graph : 195
+Workorder computation begins...
+Workorder computation completes: 0.000705000000001
+Fixpoint iteration with widening begins...
+
+#iteration in widening : 271
+Fixpoint iteration with widening completes: 0.00251600000001
+
+
+
+--------------------------------------------------------------------------------
+Generate Alarm Report begins...
+--------------------------------------------------------------------------------
+
+[............................................................] (0/168)     
+Generate Alarm Report completes: 0.000129
+
+Itv Sparse Analysis completes: 0.00564200000001
+
+= Alarms =
+1. CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_06.c:47 {CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_06_bad} UnProven
+  memmove ((void *)data, (void const   *)StartOf(source), 100UL*SizeOf(twoIntsStruct )) @CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_06_bad-43:  offset: [801, 801], size: [800, 800] UnProven, allocsite: CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_06_bad-21
+  memmove ((void *)data, (void const   *)StartOf(source), 100UL*SizeOf(twoIntsStruct )) @CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_06_bad-43:  offset: [801, 801], size: [400, 400] UnProven, allocsite: CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_06_bad-46
+2. CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_06.c:85 {goodG2B1} UnProven
+  memmove ((void *)data, (void const   *)StartOf(source), 100UL*SizeOf(twoIntsStruct )) @goodG2B1-80:  offset: [801, 801], size: [800, 800] UnProven, allocsite: goodG2B1-57
+  memmove ((void *)data, (void const   *)StartOf(source), 100UL*SizeOf(twoIntsStruct )) @goodG2B1-80:  offset: [801, 801], size: [800, 800] UnProven, allocsite: goodG2B1-83
+3. CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_06.c:114 {goodG2B2} UnProven
+  memmove ((void *)data, (void const   *)StartOf(source), 100UL*SizeOf(twoIntsStruct )) @goodG2B2-117:  offset: [801, 801], size: [800, 800] UnProven, allocsite: goodG2B2-95
+  memmove ((void *)data, (void const   *)StartOf(source), 100UL*SizeOf(twoIntsStruct )) @goodG2B2-117:  offset: [801, 801], size: [800, 800] UnProven, allocsite: goodG2B2-120
+
+#queries                 : 12
+#queries mod alarm point : 9
+#proven                  : 6
+#unproven                : 3
+#bot-involved            : 0
+Finished properly.
+0.0238920000001

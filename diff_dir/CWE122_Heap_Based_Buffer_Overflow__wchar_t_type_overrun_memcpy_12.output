@@ -1,0 +1,97 @@
+./juliet_testcases/sparrow_tmp/CWE122_Heap_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_12.i 
+
+
+
+--------------------------------------------------------------------------------
+Front-end begins...
+--------------------------------------------------------------------------------
+
+
+Front-end completes: 0.0163180000001
+
+
+
+--------------------------------------------------------------------------------
+Translation to graphs begins...
+--------------------------------------------------------------------------------
+
+
+#nodes all   : 144
+#unreachable : 0
+
+Translation to graphs completes: 0.00114600000001
+
+
+
+--------------------------------------------------------------------------------
+Pre-analysis begins...
+--------------------------------------------------------------------------------
+
+iteration : 1iteration : 2iteration : 3iteration : 4
+mem size : 38
+
+#functions all : 5
+#recursive : 0
+#unreachable   : 0
+
+Pre-analysis completes: 0.00251600000001
+To inline : []
+Excluded variable-arguments functions : []
+Excluded recursive functions : []
+Excluded too large functions : []
+#Procs : 5
+#Nodes : 144
+
+
+
+--------------------------------------------------------------------------------
+Itv Sparse Analysis begins...
+--------------------------------------------------------------------------------
+
+#total abstract locations  = 43
+#flow-sensitive abstract locations  = 43
+Access Analysis begins...
+Access Analysis completes: 0.000784
+Def-use graph construction begins...
+draw intra-procedural edges
+[============................................................] (1/5)     [========================....................................] (2/5)     [====================================........................] (3/5)     [================================================............] (4/5)     [============================================================] (5/5)     
+draw inter-procedural edges
+[=...........................................................] (1/38)     [===.........................................................] (2/38)     [====........................................................] (3/38)     [======......................................................] (4/38)     [=======.....................................................] (5/38)     [=========...................................................] (6/38)     [===========.................................................] (7/38)     [============................................................] (8/38)     [==============..............................................] (9/38)     [===============.............................................] (10/38)     [=================...........................................] (11/38)     [==================..........................................] (12/38)     [====================........................................] (13/38)     [======================......................................] (14/38)     [=======================.....................................] (15/38)     [=========================...................................] (16/38)     [==========================..................................] (17/38)     [============================................................] (18/38)     [==============================..............................] (19/38)     [===============================.............................] (20/38)     [=================================...........................] (21/38)     [==================================..........................] (22/38)     [====================================........................] (23/38)     [=====================================.......................] (24/38)     [=======================================.....................] (25/38)     [=========================================...................] (26/38)     [==========================================..................] (27/38)     [============================================................] (28/38)     [=============================================...............] (29/38)     [===============================================.............] (30/38)     [================================================............] (31/38)     [==================================================..........] (32/38)     [====================================================........] (33/38)     [=====================================================.......] (34/38)     [=======================================================.....] (35/38)     [========================================================....] (36/38)     [==========================================================..] (37/38)     [============================================================] (38/38)     
+Def-use graph construction completes: 0.00159000000001
+#Nodes in def-use graph : 85
+#Locs on def-use graph : 160
+Workorder computation begins...
+Workorder computation completes: 0.000253000000001
+Fixpoint iteration with widening begins...
+
+#iteration in widening : 85
+Fixpoint iteration with widening completes: 0.000866
+
+
+
+--------------------------------------------------------------------------------
+Generate Alarm Report begins...
+--------------------------------------------------------------------------------
+
+[............................................................] (0/144)     
+Generate Alarm Report completes: 0.000183000000001
+
+Itv Sparse Analysis completes: 0.00383500000001
+
+= Alarms =
+1. CWE122_Heap_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_12.c:44 {CWE122_Heap_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_12_bad} UnProven
+  memcpy ((void */* __restrict  */)StartOf(*structCharVoid.charFirst), (void const   */* __restrict  */)L\"0123456789abcdef0123456789abcde\", SizeOfE(*structCharVoid)) @CWE122_Heap_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_12_bad-44:  offset: [81, 81], size: [64, 64] UnProven, allocsite: CWE122_Heap_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_12_bad-61
+2. CWE122_Heap_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_12.c:60 {CWE122_Heap_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_12_bad} UnProven
+  memcpy ((void */* __restrict  */)StartOf(*structCharVoid___0.charFirst), (void const   */* __restrict  */)L\"0123456789abcdef0123456789abcde\", SizeOfE(*structCharVoid___0.charFirst)) @CWE122_Heap_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_12_bad-54:  offset: [65, 65], size: [64, 64] UnProven, allocsite: CWE122_Heap_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_12_bad-65
+3. CWE122_Heap_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_12.c:85 {good1} UnProven
+  memcpy ((void */* __restrict  */)StartOf(*structCharVoid.charFirst), (void const   */* __restrict  */)L\"0123456789abcdef0123456789abcde\", SizeOfE(*structCharVoid.charFirst)) @good1-92:  offset: [65, 65], size: [64, 64] UnProven, allocsite: good1-109
+4. CWE122_Heap_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_12.c:101 {good1} UnProven
+  memcpy ((void */* __restrict  */)StartOf(*structCharVoid___0.charFirst), (void const   */* __restrict  */)L\"0123456789abcdef0123456789abcde\", SizeOfE(*structCharVoid___0.charFirst)) @good1-102:  offset: [65, 65], size: [64, 64] UnProven, allocsite: good1-113
+
+#queries                 : 40
+#queries mod alarm point : 25
+#proven                  : 21
+#unproven                : 4
+#bot-involved            : 4
+Finished properly.
+0.0244670000001

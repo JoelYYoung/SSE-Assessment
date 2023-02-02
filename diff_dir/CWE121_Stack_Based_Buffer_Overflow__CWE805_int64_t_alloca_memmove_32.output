@@ -1,0 +1,95 @@
+./juliet_testcases/sparrow_tmp/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_32.i 
+
+
+
+--------------------------------------------------------------------------------
+Front-end begins...
+--------------------------------------------------------------------------------
+
+
+Front-end completes: 0.0132850000001
+
+
+
+--------------------------------------------------------------------------------
+Translation to graphs begins...
+--------------------------------------------------------------------------------
+
+
+#nodes all   : 90
+#unreachable : 0
+
+Translation to graphs completes: 0.00077
+
+
+
+--------------------------------------------------------------------------------
+Pre-analysis begins...
+--------------------------------------------------------------------------------
+
+iteration : 1iteration : 2iteration : 3iteration : 4iteration : 5
+mem size : 38
+
+#functions all : 5
+#recursive : 0
+#unreachable   : 0
+
+Pre-analysis completes: 0.00106
+To inline : []
+Excluded variable-arguments functions : []
+Excluded recursive functions : []
+Excluded too large functions : []
+#Procs : 5
+#Nodes : 90
+
+
+
+--------------------------------------------------------------------------------
+Itv Sparse Analysis begins...
+--------------------------------------------------------------------------------
+
+#total abstract locations  = 43
+#flow-sensitive abstract locations  = 43
+Access Analysis begins...
+Access Analysis completes: 0.000634
+Def-use graph construction begins...
+draw intra-procedural edges
+[============................................................] (1/5)     [========================....................................] (2/5)     [====================================........................] (3/5)     [================================================............] (4/5)     [============================================================] (5/5)     
+draw inter-procedural edges
+[===.........................................................] (1/16)     [=======.....................................................] (2/16)     [===========.................................................] (3/16)     [===============.............................................] (4/16)     [==================..........................................] (5/16)     [======================......................................] (6/16)     [==========================..................................] (7/16)     [==============================..............................] (8/16)     [=================================...........................] (9/16)     [=====================================.......................] (10/16)     [=========================================...................] (11/16)     [=============================================...............] (12/16)     [================================================............] (13/16)     [====================================================........] (14/16)     [========================================================....] (15/16)     [============================================================] (16/16)     
+Def-use graph construction completes: 0.000670000000001
+#Nodes in def-use graph : 58
+#Locs on def-use graph : 64
+Workorder computation begins...
+Workorder computation completes: 0.000184000000001
+Fixpoint iteration with widening begins...
+
+#iteration in widening : 84
+Fixpoint iteration with widening completes: 0.000668000000001
+
+
+
+--------------------------------------------------------------------------------
+Generate Alarm Report begins...
+--------------------------------------------------------------------------------
+
+[............................................................] (0/90)     
+Generate Alarm Report completes: 9.60000000001e-05
+
+Itv Sparse Analysis completes: 0.00238900000001
+
+= Alarms =
+1. CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_32.c:40 {CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_32_bad} UnProven
+  memmove ((void *)data___1, (void const   *)StartOf(source), 100UL*SizeOf(int64_t )) @CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_32_bad-42:  offset: [801, 801], size: [800, 800] UnProven, allocsite: CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_32_bad-24
+  memmove ((void *)data___1, (void const   *)StartOf(source), 100UL*SizeOf(int64_t )) @CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_32_bad-42:  offset: [801, 801], size: [400, 400] UnProven, allocsite: CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_32_bad-44
+2. CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_32.c:69 {goodG2B} UnProven
+  memmove ((void *)data___1, (void const   *)StartOf(source), 100UL*SizeOf(int64_t )) @goodG2B-66:  offset: [801, 801], size: [800, 800] UnProven, allocsite: goodG2B-48
+  memmove ((void *)data___1, (void const   *)StartOf(source), 100UL*SizeOf(int64_t )) @goodG2B-66:  offset: [801, 801], size: [800, 800] UnProven, allocsite: goodG2B-69
+
+#queries                 : 16
+#queries mod alarm point : 12
+#proven                  : 10
+#unproven                : 2
+#bot-involved            : 0
+Finished properly.
+0.0179910000001

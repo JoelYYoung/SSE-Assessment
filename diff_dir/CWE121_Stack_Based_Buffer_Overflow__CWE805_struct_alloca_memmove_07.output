@@ -1,0 +1,98 @@
+./juliet_testcases/sparrow_tmp/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memmove_07.i 
+
+
+
+--------------------------------------------------------------------------------
+Front-end begins...
+--------------------------------------------------------------------------------
+
+
+Front-end completes: 0.0132520000001
+
+
+
+--------------------------------------------------------------------------------
+Translation to graphs begins...
+--------------------------------------------------------------------------------
+
+
+#nodes all   : 171
+#unreachable : 0
+
+Translation to graphs completes: 0.001346
+
+
+
+--------------------------------------------------------------------------------
+Pre-analysis begins...
+--------------------------------------------------------------------------------
+
+iteration : 1iteration : 2iteration : 3iteration : 4iteration : 5iteration : 6
+mem size : 62
+
+#functions all : 6
+#recursive : 0
+#unreachable   : 0
+
+Pre-analysis completes: 0.00258200000001
+To inline : []
+Excluded variable-arguments functions : []
+Excluded recursive functions : []
+Excluded too large functions : []
+#Procs : 6
+#Nodes : 171
+
+
+
+--------------------------------------------------------------------------------
+Itv Sparse Analysis begins...
+--------------------------------------------------------------------------------
+
+#total abstract locations  = 63
+#flow-sensitive abstract locations  = 63
+Access Analysis begins...
+Access Analysis completes: 0.00110400000001
+Def-use graph construction begins...
+draw intra-procedural edges
+[==========..................................................] (1/6)     [====================........................................] (2/6)     [==============================..............................] (3/6)     [========================================....................] (4/6)     [==================================================..........] (5/6)     [============================================================] (6/6)     
+draw inter-procedural edges
+[===.........................................................] (1/20)     [======......................................................] (2/20)     [=========...................................................] (3/20)     [============................................................] (4/20)     [===============.............................................] (5/20)     [==================..........................................] (6/20)     [=====================.......................................] (7/20)     [========================....................................] (8/20)     [===========================.................................] (9/20)     [==============================..............................] (10/20)     [=================================...........................] (11/20)     [====================================........................] (12/20)     [=======================================.....................] (13/20)     [==========================================..................] (14/20)     [=============================================...............] (15/20)     [================================================............] (16/20)     [===================================================.........] (17/20)     [======================================================......] (18/20)     [=========================================================...] (19/20)     [============================================================] (20/20)     
+Def-use graph construction completes: 0.00144
+#Nodes in def-use graph : 140
+#Locs on def-use graph : 207
+Workorder computation begins...
+Workorder computation completes: 0.000864000000001
+Fixpoint iteration with widening begins...
+
+#iteration in widening : 327
+Fixpoint iteration with widening completes: 0.00277400000001
+
+
+
+--------------------------------------------------------------------------------
+Generate Alarm Report begins...
+--------------------------------------------------------------------------------
+
+[............................................................] (0/171)     
+Generate Alarm Report completes: 0.000138
+
+Itv Sparse Analysis completes: 0.00650200000001
+
+= Alarms =
+1. CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memmove_07.c:50 {CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memmove_07_bad} UnProven
+  memmove ((void *)data, (void const   *)StartOf(source), 100UL*SizeOf(twoIntsStruct )) @CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memmove_07_bad-40:  offset: [801, 801], size: [800, 800] UnProven, allocsite: CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memmove_07_bad-19
+  memmove ((void *)data, (void const   *)StartOf(source), 100UL*SizeOf(twoIntsStruct )) @CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memmove_07_bad-40:  offset: [801, 801], size: [400, 400] UnProven, allocsite: CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memmove_07_bad-42
+2. CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memmove_07.c:87 {goodG2B1} UnProven
+  memmove ((void *)data, (void const   *)StartOf(source), 100UL*SizeOf(twoIntsStruct )) @goodG2B1-80:  offset: [801, 801], size: [800, 800] UnProven, allocsite: goodG2B1-58
+  memmove ((void *)data, (void const   *)StartOf(source), 100UL*SizeOf(twoIntsStruct )) @goodG2B1-80:  offset: [801, 801], size: [800, 800] UnProven, allocsite: goodG2B1-89
+3. CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memmove_07.c:115 {goodG2B2} UnProven
+  memmove ((void *)data, (void const   *)StartOf(source), 100UL*SizeOf(twoIntsStruct )) @goodG2B2-120:  offset: [801, 801], size: [800, 800] UnProven, allocsite: goodG2B2-99
+  memmove ((void *)data, (void const   *)StartOf(source), 100UL*SizeOf(twoIntsStruct )) @goodG2B2-120:  offset: [801, 801], size: [800, 800] UnProven, allocsite: goodG2B2-129
+
+#queries                 : 12
+#queries mod alarm point : 9
+#proven                  : 6
+#unproven                : 3
+#bot-involved            : 0
+Finished properly.
+0.0242660000001

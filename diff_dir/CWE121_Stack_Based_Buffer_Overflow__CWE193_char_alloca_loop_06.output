@@ -1,0 +1,98 @@
+./juliet_testcases/sparrow_tmp/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_loop_06.i 
+
+
+
+--------------------------------------------------------------------------------
+Front-end begins...
+--------------------------------------------------------------------------------
+
+
+Front-end completes: 0.0184760000001
+
+
+
+--------------------------------------------------------------------------------
+Translation to graphs begins...
+--------------------------------------------------------------------------------
+
+
+#nodes all   : 123
+#unreachable : 0
+
+Translation to graphs completes: 0.001361
+
+
+
+--------------------------------------------------------------------------------
+Pre-analysis begins...
+--------------------------------------------------------------------------------
+
+iteration : 1iteration : 2iteration : 3iteration : 4iteration : 5iteration : 6
+mem size : 44
+
+#functions all : 6
+#recursive : 0
+#unreachable   : 0
+
+Pre-analysis completes: 0.00251800000001
+To inline : []
+Excluded variable-arguments functions : []
+Excluded recursive functions : []
+Excluded too large functions : []
+#Procs : 6
+#Nodes : 123
+
+
+
+--------------------------------------------------------------------------------
+Itv Sparse Analysis begins...
+--------------------------------------------------------------------------------
+
+#total abstract locations  = 51
+#flow-sensitive abstract locations  = 51
+Access Analysis begins...
+Access Analysis completes: 0.000629000000001
+Def-use graph construction begins...
+draw intra-procedural edges
+[==========..................................................] (1/6)     [====================........................................] (2/6)     [==============================..............................] (3/6)     [========================================....................] (4/6)     [==================================================..........] (5/6)     [============================================================] (6/6)     
+draw inter-procedural edges
+[==..........................................................] (1/23)     [=====.......................................................] (2/23)     [=======.....................................................] (3/23)     [==========..................................................] (4/23)     [=============...............................................] (5/23)     [===============.............................................] (6/23)     [==================..........................................] (7/23)     [====================........................................] (8/23)     [=======================.....................................] (9/23)     [==========================..................................] (10/23)     [============================................................] (11/23)     [===============================.............................] (12/23)     [=================================...........................] (13/23)     [====================================........................] (14/23)     [=======================================.....................] (15/23)     [=========================================...................] (16/23)     [============================================................] (17/23)     [==============================================..............] (18/23)     [=================================================...........] (19/23)     [====================================================........] (20/23)     [======================================================......] (21/23)     [=========================================================...] (22/23)     [============================================================] (23/23)     
+Def-use graph construction completes: 0.00117500000001
+#Nodes in def-use graph : 95
+#Locs on def-use graph : 129
+Workorder computation begins...
+Workorder computation completes: 0.000458000000001
+Fixpoint iteration with widening begins...
+
+#iteration in widening : 146
+Fixpoint iteration with widening completes: 0.00120200000001
+
+
+
+--------------------------------------------------------------------------------
+Generate Alarm Report begins...
+--------------------------------------------------------------------------------
+
+[............................................................] (0/123)     
+Generate Alarm Report completes: 0.000118000000001
+
+Itv Sparse Analysis completes: 0.003827
+
+= Alarms =
+1. CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_loop_06.c:52 {CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_loop_06_bad} UnProven
+  *(data+i) @CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_loop_06_bad-56:  offset: [0, +oo], size: [10, 10] UnProven, allocsite: CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_loop_06_bad-59
+  source[i] @CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_loop_06_bad-56:  offset: [0, +oo], size: [11, 11] UnProven, allocsite: CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_loop_06_bad-31
+2. CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_loop_06.c:88 {goodG2B1} UnProven
+  *(data+i) @goodG2B1-90:  offset: [0, +oo], size: [11, 11] UnProven, allocsite: goodG2B1-94
+  source[i] @goodG2B1-90:  offset: [0, +oo], size: [11, 11] UnProven, allocsite: goodG2B1-64
+3. CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_loop_06.c:115 {goodG2B2} UnProven
+  *(data+i) @goodG2B2-123:  offset: [0, +oo], size: [11, 11] UnProven, allocsite: goodG2B2-127
+  source[i] @goodG2B2-123:  offset: [0, +oo], size: [11, 11] UnProven, allocsite: goodG2B2-98
+
+#queries                 : 9
+#queries mod alarm point : 6
+#proven                  : 3
+#unproven                : 3
+#bot-involved            : 0
+Finished properly.
+0.0269250000001

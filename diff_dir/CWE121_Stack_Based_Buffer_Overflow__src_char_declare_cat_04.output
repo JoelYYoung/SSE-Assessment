@@ -1,0 +1,95 @@
+./juliet_testcases/sparrow_tmp/CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cat_04.i 
+
+
+
+--------------------------------------------------------------------------------
+Front-end begins...
+--------------------------------------------------------------------------------
+
+
+Front-end completes: 0.0156110000001
+
+
+
+--------------------------------------------------------------------------------
+Translation to graphs begins...
+--------------------------------------------------------------------------------
+
+
+#nodes all   : 121
+#unreachable : 0
+
+Translation to graphs completes: 0.000886
+
+
+
+--------------------------------------------------------------------------------
+Pre-analysis begins...
+--------------------------------------------------------------------------------
+
+iteration : 1iteration : 2iteration : 3iteration : 4iteration : 5
+mem size : 39
+
+#functions all : 6
+#recursive : 0
+#unreachable   : 0
+
+Pre-analysis completes: 0.001683
+To inline : []
+Excluded variable-arguments functions : []
+Excluded recursive functions : []
+Excluded too large functions : []
+#Procs : 6
+#Nodes : 121
+
+
+
+--------------------------------------------------------------------------------
+Itv Sparse Analysis begins...
+--------------------------------------------------------------------------------
+
+#total abstract locations  = 39
+#flow-sensitive abstract locations  = 39
+Access Analysis begins...
+Access Analysis completes: 0.000477
+Def-use graph construction begins...
+draw intra-procedural edges
+[==========..................................................] (1/6)     [====================........................................] (2/6)     [==============================..............................] (3/6)     [========================================....................] (4/6)     [==================================================..........] (5/6)     [============================================================] (6/6)     
+draw inter-procedural edges
+[==..........................................................] (1/23)     [=====.......................................................] (2/23)     [=======.....................................................] (3/23)     [==========..................................................] (4/23)     [=============...............................................] (5/23)     [===============.............................................] (6/23)     [==================..........................................] (7/23)     [====================........................................] (8/23)     [=======================.....................................] (9/23)     [==========================..................................] (10/23)     [============================................................] (11/23)     [===============================.............................] (12/23)     [=================================...........................] (13/23)     [====================================........................] (14/23)     [=======================================.....................] (15/23)     [=========================================...................] (16/23)     [============================================................] (17/23)     [==============================================..............] (18/23)     [=================================================...........] (19/23)     [====================================================........] (20/23)     [======================================================......] (21/23)     [=========================================================...] (22/23)     [============================================================] (23/23)     
+Def-use graph construction completes: 0.00102400000001
+#Nodes in def-use graph : 87
+#Locs on def-use graph : 126
+Workorder computation begins...
+Workorder computation completes: 0.000280000000001
+Fixpoint iteration with widening begins...
+
+#iteration in widening : 114
+Fixpoint iteration with widening completes: 0.000804
+
+
+
+--------------------------------------------------------------------------------
+Generate Alarm Report begins...
+--------------------------------------------------------------------------------
+
+[............................................................] (0/121)     
+Generate Alarm Report completes: 0.000151
+
+Itv Sparse Analysis completes: 0.002891
+
+= Alarms =
+1. CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cat_04.c:44 {CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cat_04_bad} UnProven
+  strcat ((char */* __restrict  */)StartOf(dest), (char const   */* __restrict  */)data) @CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cat_04_bad-32:  offset: [0, +oo], size: [50, 50] UnProven, allocsite: CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cat_04_bad-19
+2. CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cat_04.c:73 {goodG2B1} UnProven
+  strcat ((char */* __restrict  */)StartOf(dest), (char const   */* __restrict  */)data) @goodG2B1-53:  offset: [0, +oo], size: [50, 50] UnProven, allocsite: goodG2B1-39
+3. CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cat_04.c:93 {goodG2B2} UnProven
+  strcat ((char */* __restrict  */)StartOf(dest), (char const   */* __restrict  */)data) @goodG2B2-74:  offset: [0, +oo], size: [50, 50] UnProven, allocsite: goodG2B2-61
+
+#queries                 : 12
+#queries mod alarm point : 9
+#proven                  : 6
+#unproven                : 3
+#bot-involved            : 0
+Finished properly.
+0.0215510000001
