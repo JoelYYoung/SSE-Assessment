@@ -1,0 +1,677 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style type="text/css">
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #000000; }
+.body_background { background-color: #AAAAAA; }
+.inv_foreground { color: #AAAAAA; }
+.inv_background { background-color: #000000; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi34 { color: #0000aa; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content">
+<span id="line-0"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_01.c ===</span></span>
+<span id="line-1"><span class="ansi1">result</span>: different!</span>
+<span id="line-2">------------------------------------  table  -----------------------------------</span>
+<span id="line-3">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-4">------------------------------------ summary -----------------------------------</span>
+<span id="line-5">      safe|    8    |    5    |    0    |    0    |       0</span>
+<span id="line-6">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-7">     error|    0    |    0    |    1    |    1    |       1       </span>
+<span id="line-8">------------------------------------ detail ------------------------------------</span>
+<span id="line-9">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-10">        36| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-11">        37| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-12">        45| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |   <span class="ansi31">bug</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-13">        71|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-14">        72|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-15">        80| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-16">       105|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-17">       107|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-18">       109|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-19">       112|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-20">       114|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-21"></span>
+<span id="line-22"></span>
+<span id="line-23"></span>
+<span id="line-24"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_02.c ===</span></span>
+<span id="line-25"><span class="ansi1">result</span>: different!</span>
+<span id="line-26">------------------------------------  table  -----------------------------------</span>
+<span id="line-27">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-28">------------------------------------ summary -----------------------------------</span>
+<span id="line-29">      safe|    8    |    8    |    0    |    0    |       0</span>
+<span id="line-30">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-31">     error|    0    |    0    |    1    |    1    |       1       </span>
+<span id="line-32">------------------------------------ detail ------------------------------------</span>
+<span id="line-33">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-34">        39| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-35">        40| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-36">        48| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |   <span class="ansi31">bug</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-37">        82|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-38">        83|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-39">        91| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-40">       116| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-41">       117| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-42">       125| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-43">       151|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-44">       153|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-45">       155|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-46">       158|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-47">       160|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-48"></span>
+<span id="line-49"></span>
+<span id="line-50"></span>
+<span id="line-51"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_03.c ===</span></span>
+<span id="line-52"><span class="ansi1">result</span>: different!</span>
+<span id="line-53">------------------------------------  table  -----------------------------------</span>
+<span id="line-54">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-55">------------------------------------ summary -----------------------------------</span>
+<span id="line-56">      safe|    8    |    8    |    0    |    0    |       0</span>
+<span id="line-57">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-58">     error|    0    |    0    |    1    |    1    |       1       </span>
+<span id="line-59">------------------------------------ detail ------------------------------------</span>
+<span id="line-60">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-61">        39| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-62">        40| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-63">        48| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |   <span class="ansi31">bug</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-64">        82|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-65">        83|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-66">        91| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-67">       116| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-68">       117| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-69">       125| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-70">       151|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-71">       153|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-72">       155|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-73">       158|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-74">       160|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-75"></span>
+<span id="line-76"></span>
+<span id="line-77"></span>
+<span id="line-78"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_04.c ===</span></span>
+<span id="line-79"><span class="ansi1">result</span>: different!</span>
+<span id="line-80">------------------------------------  table  -----------------------------------</span>
+<span id="line-81">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-82">------------------------------------ summary -----------------------------------</span>
+<span id="line-83">      safe|    8    |    8    |    0    |    0    |       0</span>
+<span id="line-84">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-85">     error|    0    |    0    |    1    |    1    |       1       </span>
+<span id="line-86">------------------------------------ detail ------------------------------------</span>
+<span id="line-87">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-88">        46| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-89">        47| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-90">        55| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |   <span class="ansi31">bug</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-91">        89|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-92">        90|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-93">        98| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-94">       123| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-95">       124| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-96">       132| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-97">       158|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-98">       160|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-99">       162|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-100">       165|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-101">       167|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-102"></span>
+<span id="line-103"></span>
+<span id="line-104"></span>
+<span id="line-105"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_05.c ===</span></span>
+<span id="line-106"><span class="ansi1">result</span>: different!</span>
+<span id="line-107">------------------------------------  table  -----------------------------------</span>
+<span id="line-108">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-109">------------------------------------ summary -----------------------------------</span>
+<span id="line-110">      safe|    9    |   11    |    0    |    0    |       0</span>
+<span id="line-111">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-112">     error|    0    |    0    |    1    |    1    |       1       </span>
+<span id="line-113">------------------------------------ detail ------------------------------------</span>
+<span id="line-114">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-115">        33| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-116">        46| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-117">        47| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-118">        55| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |   <span class="ansi31">bug</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-119">        72| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-120">        75|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-121">        89|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-122">        90|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-123">        98| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-124">       111| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-125">       123| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-126">       124| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-127">       132| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-128">       158|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-129">       160|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-130">       162|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-131">       165|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-132">       167|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-133"></span>
+<span id="line-134"></span>
+<span id="line-135"></span>
+<span id="line-136"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c ===</span></span>
+<span id="line-137"><span class="ansi1">result</span>: different!</span>
+<span id="line-138">------------------------------------  table  -----------------------------------</span>
+<span id="line-139">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-140">------------------------------------ summary -----------------------------------</span>
+<span id="line-141">      safe|    8    |    8    |    0    |    0    |       0</span>
+<span id="line-142">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-143">     error|    0    |    0    |    1    |    1    |       1       </span>
+<span id="line-144">------------------------------------ detail ------------------------------------</span>
+<span id="line-145">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-146">        43| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-147">        44| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-148">        52| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |   <span class="ansi31">bug</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-149">        86|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-150">        87|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-151">        95| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-152">       120| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-153">       121| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-154">       129| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-155">       155|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-156">       157|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-157">       159|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-158">       162|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-159">       164|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-160"></span>
+<span id="line-161"></span>
+<span id="line-162"></span>
+<span id="line-163"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_07.c ===</span></span>
+<span id="line-164"><span class="ansi1">result</span>: different!</span>
+<span id="line-165">------------------------------------  table  -----------------------------------</span>
+<span id="line-166">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-167">------------------------------------ summary -----------------------------------</span>
+<span id="line-168">      safe|    9    |   11    |    0    |    0    |       0</span>
+<span id="line-169">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-170">     error|    0    |    0    |    1    |    1    |       1       </span>
+<span id="line-171">------------------------------------ detail ------------------------------------</span>
+<span id="line-172">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-173">        32| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-174">        45| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-175">        46| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-176">        54| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |   <span class="ansi31">bug</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-177">        71| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-178">        74|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-179">        88|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-180">        89|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-181">        97| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-182">       110| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-183">       122| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-184">       123| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-185">       131| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-186">       157|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-187">       159|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-188">       161|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-189">       164|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-190">       166|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-191"></span>
+<span id="line-192"></span>
+<span id="line-193"></span>
+<span id="line-194"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_08.c ===</span></span>
+<span id="line-195"><span class="ansi1">result</span>: different!</span>
+<span id="line-196">------------------------------------  table  -----------------------------------</span>
+<span id="line-197">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-198">------------------------------------ summary -----------------------------------</span>
+<span id="line-199">      safe|    9    |    8    |    0    |    0    |       0</span>
+<span id="line-200">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-201">     error|    0    |    0    |    1    |    1    |       1       </span>
+<span id="line-202">------------------------------------ detail ------------------------------------</span>
+<span id="line-203">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-204">        53| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-205">        54| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-206">        62| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |   <span class="ansi31">bug</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-207">        82|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-208">        96|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-209">        97|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-210">       105| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-211">       130| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-212">       131| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-213">       139| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-214">       165|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-215">       167|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-216">       169|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-217">       172|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-218">       174|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-219"></span>
+<span id="line-220"></span>
+<span id="line-221"></span>
+<span id="line-222"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_09.c ===</span></span>
+<span id="line-223"><span class="ansi1">result</span>: different!</span>
+<span id="line-224">------------------------------------  table  -----------------------------------</span>
+<span id="line-225">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-226">------------------------------------ summary -----------------------------------</span>
+<span id="line-227">      safe|    9    |   11    |    0    |    0    |       0</span>
+<span id="line-228">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-229">     error|    0    |    0    |    1    |    0    |       1       </span>
+<span id="line-230">------------------------------------ detail ------------------------------------</span>
+<span id="line-231">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-232">        26| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-233">        39| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-234">        40| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-235">        48| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |  <span class="ansi32">safe</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-236">        65| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-237">        68|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-238">        82|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-239">        83|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-240">        91| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-241">       104| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-242">       116| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-243">       117| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-244">       125| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-245">       151|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-246">       153|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-247">       155|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-248">       158|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-249">       160|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-250"></span>
+<span id="line-251"></span>
+<span id="line-252"></span>
+<span id="line-253"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_10.c ===</span></span>
+<span id="line-254"><span class="ansi1">result</span>: different!</span>
+<span id="line-255">------------------------------------  table  -----------------------------------</span>
+<span id="line-256">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-257">------------------------------------ summary -----------------------------------</span>
+<span id="line-258">      safe|    9    |   11    |    0    |    0    |       0</span>
+<span id="line-259">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-260">     error|    0    |    0    |    1    |    0    |       1       </span>
+<span id="line-261">------------------------------------ detail ------------------------------------</span>
+<span id="line-262">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-263">        26| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-264">        39| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-265">        40| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-266">        48| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |  <span class="ansi32">safe</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-267">        65| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-268">        68|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-269">        82|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-270">        83|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-271">        91| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-272">       104| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-273">       116| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-274">       117| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-275">       125| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-276">       151|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-277">       153|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-278">       155|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-279">       158|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-280">       160|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-281"></span>
+<span id="line-282"></span>
+<span id="line-283"></span>
+<span id="line-284"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_11.c ===</span></span>
+<span id="line-285"><span class="ansi1">result</span>: different!</span>
+<span id="line-286">------------------------------------  table  -----------------------------------</span>
+<span id="line-287">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-288">------------------------------------ summary -----------------------------------</span>
+<span id="line-289">      safe|   10    |    8    |    0    |    0    |       0</span>
+<span id="line-290">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-291">     error|    0    |    0    |    1    |    0    |       1       </span>
+<span id="line-292">------------------------------------ detail ------------------------------------</span>
+<span id="line-293">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-294">        39| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-295">        40| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-296">        48| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |  <span class="ansi32">safe</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-297">        65|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-298">        68|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-299">        82|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-300">        83|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-301">        91| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-302">       116| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-303">       117| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-304">       125| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-305">       151|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-306">       153|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-307">       155|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-308">       158|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-309">       160|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-310"></span>
+<span id="line-311"></span>
+<span id="line-312"></span>
+<span id="line-313"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_12.c ===</span></span>
+<span id="line-314"><span class="ansi1">result</span>: different!</span>
+<span id="line-315">------------------------------------  table  -----------------------------------</span>
+<span id="line-316">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-317">------------------------------------ summary -----------------------------------</span>
+<span id="line-318">      safe|    9    |    5    |    0    |    0    |       0</span>
+<span id="line-319">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-320">     error|    0    |    0    |    1    |    0    |       1       </span>
+<span id="line-321">------------------------------------ detail ------------------------------------</span>
+<span id="line-322">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-323">        44| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-324">        45| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-325">        53| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |  <span class="ansi32">safe</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-326">        71|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-327">        88|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-328">        89|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-329">        97| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-330">       122|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-331">       124|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-332">       126|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-333">       129|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-334">       131|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-335"></span>
+<span id="line-336"></span>
+<span id="line-337"></span>
+<span id="line-338"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_13.c ===</span></span>
+<span id="line-339"><span class="ansi1">result</span>: different!</span>
+<span id="line-340">------------------------------------  table  -----------------------------------</span>
+<span id="line-341">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-342">------------------------------------ summary -----------------------------------</span>
+<span id="line-343">      safe|    9    |   11    |    0    |    0    |       0</span>
+<span id="line-344">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-345">     error|    0    |    0    |    1    |    0    |       1       </span>
+<span id="line-346">------------------------------------ detail ------------------------------------</span>
+<span id="line-347">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-348">        26| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-349">        39| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-350">        40| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-351">        48| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |  <span class="ansi32">safe</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-352">        65| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-353">        68|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-354">        82|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-355">        83|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-356">        91| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-357">       104| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-358">       116| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-359">       117| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-360">       125| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-361">       151|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-362">       153|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-363">       155|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-364">       158|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-365">       160|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-366"></span>
+<span id="line-367"></span>
+<span id="line-368"></span>
+<span id="line-369"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_14.c ===</span></span>
+<span id="line-370"><span class="ansi1">result</span>: different!</span>
+<span id="line-371">------------------------------------  table  -----------------------------------</span>
+<span id="line-372">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-373">------------------------------------ summary -----------------------------------</span>
+<span id="line-374">      safe|    9    |   11    |    0    |    0    |       0</span>
+<span id="line-375">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-376">     error|    0    |    0    |    1    |    0    |       1       </span>
+<span id="line-377">------------------------------------ detail ------------------------------------</span>
+<span id="line-378">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-379">        26| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-380">        39| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-381">        40| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-382">        48| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |  <span class="ansi32">safe</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-383">        65| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-384">        68|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-385">        82|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-386">        83|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-387">        91| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-388">       104| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-389">       116| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-390">       117| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-391">       125| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-392">       151|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-393">       153|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-394">       155|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-395">       158|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-396">       160|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-397"></span>
+<span id="line-398"></span>
+<span id="line-399"></span>
+<span id="line-400"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_15.c ===</span></span>
+<span id="line-401"><span class="ansi1">result</span>: different!</span>
+<span id="line-402">------------------------------------  table  -----------------------------------</span>
+<span id="line-403">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-404">------------------------------------ summary -----------------------------------</span>
+<span id="line-405">      safe|    8    |    8    |    0    |    0    |       0</span>
+<span id="line-406">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-407">     error|    0    |    0    |    1    |    1    |       1       </span>
+<span id="line-408">------------------------------------ detail ------------------------------------</span>
+<span id="line-409">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-410">        45| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-411">        46| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-412">        53| <span class="ansi34">ignore</span>  | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |   <span class="ansi31">bug</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-413">        54| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |  <span class="ansi32">safe</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-414">        89|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-415">        90|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-416">        98| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-417">       129| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-418">       130| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-419">       138| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-420">       164|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-421">       166|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-422">       168|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-423">       171|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-424">       173|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-425"></span>
+<span id="line-426"></span>
+<span id="line-427"></span>
+<span id="line-428"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_16.c ===</span></span>
+<span id="line-429"><span class="ansi1">result</span>: different!</span>
+<span id="line-430">------------------------------------  table  -----------------------------------</span>
+<span id="line-431">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-432">------------------------------------ summary -----------------------------------</span>
+<span id="line-433">      safe|    8    |    5    |    0    |    0    |       0</span>
+<span id="line-434">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-435">     error|    0    |    0    |    1    |    1    |       1       </span>
+<span id="line-436">------------------------------------ detail ------------------------------------</span>
+<span id="line-437">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-438">        40| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-439">        41| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-440">        49| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |   <span class="ansi31">bug</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-441">        79|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-442">        80|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-443">        88| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-444">       113|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-445">       115|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-446">       117|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-447">       120|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-448">       122|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-449"></span>
+<span id="line-450"></span>
+<span id="line-451"></span>
+<span id="line-452"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_17.c ===</span></span>
+<span id="line-453"><span class="ansi1">result</span>: different!</span>
+<span id="line-454">------------------------------------  table  -----------------------------------</span>
+<span id="line-455">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-456">------------------------------------ summary -----------------------------------</span>
+<span id="line-457">      safe|    8    |    5    |    0    |    0    |       0</span>
+<span id="line-458">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-459">     error|    0    |    0    |    1    |    1    |       1       </span>
+<span id="line-460">------------------------------------ detail ------------------------------------</span>
+<span id="line-461">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-462">        40| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-463">        41| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-464">        49| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |   <span class="ansi31">bug</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-465">        79|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-466">        80|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-467">        88| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-468">       113|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-469">       115|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-470">       117|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-471">       120|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-472">       122|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-473"></span>
+<span id="line-474"></span>
+<span id="line-475"></span>
+<span id="line-476"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_18.c ===</span></span>
+<span id="line-477"><span class="ansi1">result</span>: different!</span>
+<span id="line-478">------------------------------------  table  -----------------------------------</span>
+<span id="line-479">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-480">------------------------------------ summary -----------------------------------</span>
+<span id="line-481">      safe|    8    |    5    |    0    |    0    |       0</span>
+<span id="line-482">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-483">     error|    0    |    0    |    1    |    1    |       1       </span>
+<span id="line-484">------------------------------------ detail ------------------------------------</span>
+<span id="line-485">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-486">        38| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-487">        39| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-488">        47| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |   <span class="ansi31">bug</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-489">        75|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-490">        76|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-491">        84| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-492">       109|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-493">       111|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-494">       113|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-495">       116|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-496">       118|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-497"></span>
+<span id="line-498"></span>
+<span id="line-499"></span>
+<span id="line-500"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_31.c ===</span></span>
+<span id="line-501"><span class="ansi1">result</span>: different!</span>
+<span id="line-502">------------------------------------  table  -----------------------------------</span>
+<span id="line-503">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-504">------------------------------------ summary -----------------------------------</span>
+<span id="line-505">      safe|    8    |    5    |    0    |    0    |       0</span>
+<span id="line-506">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-507">     error|    0    |    0    |    1    |    1    |       1       </span>
+<span id="line-508">------------------------------------ detail ------------------------------------</span>
+<span id="line-509">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-510">        39| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-511">        40| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-512">        48| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |   <span class="ansi31">bug</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-513">        78|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-514">        79|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-515">        87| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-516">       112|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-517">       114|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-518">       116|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-519">       119|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-520">       121|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-521"></span>
+<span id="line-522"></span>
+<span id="line-523"></span>
+<span id="line-524"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_32.c ===</span></span>
+<span id="line-525"><span class="ansi1">result</span>: different!</span>
+<span id="line-526">------------------------------------  table  -----------------------------------</span>
+<span id="line-527">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-528">------------------------------------ summary -----------------------------------</span>
+<span id="line-529">      safe|    8    |    5    |    0    |    0    |       0</span>
+<span id="line-530">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-531">     error|    0    |    0    |    1    |    1    |       1       </span>
+<span id="line-532">------------------------------------ detail ------------------------------------</span>
+<span id="line-533">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-534">        44| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-535">        45| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-536">        53| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |   <span class="ansi31">bug</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-537">        88|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-538">        89|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-539">        97| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-540">       122|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-541">       124|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-542">       126|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-543">       129|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-544">       131|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-545"></span>
+<span id="line-546"></span>
+<span id="line-547"></span>
+<span id="line-548"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_34.c ===</span></span>
+<span id="line-549"><span class="ansi1">result</span>: different!</span>
+<span id="line-550">------------------------------------  table  -----------------------------------</span>
+<span id="line-551">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-552">------------------------------------ summary -----------------------------------</span>
+<span id="line-553">      safe|    8    |    9    |    0    |    0    |       0</span>
+<span id="line-554">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-555">     error|    0    |    0    |    0    |    1    |       1       </span>
+<span id="line-556">------------------------------------ detail ------------------------------------</span>
+<span id="line-557">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-558">        36| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-559">        38| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-560">        46| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-561">        47| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-562">        55| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |  <span class="ansi32">safe</span>   |   <span class="ansi31">bug</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-563">        76| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-564">        78| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-565">        86|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-566">        87|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-567">        95| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-568">       120|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-569">       122|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-570">       124|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-571">       127|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-572">       129|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-573"></span>
+<span id="line-574"></span>
+<span id="line-575"></span>
+<span id="line-576"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_41.c ===</span></span>
+<span id="line-577"><span class="ansi1">result</span>: different!</span>
+<span id="line-578">------------------------------------  table  -----------------------------------</span>
+<span id="line-579">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-580">------------------------------------ summary -----------------------------------</span>
+<span id="line-581">      safe|    8    |    5    |    0    |    0    |       0</span>
+<span id="line-582">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-583">     error|    0    |    0    |    1    |    1    |       1       </span>
+<span id="line-584">------------------------------------ detail ------------------------------------</span>
+<span id="line-585">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-586">        30|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-587">        31|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-588">        39| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |   <span class="ansi31">bug</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-589">        70| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-590">        71| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-591">        79| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-592">       115|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-593">       117|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-594">       119|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-595">       122|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-596">       124|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-597"></span>
+<span id="line-598"></span>
+<span id="line-599"></span>
+<span id="line-600"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_44.c ===</span></span>
+<span id="line-601"><span class="ansi1">result</span>: different!</span>
+<span id="line-602">------------------------------------  table  -----------------------------------</span>
+<span id="line-603">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-604">------------------------------------ summary -----------------------------------</span>
+<span id="line-605">      safe|    6    |    5    |    0    |    0    |       0</span>
+<span id="line-606">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-607">     error|    0    |    0    |    1    |    1    |       1       </span>
+<span id="line-608">------------------------------------ detail ------------------------------------</span>
+<span id="line-609">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-610">        30| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-611">        31| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-612">        39| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |   <span class="ansi31">bug</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-613">        74| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-614">        75| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-615">        83| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-616">       118|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-617">       120|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-618">       122|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-619">       125|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-620">       127|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-621"></span>
+<span id="line-622"></span>
+<span id="line-623"></span>
+<span id="line-624"><span class="ansi1">=== CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_45.c ===</span></span>
+<span id="line-625"><span class="ansi1">result</span>: different!</span>
+<span id="line-626">------------------------------------  table  -----------------------------------</span>
+<span id="line-627">        ln|   SSE   |  ikos   | sparrow |  klee   | ground_truth  |   diagnose    </span>
+<span id="line-628">------------------------------------ summary -----------------------------------</span>
+<span id="line-629">      safe|    8    |    9    |    0    |    0    |       0</span>
+<span id="line-630">   warning|    0    |    1    |    0    |    0    |       0</span>
+<span id="line-631">     error|    0    |    0    |    1    |    1    |       1       </span>
+<span id="line-632">------------------------------------ detail ------------------------------------</span>
+<span id="line-633">        -1|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-634">        26| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-635">        34|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-636">        35|  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-637">        43| <span class="ansi34">ignore</span>  | <span class="ansi33">warning</span> |   <span class="ansi31">bug</span>   |   <span class="ansi31">bug</span>   |      <span class="ansi31">bug</span>      |not checked flaw</span>
+<span id="line-638">        58| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-639">        69| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-640">        77| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-641">        78| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-642">        86| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-643">       100| <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-644">       121|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-645">       123|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-646">       125|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-647">       128|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-648">       130|  <span class="ansi32">safe</span>   | <span class="ansi34">ignore</span>  |  <span class="ansi32">safe</span>   |  <span class="ansi32">safe</span>   |     <span class="ansi32">safe</span>      |   true neg    </span>
+<span id="line-649"></span>
+<span id="line-650"></span>
+<span id="line-651"></span>
+<span id="line-652"></span>
+</pre>
+</body>
+
+</html>

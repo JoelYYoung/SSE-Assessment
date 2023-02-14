@@ -7,7 +7,7 @@
 # 		-s 	c src dir to input into ikos and sse,
 # 		-d 	dst dir for output db of sse and ikos,
 # 		-r 	should rerun ikos? 
-# 		-p 	should pull from sse?
+# 		-p 	should rerun sse?
 #  		-m  metadata dir of NIST,
 # 		-t 	report dir for assess-in-batch output.
 #		
@@ -23,7 +23,7 @@ do
 			s) srcdir=${OPTARG};;
 			d) dstdir=${OPTARG};;
 			r) rerun=true;;
-			p) pullsse=true;;
+			p) rerunsse=true;;
 			t) reportdir=${OPTARG};;
 			m) metadatadir=${OPTARG};;
 			?) echo "script usage: $(basename $0) [-s srcpath] [-d dstpath] [-r]"
@@ -78,25 +78,28 @@ fi
 ###############################################################
 # run sse on the testcases and put all db into the output dbs #
 ###############################################################
-if [ ! -d ${srcdir}/sse_tmp ]; then
-  	mkdir ${srcdir}/sse_tmp
+if [ "X${rerunsse}" != "X" ]; then
+  if [ ! -d ${srcdir}/sse_tmp ]; then
+      mkdir ${srcdir}/sse_tmp
+  else
+    rm ${srcdir}/sse_tmp/* -f
+  fi
+
+  rm ${dstdir}/*.sse.db -f
+
+  find $srcdir -name "*.c" | while read srcfile
+  do
+    srcfilename="${srcfile##*/}"
+    srcfilename_short="${srcfilename%.*}"
+    /home/joelyang/SVF/llvm-13.0.0.obj/bin/clang -S -c -Xclang -disable-O0-optnone -fno-discard-value-names -g -emit-llvm -I./testcasesupport/ -DINCLUDEMAIN $srcfile -o $srcdir/sse_tmp/${srcfilename_short}.ll
+
+    /home/joelyang/SVF-Z3/Debug-build/bin/sse $srcdir/sse_tmp/${srcfilename_short}.ll -overflow -output=$dstdir/${srcfilename_short}.sse.db > /dev/null
+    echo "[SSE] file: ${srcfile} done!"
+    rm ./*.ll.stat -f
+  done
 else
-	rm ${srcdir}/sse_tmp/* -f
+  echo "[sse] sse has been run previously, skip sse on all input!"
 fi
-
-rm ${dstdir}/*.sse.db -f
-
-find $srcdir -name "*.c" | while read srcfile
-do
-	srcfilename="${srcfile##*/}"
-	srcfilename_short="${srcfilename%.*}"
-	/home/joelyang/SVF/llvm-13.0.0.obj/bin/clang -S -c -Xclang -disable-O0-optnone -fno-discard-value-names -g -emit-llvm -I./testcasesupport/ -DINCLUDEMAIN $srcfile -o $srcdir/sse_tmp/${srcfilename_short}.ll
-
-	/home/joelyang/SVF-Z3/Debug-build/bin/sse $srcdir/sse_tmp/${srcfilename_short}.ll -overflow -output=$dstdir/${srcfilename_short}.sse.db > /dev/null
-	echo "[SSE] file: ${srcfile} done!"
-	rm ./*.ll.stat -f
-done
-
 
 ####################################
 # run sse-assessment python script #
