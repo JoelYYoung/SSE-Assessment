@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/memmove.c
+Line: 48
+assembly.ll line: 17201
+State: 1
+Stack: 
+	#000017201 in memmove (=94820950403664, =94820950295152, =44) at libc/string/memmove.c:48
+	#100009733 in CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memmove_41_badSink (=94820950403664) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memmove_41.c:34
+	#200009757 in CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memmove_41_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memmove_41.c:47
+	#300009826 in __klee_posix_wrapped_main (=1, =94820950942048) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memmove_41.c:100
+	#400007345 in __user_main (=1, =94820919593216, =94820919593232) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000589 in __uClibc_main (=94820949703896, =1, =94820919593216, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
+	#600000754 in main (=1, =94820919593216)
+Info: 
+	address: 94820950403707
+	next: object at 94820917971808 of size 209
+		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)

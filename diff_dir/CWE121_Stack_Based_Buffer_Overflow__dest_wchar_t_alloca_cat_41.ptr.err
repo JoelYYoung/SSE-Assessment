@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/strcat.c
+Line: 24
+assembly.ll line: 14869
+State: 1
+Stack: 
+	#000014869 in wcscat (=94195860374960, =94195853978464) at libc/string/strcat.c:24
+	#100009727 in CWE121_Stack_Based_Buffer_Overflow__dest_wchar_t_alloca_cat_41_badSink (=94195860374960) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__dest_wchar_t_alloca_cat_41.c:30
+	#200009751 in CWE121_Stack_Based_Buffer_Overflow__dest_wchar_t_alloca_cat_41_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__dest_wchar_t_alloca_cat_41.c:43
+	#300009816 in __klee_posix_wrapped_main (=1, =94195877339664) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__dest_wchar_t_alloca_cat_41.c:96
+	#400007343 in __user_main (=1, =94195868969216, =94195868969232) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000587 in __uClibc_main (=94195876150688, =1, =94195868969216, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
+	#600000752 in main (=1, =94195868969216)
+Info: 
+	address: 94195860375160
+	next: object at 94195845220992 of size 209
+		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)

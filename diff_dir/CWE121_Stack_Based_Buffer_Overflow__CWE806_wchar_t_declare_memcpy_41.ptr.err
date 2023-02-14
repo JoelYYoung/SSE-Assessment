@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/memcpy.c
+Line: 29
+assembly.ll line: 9620
+State: 1
+Stack: 
+	#000009620 in memcpy (=94760523629792, =94760518387744, =396) at libc/string/memcpy.c:29
+	#100009730 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memcpy_41_badSink (=94760518387744) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memcpy_41.c:28
+	#200009750 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memcpy_41_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memcpy_41.c:41
+	#300009814 in __klee_posix_wrapped_main (=1, =94760523899376) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memcpy_41.c:93
+	#400007343 in __user_main (=1, =94760503314688, =94760503314704) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000587 in __uClibc_main (=94760522612048, =1, =94760503314688, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
+	#600000752 in main (=1, =94760503314688)
+Info: 
+	address: 94760523629992
+	next: object at 94760490652288 of size 128
+		MO533[128] allocated at global:randtbl

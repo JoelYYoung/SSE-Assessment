@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/memmove.c
+Line: 48
+assembly.ll line: 17161
+State: 1
+Stack: 
+	#000017161 in memmove (=94810016934656, =94810016386224, =99) at libc/string/memmove.c:48
+	#100009752 in badSink (=94810016386224) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_memmove_44.c:28
+	#200009734 in CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_memmove_44_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_memmove_44.c:44
+	#300009822 in __klee_posix_wrapped_main (=1, =94810016923872) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_memmove_44.c:96
+	#400007343 in __user_main (=1, =94810007562496, =94810007562512) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000587 in __uClibc_main (=94810015652848, =1, =94810007562496, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
+	#600000752 in main (=1, =94810007562496)
+Info: 
+	address: 94810016934754
+	next: object at 94809983601504 of size 209
+		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)

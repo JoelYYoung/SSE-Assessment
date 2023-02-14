@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/memcpy.c
+Line: 29
+assembly.ll line: 9620
+State: 1
+Stack: 
+	#000009620 in memcpy (=94688008970240, =94688003165024, =400) at libc/string/memcpy.c:29
+	#100009729 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memcpy_41_badSink (=94688008970240) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memcpy_41.c:30
+	#200009750 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memcpy_41_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memcpy_41.c:44
+	#300009814 in __klee_posix_wrapped_main (=1, =94688009232848) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memcpy_41.c:98
+	#400007343 in __user_main (=1, =94687982299392, =94687982299408) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000587 in __uClibc_main (=94688007978104, =1, =94687982299392, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
+	#600000752 in main (=1, =94687982299392)
+Info: 
+	address: 94688008970440
+	next: object at 94687976714880 of size 114
+		MO41[114] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)

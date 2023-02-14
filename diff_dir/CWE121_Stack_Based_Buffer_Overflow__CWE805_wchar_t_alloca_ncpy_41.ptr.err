@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/strncpy.c
+Line: 29
+assembly.ll line: 14862
+State: 1
+Stack: 
+	#000014862 in wcsncpy (=94258005881728, =94258013203296, =99) at libc/string/strncpy.c:29
+	#100009727 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncpy_41_badSink (=94258005881728) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncpy_41.c:30
+	#200009754 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncpy_41_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncpy_41.c:44
+	#300009822 in __klee_posix_wrapped_main (=1, =94258018632224) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncpy_41.c:98
+	#400007343 in __user_main (=1, =94257992026368, =94257992026384) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000587 in __uClibc_main (=94258017435096, =1, =94257992026368, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
+	#600000752 in main (=1, =94257992026368)
+Info: 
+	address: 94258005881928
+	next: object at 94257985410432 of size 128
+		MO533[128] allocated at global:randtbl

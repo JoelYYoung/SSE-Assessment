@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/memcpy.c
+Line: 29
+assembly.ll line: 9620
+State: 1
+Stack: 
+	#000009620 in memcpy (=93856479243920, =93856475026192, =8) at libc/string/memcpy.c:29
+	#100009793 in badSink (=93856479243520) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_loop_44.c:39
+	#200009736 in CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_loop_44_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_loop_44.c:56
+	#300009924 in __klee_posix_wrapped_main (=1, =93856484647440) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_loop_44.c:122
+	#400007343 in __user_main (=1, =93856485124352, =93856485124368) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000587 in __uClibc_main (=93856483491224, =1, =93856485124352, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
+	#600000752 in main (=1, =93856485124352)
+Info: 
+	address: 93856479243920
+	next: object at 93856451709792 of size 209
+		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)

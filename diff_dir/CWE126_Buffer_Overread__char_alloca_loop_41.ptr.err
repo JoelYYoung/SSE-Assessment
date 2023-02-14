@@ -1,0 +1,16 @@
+Error: memory error: out of bound pointer
+File: ./juliet_testcases/CWE126_Buffer_Overread__char_alloca_loop_41.c
+Line: 35
+assembly.ll line: 9745
+State: 1
+Stack: 
+	#000009745 in CWE126_Buffer_Overread__char_alloca_loop_41_badSink (=94854407982272) at ./juliet_testcases/CWE126_Buffer_Overread__char_alloca_loop_41.c:35
+	#100009788 in CWE126_Buffer_Overread__char_alloca_loop_41_bad () at ./juliet_testcases/CWE126_Buffer_Overread__char_alloca_loop_41.c:52
+	#200009890 in __klee_posix_wrapped_main (=1, =94854407971408) at ./juliet_testcases/CWE126_Buffer_Overread__char_alloca_loop_41.c:115
+	#300007343 in __user_main (=1, =94854387058944, =94854387058960) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000587 in __uClibc_main (=94854406815088, =1, =94854387058944, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
+	#500000752 in main (=1, =94854387058944)
+Info: 
+	address: 94854407982322
+	next: object at 94854375795520 of size 240
+		MO564[240] allocated at __uClibc_main():  %16 = alloca [15 x %struct.Elf64_auxv_t], align 16

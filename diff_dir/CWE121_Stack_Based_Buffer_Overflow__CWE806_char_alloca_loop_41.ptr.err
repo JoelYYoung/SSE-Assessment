@@ -1,0 +1,16 @@
+Error: memory error: out of bound pointer
+File: ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_41.c
+Line: 32
+assembly.ll line: 9746
+State: 1
+Stack: 
+	#000009746 in CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_41_badSink (=94820753918928) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_41.c:32
+	#100009777 in CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_41_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_41.c:46
+	#200009868 in __klee_posix_wrapped_main (=1, =94820754424240) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_41.c:103
+	#300007343 in __user_main (=1, =94820744931584, =94820744931600) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000587 in __uClibc_main (=94820753161456, =1, =94820744931584, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
+	#500000752 in main (=1, =94820744931584)
+Info: 
+	address: 94820754419250
+	next: object at 94820721380192 of size 209
+		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)

@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/strcat.c
+Line: 24
+assembly.ll line: 14857
+State: 1
+Stack: 
+	#000014857 in strcat (=94335425334080, =94335424850448) at libc/string/strcat.c:24
+	#100009725 in CWE121_Stack_Based_Buffer_Overflow__src_char_alloca_cat_41_badSink (=94335424850448) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_char_alloca_cat_41.c:28
+	#200009745 in CWE121_Stack_Based_Buffer_Overflow__src_char_alloca_cat_41_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_char_alloca_cat_41.c:40
+	#300009804 in __klee_posix_wrapped_main (=1, =94335425290608) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_char_alloca_cat_41.c:91
+	#400007343 in __user_main (=1, =94335401707776, =94335401707792) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000587 in __uClibc_main (=94335424019600, =1, =94335401707776, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
+	#600000752 in main (=1, =94335401707776)
+Info: 
+	address: 94335425334130
+	next: object at 94335393081216 of size 240
+		MO565[240] allocated at __uClibc_main():  %16 = alloca [15 x %struct.Elf64_auxv_t], align 16

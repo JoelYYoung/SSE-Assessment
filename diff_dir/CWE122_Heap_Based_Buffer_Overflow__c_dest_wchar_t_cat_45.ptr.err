@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/strcat.c
+Line: 24
+assembly.ll line: 14883
+State: 1
+Stack: 
+	#000014883 in wcscat (=94797639198128, =94797646605152) at libc/string/strcat.c:24
+	#100009756 in badSink () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_dest_wchar_t_cat_45.c:34
+	#200009738 in CWE122_Heap_Based_Buffer_Overflow__c_dest_wchar_t_cat_45_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_dest_wchar_t_cat_45.c:48
+	#300009830 in __klee_posix_wrapped_main (=1, =94797652132336) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_dest_wchar_t_cat_45.c:103
+	#400007345 in __user_main (=1, =94797644679424, =94797644679440) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000589 in __uClibc_main (=94797650836952, =1, =94797644679424, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
+	#600000754 in main (=1, =94797644679424)
+Info: 
+	address: 94797639198328
+	next: object at 94797618752128 of size 209
+		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)

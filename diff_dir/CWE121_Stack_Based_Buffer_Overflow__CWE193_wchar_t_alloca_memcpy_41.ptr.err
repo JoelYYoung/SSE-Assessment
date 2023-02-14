@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/memcpy.c
+Line: 29
+assembly.ll line: 9622
+State: 1
+Stack: 
+	#000009622 in memcpy (=93961013660240, =93961013659472, =44) at libc/string/memcpy.c:29
+	#100009733 in CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memcpy_41_badSink (=93961013660240) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memcpy_41.c:34
+	#200009757 in CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memcpy_41_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memcpy_41.c:47
+	#300009826 in __klee_posix_wrapped_main (=1, =93961014198640) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memcpy_41.c:100
+	#400007345 in __user_main (=1, =93960994138368, =93960994138384) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000589 in __uClibc_main (=93961012960472, =1, =93960994138368, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
+	#600000754 in main (=1, =93960994138368)
+Info: 
+	address: 93961013660280
+	next: object at 93960981373488 of size 102
+		MO28[102] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)

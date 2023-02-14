@@ -1,0 +1,16 @@
+Error: memory error: out of bound pointer
+File: ./juliet_testcases/CWE126_Buffer_Overread__wchar_t_alloca_loop_44.c
+Line: 35
+assembly.ll line: 9780
+State: 1
+Stack: 
+	#000009780 in badSink (=94569539651200) at ./juliet_testcases/CWE126_Buffer_Overread__wchar_t_alloca_loop_44.c:35
+	#100009745 in CWE126_Buffer_Overread__wchar_t_alloca_loop_44_bad () at ./juliet_testcases/CWE126_Buffer_Overread__wchar_t_alloca_loop_44.c:55
+	#200009902 in __klee_posix_wrapped_main (=1, =94569539838624) at ./juliet_testcases/CWE126_Buffer_Overread__wchar_t_alloca_loop_44.c:118
+	#300007343 in __user_main (=1, =94569512216832, =94569512216848) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000587 in __uClibc_main (=94569538666304, =1, =94569512216832, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
+	#500000752 in main (=1, =94569512216832)
+Info: 
+	address: 94569539651400
+	next: object at 94569507755488 of size 104
+		MO480[104] allocated at global:__exe_fs
