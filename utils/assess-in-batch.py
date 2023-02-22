@@ -6,7 +6,7 @@ from ansi2html import Ansi2HTMLConverter
 
 ###############################################################################
 #
-# assess-in-bath.py
+# assess-in-batch.py
 #
 # Note: use this script by the following command:
 #       python assess-in-bath.py arg1

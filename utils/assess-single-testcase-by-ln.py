@@ -83,7 +83,7 @@ def get_ln_list_sparrow(output_str):
 # input klee .output file and return list of ln num
 def get_ln_list_klee(output_str, filename):
     ln_list = []
-    search_res = re.findall("{0}.c:(\d*)".format(filename), output_str)
+    search_res = re.findall("{}[.]c:(\d*)".format(filename), output_str)
     # regex match the first filename.c and get line
     if search_res:
         ln_list.append(int(search_res[0]))
@@ -158,7 +158,7 @@ def main(argv):
 
     sparrow_list = get_ln_list_sparrow(output_sparrow)
 
-    klee_list = get_ln_list_klee(output_klee, argv[5].split('/')[-1][:-8])
+    klee_list = get_ln_list_klee(output_klee, argv[5].split('\\')[-1][:-8])
 
     db_sse.close()
     db_ikos.close()
