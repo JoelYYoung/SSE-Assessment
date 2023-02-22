@@ -1,0 +1,1 @@
+python3 ./utils/tp_fp_statistic.py ./diff_dir ./juliet_testcases/metadata ./reports

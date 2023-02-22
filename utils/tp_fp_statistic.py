@@ -5,7 +5,8 @@ import json
 import os
 import subprocess
 from ansi2html import Ansi2HTMLConverter
-
+import numpy as np
+import pandas as pd
 
 ###############################################################################
 #
@@ -143,7 +144,7 @@ def is_neg_same(sse_result):
 
 
 def tp_fp_counter_ikos_sse(analysis_result, ground_truth):
-    analysis_positive_set = set([x[0] for x in analysis_result if x[1] == 1 or x[1] == 2])
+    analysis_positive_set = set([x for x in analysis_result if analysis_result[x] in (1, 2)])
     tp_set = ground_truth & analysis_positive_set
     fp_set = analysis_positive_set - ground_truth
     return len(tp_set), len(fp_set)
@@ -175,7 +176,7 @@ def get_tp_fp_num(sse_db_path, ikos_db_path, sparrow_output_path, klee_output_pa
 
     # get klee result
     output_klee = get_klee_file_str(klee_output_path)
-    klee_list = get_ln_list_klee(output_klee, klee_output_path.split('\\')[-1][:-8])
+    klee_list = get_ln_list_klee(output_klee, klee_output_path.split('/')[-1][:-8])
 
     # get ground truth
     with open(metadata_path, "r") as f:
@@ -221,8 +222,8 @@ def main(argv):
     present_batch_name = diff_name_list[0][:-10]
 
     batch_dict = {}
-    batch_result = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-    total_result = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    batch_result = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0])
+    total_result = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0])
     for diff_name in diff_name_list:
         diff_name = diff_name[:-7]
 
@@ -233,20 +234,24 @@ def main(argv):
                                    metadata_dir_path + diff_name + ".sarif")
 
         if present_batch_name in diff_name:
-            batch_result += tp_fp_list
+            batch_result += np.array(tp_fp_list)
         else:
-            batch_dict[present_batch_name] = batch_result
+            batch_dict[present_batch_name] = batch_result[:-1]/batch_result[-1]
             total_result += batch_result
-            batch_result = tp_fp_list
+            batch_result = np.array(tp_fp_list)
             present_batch_name = diff_name[:-3]
 
     # handle last
-    batch_dict[present_batch_name] = batch_result
+    batch_dict[present_batch_name] = batch_result[:-1]/batch_result[-1]
     total_result += batch_result
+    total_result_rate = total_result[:-1]/total_result[-1]
+    batch_dict["total"] = total_result_rate
 
-    print(batch_result)
-    print(total_result)
-
+    result_df = pd.DataFrame.from_dict(batch_dict, orient='index',columns=["SSE_TP", "SSE_FP",
+                                                                           "IKOS_TP", "IKOS_FP",
+                                                                           "Sparrow_TP", "Sparrow_FP",
+                                                                           "Klee_TP", "Klee_FP"])
+    result_df.to_excel("statistic.xlsx", engine="openpyxl")
 
 if __name__ == "__main__":
     assert len(sys.argv) == 4
