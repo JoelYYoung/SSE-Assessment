@@ -86,6 +86,7 @@ if [ "X${rerunsse}" != "X" ]; then
   fi
 
   rm ${dstdir}/*.sse.db -f
+  rm ${dstdir}/*.sse.db-journal -f
 
   find $srcdir -name "*.c" | while read srcfile
   do
@@ -93,7 +94,7 @@ if [ "X${rerunsse}" != "X" ]; then
     srcfilename_short="${srcfilename%.*}"
     /home/joelyang/SVF/llvm-13.0.0.obj/bin/clang -S -c -Xclang -disable-O0-optnone -fno-discard-value-names -g -emit-llvm -I./testcasesupport/ -DINCLUDEMAIN $srcfile -o $srcdir/sse_tmp/${srcfilename_short}.ll
 
-    /home/joelyang/SVF-Z3/Debug-build/bin/sse $srcdir/sse_tmp/${srcfilename_short}.ll -overflow -output=$dstdir/${srcfilename_short}.sse.db > /dev/null
+    /home/joelyang/SVF-Z3/cmake-build-debug/bin/sse $srcdir/sse_tmp/${srcfilename_short}.ll -overflow -output=$dstdir/${srcfilename_short}.sse.db>/dev/null 2>/dev/null
     echo "[SSE] file: ${srcfile} done!"
     rm ./*.ll.stat -f
   done
