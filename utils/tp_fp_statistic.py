@@ -45,8 +45,11 @@ def get_klee_file_str(dir_path):
 # input sse output.db and return list of (ln, status) tuple
 def get_ln_list_sse(db):
     cur = db.cursor()
-    res = cur.execute("SELECT location, status FROM checks")
-    loc = res.fetchall()
+    try:
+        res = cur.execute("SELECT location, status FROM checks")
+        loc = res.fetchall()
+    except:
+        loc = []
 
     loc_list = []
     for check_loc in loc:
@@ -224,6 +227,8 @@ def main(argv):
     batch_dict = {}
     batch_result = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0])
     total_result = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0])
+    present_batch_num = 0
+    total_num = 0
     for diff_name in diff_name_list:
         diff_name = diff_name[:-7]
 
@@ -235,22 +240,25 @@ def main(argv):
 
         if present_batch_name in diff_name:
             batch_result += np.array(tp_fp_list)
+            present_batch_num += 1
         else:
-            batch_dict[present_batch_name] = batch_result[:-1]/batch_result[-1]
+            batch_dict[present_batch_name+" "+str(present_batch_num)] = [str(x) for x in zip(batch_result, batch_result/batch_result[-1])]
             total_result += batch_result
+            total_num += present_batch_num
             batch_result = np.array(tp_fp_list)
+            present_batch_num = 1
             present_batch_name = diff_name[:-3]
 
     # handle last
-    batch_dict[present_batch_name] = batch_result[:-1]/batch_result[-1]
+    present_batch_num += 1
+    batch_dict[present_batch_name+" "+str(present_batch_num)] = [str(x) for x in zip(batch_result, batch_result/batch_result[-1])]
     total_result += batch_result
-    total_result_rate = total_result[:-1]/total_result[-1]
-    batch_dict["total"] = total_result_rate
+    batch_dict["total "+str(total_num)] = [str(x) for x in zip(total_result, total_result/total_result[-1])]
 
-    result_df = pd.DataFrame.from_dict(batch_dict, orient='index',columns=["SSE_TP", "SSE_FP",
-                                                                           "IKOS_TP", "IKOS_FP",
-                                                                           "Sparrow_TP", "Sparrow_FP",
-                                                                           "Klee_TP", "Klee_FP"])
+    result_df = pd.DataFrame.from_dict(batch_dict, orient='index',columns=["SSE_TP(num/rate)", "SSE_FP(num/rate)",
+                                                                           "IKOS_TP(num/rate)", "IKOS_FP(num/rate)",
+                                                                           "Sparrow_TP(num/rate)", "Sparrow_FP(num/rate)",
+                                                                           "Klee_TP(num/rate)", "Klee_FP(num/rate)", "ground_truth(num/rate)"])
     result_df.to_excel("statistic.xlsx", engine="openpyxl")
 
 if __name__ == "__main__":
