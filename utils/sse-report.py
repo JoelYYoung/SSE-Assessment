@@ -57,7 +57,7 @@ def parse_check_context_list_bug(db, check_context_list):
                 search_res = re.search("ln: (\d*)[ ]*cl: (\d*)[ ]*fl: (.*) }", check_context[2])
                 check_loc = (int(search_res[1]), int(search_res[2]), search_res[3])
             else:
-                check_loc = (-1, -1, -1)
+                check_loc = (-1, -1, "/unknown/No_File_Info")
 
             check_context_list = get_context_list(db, check_context[3])
 
