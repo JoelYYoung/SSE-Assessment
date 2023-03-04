@@ -102,7 +102,7 @@ def print_check_context(check_context_list):
                 eliminate_file_dir(search_res[4]), search_res[2],
                 search_res[3], search_res[1]
             ))
-        print("\t---------------------------------------------")
+        print("\t-------------------------------------------------------------")
 
 
 def main(argv):
@@ -112,6 +112,7 @@ def main(argv):
     check_context_list = get_check_context_list(sse_db)
     parsed_check_context_list = parse_check_context_list_bug(sse_db, check_context_list)
 
+    print("\033[47;30m{:^30}\033[0m".format("db filename: " + argv[1]))
     print_check_context(parsed_check_context_list)
 
     # close db
