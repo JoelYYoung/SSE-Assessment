@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/memmove.c
-Line: 48
-assembly.ll line: 17253
+Line: 42
+assembly.ll line: 6394
 State: 1
 Stack: 
-	#000017253 in memmove (=94279745568768, =94279740311584, =396) at libc/string/memmove.c:48
-	#100009761 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_17_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_17.c:38
-	#200009840 in __klee_posix_wrapped_main (=1, =94279745831392) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_17.c:91
-	#300007343 in __user_main (=1, =94279738599680, =94279738599696) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000587 in __uClibc_main (=94279744560576, =1, =94279738599680, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000752 in main (=1, =94279738599680)
+	#000006394 in memmove (=94461910735776, =94461934188224, =396) at libc/string/memmove.c:42
+	#100004239 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_17_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_17.c:38
+	#200004325 in __klee_posix_wrapped_main (=1, =94461940965552) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_17.c:96
+	#300002564 in __user_main (=1, =94461934758144, =94461934758160) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000472 in __uClibc_main (=1, =94461934758144) at libc/misc/internals/__uClibc_main.c:401
+	#500000638 in main (=1, =94461934758144)
 Info: 
-	address: 94279745569163
-	next: object at 94279712541312 of size 209
-		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94461910735976
+	next: object at 94461909915776 of size 128
+		MO289[128] allocated at global:randtbl

@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/memmove.c
-Line: 48
-assembly.ll line: 17167
+Line: 42
+assembly.ll line: 5927
 State: 1
 Stack: 
-	#000017167 in memmove (=94797507464064, =94797506923584, =99) at libc/string/memmove.c:48
-	#100009755 in CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_memmove_32_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_memmove_32.c:42
-	#200009828 in __klee_posix_wrapped_main (=1, =94797507420576) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_memmove_32.c:100
-	#300007343 in __user_main (=1, =94797497968896, =94797497968912) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000587 in __uClibc_main (=94797506182224, =1, =94797497968896, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000752 in main (=1, =94797497968896)
+	#000005927 in memmove (=94892009729280, =94892011043952, =99) at libc/string/memmove.c:42
+	#100004091 in CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_memmove_32_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_memmove_32.c:42
+	#200004171 in __klee_posix_wrapped_main (=1, =94892033636352) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_memmove_32.c:105
+	#300002422 in __user_main (=1, =94892033471744, =94892033471760) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000444 in __uClibc_main (=1, =94892033471744) at libc/misc/internals/__uClibc_main.c:401
+	#500000610 in main (=1, =94892033471744)
 Info: 
-	address: 94797507464162
-	next: object at 94797474368352 of size 209
-		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94892009729330
+	next: object at 94892008791680 of size 128
+		MO246[128] allocated at global:randtbl

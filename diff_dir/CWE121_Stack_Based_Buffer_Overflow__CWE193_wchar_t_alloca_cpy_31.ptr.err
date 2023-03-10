@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/strcpy.c
 Line: 27
-assembly.ll line: 14846
+assembly.ll line: 5642
 State: 1
 Stack: 
-	#000014846 in wcscpy (=94769466342432, =94769461978000) at libc/string/strcpy.c:27
-	#100009749 in CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_cpy_31_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_cpy_31.c:43
-	#200009810 in __klee_posix_wrapped_main (=1, =94769467007360) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_cpy_31.c:95
-	#300007345 in __user_main (=1, =94769435625728, =94769435625744) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000589 in __uClibc_main (=94769465760888, =1, =94769435625728, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000754 in main (=1, =94769435625728)
+	#000005642 in wcscpy (=94567040463792, =94567040466048) at libc/string/strcpy.c:27
+	#100004226 in CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_cpy_31_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_cpy_31.c:43
+	#200004294 in __klee_posix_wrapped_main (=1, =94567039926400) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_cpy_31.c:100
+	#300002565 in __user_main (=1, =94567033820800, =94567033820816) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000473 in __uClibc_main (=1, =94567033820800) at libc/misc/internals/__uClibc_main.c:401
+	#500000639 in main (=1, =94567033820800)
 Info: 
-	address: 94769466342472
-	next: object at 94769433704320 of size 114
-		MO41[114] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94567040463832
+	next: object at 94567008848128 of size 768
+		MO285[768] allocated at global:__C_ctype_toupper_data

@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: libc/string/strnlen.c
+Line: 30
+assembly.ll line: 12367
+State: 1
+Stack: 
+	#000012367 in wcsnlen (=94129271805632, =18446744073709551615) at libc/string/strnlen.c:30
+	#100010929 in _do_one_spec.307 (=94129284309944, =94129260604672, =94129291715568) at libc/stdio/_vfprintf.c:1702
+	#200010073 in vfwprintf (=94129291315744, =94129291665408) at libc/stdio/_vfprintf.c:1919
+	#300006044 in wprintf (=0) at libc/stdio/wprintf.c:20
+	#400005824 in printWLine (=94129271805632) at io.c:23
+	#500004237 in CWE126_Buffer_Overread__CWE170_wchar_t_loop_11_bad () at ./juliet_testcases/CWE126_Buffer_Overread__CWE170_wchar_t_loop_11.c:37
+	#600004378 in __klee_posix_wrapped_main (=1, =94129291616688) at ./juliet_testcases/CWE126_Buffer_Overread__CWE170_wchar_t_loop_11.c:119
+	#700002565 in __user_main (=1, =94129285267456, =94129285267472) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#800000473 in __uClibc_main (=1, =94129285267456) at libc/misc/internals/__uClibc_main.c:401
+	#900000639 in main (=1, =94129285267456)
+Info: 
+	address: 94129271806032
+	next: object at 94129260584576 of size 128
+		MO293[128] allocated at global:randtbl

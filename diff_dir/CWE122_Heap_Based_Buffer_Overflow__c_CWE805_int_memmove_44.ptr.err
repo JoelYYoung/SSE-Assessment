@@ -1,17 +1,17 @@
 Error: memory error: out of bound pointer
 File: libc/string/memmove.c
-Line: 48
-assembly.ll line: 17165
+Line: 42
+assembly.ll line: 5940
 State: 1
 Stack: 
-	#000017165 in memmove (=94569235406848, =94569220238176, =400) at libc/string/memmove.c:48
-	#100009753 in badSink (=94569235406848) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memmove_44.c:26
-	#200009736 in CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memmove_44_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memmove_44.c:41
-	#300009826 in __klee_posix_wrapped_main (=1, =94569252020384) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memmove_44.c:92
-	#400007343 in __user_main (=1, =94569230141696, =94569230141712) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#500000587 in __uClibc_main (=94569250749416, =1, =94569230141696, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#600000752 in main (=1, =94569230141696)
+	#000005940 in memmove (=94046519725728, =94046528062272, =400) at libc/string/memmove.c:42
+	#100004090 in badSink (=94046519725728) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memmove_44.c:26
+	#200004073 in CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memmove_44_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memmove_44.c:42
+	#300004174 in __klee_posix_wrapped_main (=1, =94046543230896) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memmove_44.c:97
+	#400002423 in __user_main (=1, =94046543411968, =94046543411984) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000445 in __uClibc_main (=1, =94046543411968) at libc/misc/internals/__uClibc_main.c:401
+	#600000611 in main (=1, =94046543411968)
 Info: 
-	address: 94569235407247
-	next: object at 94569218715904 of size 114
-		MO41[114] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94046519725928
+	next: object at 94046518438144 of size 768
+		MO242[768] allocated at global:__C_ctype_tolower_data

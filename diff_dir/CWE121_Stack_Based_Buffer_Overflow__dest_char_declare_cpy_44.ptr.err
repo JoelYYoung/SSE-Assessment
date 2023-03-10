@@ -1,17 +1,17 @@
 Error: memory error: out of bound pointer
 File: libc/string/strcpy.c
 Line: 27
-assembly.ll line: 14848
+assembly.ll line: 5494
 State: 1
 Stack: 
-	#000014848 in strcpy (=94490319998144, =94490319454080) at libc/string/strcpy.c:27
-	#100009749 in badSink (=94490319998144) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__dest_char_declare_cpy_44.c:30
-	#200009732 in CWE121_Stack_Based_Buffer_Overflow__dest_char_declare_cpy_44_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__dest_char_declare_cpy_44.c:46
-	#300009812 in __klee_posix_wrapped_main (=1, =94490319962416) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__dest_char_declare_cpy_44.c:99
-	#400007343 in __user_main (=1, =94490295765248, =94490295765264) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#500000587 in __uClibc_main (=94490318715752, =1, =94490295765248, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#600000752 in main (=1, =94490295765248)
+	#000005494 in strcpy (=94889604278784, =94889604007568) at libc/string/strcpy.c:27
+	#100004085 in badSink (=94889604278784) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__dest_char_declare_cpy_44.c:30
+	#200004068 in CWE121_Stack_Based_Buffer_Overflow__dest_char_declare_cpy_44_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__dest_char_declare_cpy_44.c:47
+	#300004155 in __klee_posix_wrapped_main (=1, =94889628162096) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__dest_char_declare_cpy_44.c:104
+	#400002422 in __user_main (=1, =94889627723264, =94889627723280) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000444 in __uClibc_main (=1, =94889627723264) at libc/misc/internals/__uClibc_main.c:401
+	#600000610 in main (=1, =94889627723264)
 Info: 
-	address: 94490319998194
-	next: object at 94490286673664 of size 114
-		MO41[114] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94889604278834
+	next: object at 94889603323264 of size 114
+		MO41[114] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

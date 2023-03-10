@@ -1,17 +1,17 @@
 Error: memory error: out of bound pointer
 File: libc/string/strncat.c
 Line: 27
-assembly.ll line: 14875
+assembly.ll line: 5672
 State: 1
 Stack: 
-	#000014875 in wcsncat (=94293644810752, =94293656734976, =100) at libc/string/strncat.c:27
-	#100009727 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncat_41_badSink (=94293644810752) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncat_41.c:30
-	#200009751 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncat_41_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncat_41.c:43
-	#300009816 in __klee_posix_wrapped_main (=1, =94293662163504) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncat_41.c:96
-	#400007343 in __user_main (=1, =94293644937472, =94293644937488) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#500000587 in __uClibc_main (=94293660990984, =1, =94293644937472, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#600000752 in main (=1, =94293644937472)
+	#000005672 in wcsncat (=94557043647296, =94557050938176) at libc/string/strncat.c:27
+	#100004205 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncat_41_badSink (=94557043647296) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncat_41.c:30
+	#200004231 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncat_41_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncat_41.c:44
+	#300004301 in __klee_posix_wrapped_main (=1, =94557072376080) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncat_41.c:101
+	#400002564 in __user_main (=1, =94557065755392, =94557065755408) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000472 in __uClibc_main (=1, =94557065755392) at libc/misc/internals/__uClibc_main.c:401
+	#600000638 in main (=1, =94557065755392)
 Info: 
-	address: 94293644810952
-	next: object at 94293628940288 of size 128
-		MO533[128] allocated at global:randtbl
+	address: 94557043647496
+	next: object at 94557041349632 of size 114
+		MO40[114] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

@@ -1,0 +1,21 @@
+Error: memory error: out of bound pointer
+File: libc/string/memcpy.c
+Line: 29
+assembly.ll line: 4099
+State: 1
+Stack: 
+	#000004099 in memcpy (=94486859282944, =94486876359408, =99) at libc/string/memcpy.c:29
+	#100009182 in __stdio_fwrite (=94486876359408, =99, =94486873313792) at libc/stdio/_fwrite.c:39
+	#200007188 in _do_one_spec (=94486873313792, =94486858369792, =94486889004328) at libc/stdio/_vfprintf.c:1817
+	#300006261 in vfprintf (=94486873313792, =94486889000880, =94486889386624) at libc/stdio/_vfprintf.c:1919
+	#400005776 in vsnprintf (=94486859282944, =99, =94486889000880, =94486889386624) at libc/stdio/vsnprintf.c:64
+	#500005698 in snprintf (=94486859282944, =99, =0) at libc/stdio/snprintf.c:25
+	#600004213 in CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_snprintf_22_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_snprintf_22a.c:44
+	#700004360 in __klee_posix_wrapped_main (=1, =94486886890896) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_snprintf_22a.c:120
+	#800002565 in __user_main (=1, =94486883047424, =94486883047440) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#900000473 in __uClibc_main (=1, =94486883047424) at libc/misc/internals/__uClibc_main.c:401
+	#1000000639 in main (=1, =94486883047424)
+Info: 
+	address: 94486859282994
+	next: object at 94486858350464 of size 125
+		MO9[125] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

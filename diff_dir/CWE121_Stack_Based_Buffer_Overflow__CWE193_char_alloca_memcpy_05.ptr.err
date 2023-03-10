@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/memcpy.c
 Line: 29
-assembly.ll line: 9625
+assembly.ll line: 3957
 State: 1
 Stack: 
-	#000009625 in memcpy (=94490202783424, =94490202783232, =11) at libc/string/memcpy.c:29
-	#100009754 in CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memcpy_05_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memcpy_05.c:51
-	#200009860 in __klee_posix_wrapped_main (=1, =94490207756816) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memcpy_05.c:129
-	#300007348 in __user_main (=1, =94490179856640, =94490179856656) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000592 in __uClibc_main (=94490206567576, =1, =94490179856640, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000757 in main (=1, =94490179856640)
+	#000003957 in memcpy (=94461994851296, =94461999292480, =11) at libc/string/memcpy.c:29
+	#100004084 in CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memcpy_05_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memcpy_05.c:51
+	#200004192 in __klee_posix_wrapped_main (=1, =94461994850272) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memcpy_05.c:136
+	#300002423 in __user_main (=1, =94461994859264, =94461994859280) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000445 in __uClibc_main (=1, =94461994859264) at libc/misc/internals/__uClibc_main.c:401
+	#500000611 in main (=1, =94461994859264)
 Info: 
-	address: 94490202783434
-	next: object at 94490174531840 of size 768
-		MO516[768] allocated at global:__C_ctype_toupper_data
+	address: 94461994851306
+	next: object at 94461969937616 of size 131
+		MO32[131] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

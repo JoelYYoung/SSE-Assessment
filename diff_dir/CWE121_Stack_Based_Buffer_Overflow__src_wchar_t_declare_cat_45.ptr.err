@@ -1,17 +1,17 @@
 Error: memory error: out of bound pointer
 File: libc/string/strcat.c
 Line: 24
-assembly.ll line: 14859
+assembly.ll line: 5656
 State: 1
 Stack: 
-	#000014859 in wcscat (=94107702018256, =94107696760864) at libc/string/strcat.c:24
-	#100009747 in badSink () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_declare_cat_45.c:32
-	#200009731 in CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_declare_cat_45_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_declare_cat_45.c:45
-	#300009806 in __klee_posix_wrapped_main (=1, =94107702297072) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_declare_cat_45.c:97
-	#400007345 in __user_main (=1, =94107693369600, =94107693369616) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#500000589 in __uClibc_main (=94107701017936, =1, =94107693369600, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#600000754 in main (=1, =94107693369600)
+	#000005656 in wcscat (=94500972136272, =94500979578560) at libc/string/strcat.c:24
+	#100004225 in badSink () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_declare_cat_45.c:32
+	#200004209 in CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_declare_cat_45_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_declare_cat_45.c:46
+	#300004291 in __klee_posix_wrapped_main (=1, =94500991738096) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_declare_cat_45.c:102
+	#400002566 in __user_main (=1, =94500985402624, =94500985402640) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000474 in __uClibc_main (=1, =94500985402624) at libc/misc/internals/__uClibc_main.c:401
+	#600000640 in main (=1, =94500985402624)
 Info: 
-	address: 94107702018456
-	next: object at 94107669016448 of size 114
-		MO41[114] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94500972136472
+	next: object at 94500960719360 of size 114
+		MO40[114] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

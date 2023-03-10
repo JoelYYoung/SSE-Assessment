@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/memmove.c
-Line: 48
-assembly.ll line: 17212
+Line: 42
+assembly.ll line: 5968
 State: 1
 Stack: 
-	#000017212 in memmove (=94254013169776, =94254013059008, =99) at libc/string/memmove.c:48
-	#100009751 in CWE126_Buffer_Overread__char_declare_memmove_08_bad () at ./juliet_testcases/CWE126_Buffer_Overread__char_declare_memmove_08.c:57
-	#200009877 in __klee_posix_wrapped_main (=1, =94254013064080) at ./juliet_testcases/CWE126_Buffer_Overread__char_declare_memmove_08.c:146
-	#300007343 in __user_main (=1, =94254013573376, =94254013573392) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000587 in __uClibc_main (=94254011890808, =1, =94254013573376, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000752 in main (=1, =94254013573376)
+	#000005968 in memmove (=94591799258176, =94591816049344, =99) at libc/string/memmove.c:42
+	#100004086 in CWE126_Buffer_Overread__char_declare_memmove_08_bad () at ./juliet_testcases/CWE126_Buffer_Overread__char_declare_memmove_08.c:57
+	#200004216 in __klee_posix_wrapped_main (=1, =94591824984544) at ./juliet_testcases/CWE126_Buffer_Overread__char_declare_memmove_08.c:153
+	#300002422 in __user_main (=1, =94591823710080, =94591823710096) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000444 in __uClibc_main (=1, =94591823710080) at libc/misc/internals/__uClibc_main.c:401
+	#500000610 in main (=1, =94591823710080)
 Info: 
-	address: 94254013059106
-	next: object at 94253980150624 of size 209
-		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94591816049394
+	next: object at 94591798717440 of size 768
+		MO244[768] allocated at global:__C_ctype_toupper_data

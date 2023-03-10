@@ -1,17 +1,17 @@
 Error: memory error: out of bound pointer
 File: libc/string/strncpy.c
 Line: 29
-assembly.ll line: 14890
+assembly.ll line: 5687
 State: 1
 Stack: 
-	#000014890 in wcsncpy (=94056235139696, =94056229292064, =99) at libc/string/strncpy.c:29
-	#100009749 in badSink () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncpy_45.c:32
-	#200009731 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncpy_45_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncpy_45.c:46
-	#300009814 in __klee_posix_wrapped_main (=1, =94056235319904) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncpy_45.c:99
-	#400007345 in __user_main (=1, =94056208451840, =94056208451856) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#500000589 in __uClibc_main (=94056234139216, =1, =94056208451840, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#600000754 in main (=1, =94056208451840)
+	#000005687 in wcsncpy (=94472222446048, =94472224593600, =99) at libc/string/strncpy.c:29
+	#100004227 in badSink () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncpy_45.c:32
+	#200004209 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncpy_45_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncpy_45.c:47
+	#300004299 in __klee_posix_wrapped_main (=1, =94472246051088) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncpy_45.c:104
+	#400002566 in __user_main (=1, =94472239401984, =94472239402000) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000474 in __uClibc_main (=1, =94472239401984) at libc/misc/internals/__uClibc_main.c:401
+	#600000640 in main (=1, =94472239401984)
 Info: 
-	address: 94056235139896
-	next: object at 94056202848896 of size 209
-		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94472222446248
+	next: object at 94472215000448 of size 114
+		MO41[114] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

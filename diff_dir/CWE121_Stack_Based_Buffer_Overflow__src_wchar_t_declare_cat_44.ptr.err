@@ -1,17 +1,17 @@
 Error: memory error: out of bound pointer
 File: libc/string/strcat.c
 Line: 24
-assembly.ll line: 14861
+assembly.ll line: 5658
 State: 1
 Stack: 
-	#000014861 in wcscat (=94764655288944, =94764650047520) at libc/string/strcat.c:24
-	#100009747 in badSink (=94764650047520) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_declare_cat_44.c:28
-	#200009732 in CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_declare_cat_44_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_declare_cat_44.c:43
-	#300009808 in __klee_posix_wrapped_main (=1, =94764655567280) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_declare_cat_44.c:94
-	#400007343 in __user_main (=1, =94764634704128, =94764634704144) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#500000587 in __uClibc_main (=94764654296400, =1, =94764634704128, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#600000752 in main (=1, =94764634704128)
+	#000005658 in wcscat (=94865119743232, =94865127421632) at libc/string/strcat.c:24
+	#100004225 in badSink (=94865127421632) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_declare_cat_44.c:28
+	#200004210 in CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_declare_cat_44_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_declare_cat_44.c:44
+	#300004293 in __klee_posix_wrapped_main (=1, =94865134166208) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_declare_cat_44.c:99
+	#400002564 in __user_main (=1, =94865127742592, =94865127742608) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000472 in __uClibc_main (=1, =94865127742592) at libc/misc/internals/__uClibc_main.c:401
+	#600000638 in main (=1, =94865127742592)
 Info: 
-	address: 94764655289144
-	next: object at 94764622261888 of size 114
-		MO41[114] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94865119743432
+	next: object at 94865103057280 of size 114
+		MO40[114] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

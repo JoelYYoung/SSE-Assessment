@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/memmove.c
+Line: 42
+assembly.ll line: 6349
+State: 1
+Stack: 
+	#000006349 in memmove (=94557291497296, =94557291555024, =44) at libc/string/memmove.c:42
+	#100004238 in CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memmove_63b_badSink (=94557291078400) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memmove_63b.c:35
+	#200004212 in CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memmove_63_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memmove_63a.c:40
+	#300004318 in __klee_posix_wrapped_main (=1, =94557291003984) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memmove_63a.c:88
+	#400002565 in __user_main (=1, =94557284845440, =94557284845456) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000473 in __uClibc_main (=1, =94557284845440) at libc/misc/internals/__uClibc_main.c:401
+	#600000639 in main (=1, =94557284845440)
+Info: 
+	address: 94557291497336
+	next: object at 94557259578480 of size 208
+		MO296[208] allocated at global:exp10_table

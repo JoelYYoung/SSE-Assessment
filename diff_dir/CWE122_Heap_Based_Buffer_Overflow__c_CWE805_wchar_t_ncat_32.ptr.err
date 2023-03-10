@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/strncat.c
 Line: 27
-assembly.ll line: 14901
+assembly.ll line: 5698
 State: 1
 Stack: 
-	#000014901 in wcsncat (=94291728132336, =94291734407616, =100) at libc/string/strncat.c:27
-	#100009761 in CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_ncat_32_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_ncat_32.c:44
-	#200009842 in __klee_posix_wrapped_main (=1, =94291739837040) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_ncat_32.c:104
-	#300007343 in __user_main (=1, =94291711921152, =94291711921168) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000587 in __uClibc_main (=94291738664656, =1, =94291711921152, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000752 in main (=1, =94291711921152)
+	#000005698 in wcsncat (=94119472137648, =94119495382720) at libc/string/strncat.c:27
+	#100004239 in CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_ncat_32_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_ncat_32.c:44
+	#200004327 in __klee_posix_wrapped_main (=1, =94119502168400) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_ncat_32.c:109
+	#300002564 in __user_main (=1, =94119495788032, =94119495788048) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000472 in __uClibc_main (=1, =94119495788032) at libc/misc/internals/__uClibc_main.c:401
+	#500000638 in main (=1, =94119495788032)
 Info: 
-	address: 94291728132536
-	next: object at 94291706907264 of size 209
-		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94119472137848
+	next: object at 94119471111552 of size 128
+		MO291[128] allocated at global:randtbl

@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/memmove.c
 Line: 42
-assembly.ll line: 17181
+assembly.ll line: 6349
 State: 1
 Stack: 
-	#000017181 in memmove (=94345031076192, =94345031079024, =44) at libc/string/memmove.c:42
-	#100009761 in CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_declare_memmove_17_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_declare_memmove_17.c:45
-	#200009834 in __klee_posix_wrapped_main (=1, =94345036095904) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_declare_memmove_17.c:98
-	#300007345 in __user_main (=1, =94345014044928, =94345014044944) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000589 in __uClibc_main (=94345034857624, =1, =94345014044928, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000754 in main (=1, =94345014044928)
+	#000006349 in memmove (=94379099527072, =94379099689904, =44) at libc/string/memmove.c:42
+	#100004238 in CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_declare_memmove_17_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_declare_memmove_17.c:45
+	#200004318 in __klee_posix_wrapped_main (=1, =94379099193456) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_declare_memmove_17.c:103
+	#300002565 in __user_main (=1, =94379092838272, =94379092838288) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000473 in __uClibc_main (=1, =94379092838272) at libc/misc/internals/__uClibc_main.c:401
+	#500000639 in main (=1, =94379092838272)
 Info: 
-	address: 94345031076232
-	next: object at 94345003133792 of size 209
-		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94379099527112
+	next: object at 94379067843008 of size 100
+		MO22[100] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/memcpy.c
+Line: 29
+assembly.ll line: 3957
+State: 1
+Stack: 
+	#000003957 in memcpy (=94730395179104, =94730382129280, =800) at libc/string/memcpy.c:29
+	#100004089 in CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memcpy_65b_badSink (=94730395179104) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memcpy_65b.c:26
+	#200004072 in CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memcpy_65_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memcpy_65a.c:35
+	#300004166 in __klee_posix_wrapped_main (=1, =94730398136256) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memcpy_65a.c:82
+	#400002423 in __user_main (=1, =94730395756032, =94730395756048) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000445 in __uClibc_main (=1, =94730395756032) at libc/misc/internals/__uClibc_main.c:401
+	#600000611 in main (=1, =94730395756032)
+Info: 
+	address: 94730395179504
+	next: object at 94730371142336 of size 240
+		MO265[240] allocated at __uClibc_main():  %11 = alloca [15 x %struct.Elf64_auxv_t], align 16

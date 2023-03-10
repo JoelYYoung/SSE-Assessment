@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/strncpy.c
 Line: 29
-assembly.ll line: 14892
+assembly.ll line: 5689
 State: 1
 Stack: 
-	#000014892 in wcsncpy (=93963540155536, =93963540108928, =11) at libc/string/strncpy.c:29
-	#100009739 in CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_declare_ncpy_04_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_declare_ncpy_04.c:51
-	#200009816 in __klee_posix_wrapped_main (=1, =93963540628032) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_declare_ncpy_04.c:129
-	#300007346 in __user_main (=1, =93963512744192, =93963512744208) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000590 in __uClibc_main (=93963539438976, =1, =93963512744192, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000755 in main (=1, =93963512744192)
+	#000005689 in wcsncpy (=94377877452032, =94377877399664, =11) at libc/string/strncpy.c:29
+	#100004215 in CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_declare_ncpy_04_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_declare_ncpy_04.c:51
+	#200004301 in __klee_posix_wrapped_main (=1, =94377876873456) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_declare_ncpy_04.c:136
+	#300002565 in __user_main (=1, =94377870250112, =94377870250128) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000473 in __uClibc_main (=1, =94377870250112) at libc/misc/internals/__uClibc_main.c:401
+	#500000639 in main (=1, =94377870250112)
 Info: 
-	address: 93963540155576
-	next: object at 93963507413888 of size 128
-		MO535[128] allocated at global:randtbl
+	address: 94377877452072
+	next: object at 94377845847040 of size 114
+		MO40[114] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

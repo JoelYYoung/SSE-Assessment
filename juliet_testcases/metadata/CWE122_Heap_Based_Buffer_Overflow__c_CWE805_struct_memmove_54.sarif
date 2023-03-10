@@ -1,0 +1,166 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "properties": {
+        "id": 71920,
+        "version": "1.0.0",
+        "type": "source code",
+        "status": "accepted",
+        "submissionDate": "2013-05-20",
+        "language": "c",
+        "author": "NSA/Center for Assured Software",
+        "description": "CWE: 122 Heap Based Buffer Overflow\n BadSource:  Allocate using malloc() and set data pointer to a small buffer\n GoodSource: Allocate using malloc() and set data pointer to a large buffer\n Sink: memmove\n BadSink : Copy twoIntsStruct array to data using memmove\n Flow Variant: 54 Data flow: data passed as an argument from one function through three others to a fifth; all five functions are in different source files",
+        "state": "mixed"
+      },
+      "tool": {
+        "driver": {
+          "name": "SARD - SAMATE",
+          "fullName": "Software Assurance Reference Dataset Project",
+          "informationUri": "https://samate.nist.gov/SARD/",
+          "version": "5.0.0",
+          "organization": "NIST",
+          "supportedTaxonomies": [
+            {
+              "name": "CWE",
+              "index": 0
+            }
+          ]
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "src/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_54a.c"
+          },
+          "length": 2804,
+          "sourceLanguage": "c",
+          "hashes": {
+            "sha-256": "c06ec2c1fc20dcee00621e505839413f07449a37c01e17deaa81bf8c52b0cbae"
+          }
+        },
+        {
+          "location": {
+            "uri": "src/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_54b.c"
+          },
+          "length": 1639,
+          "sourceLanguage": "c",
+          "hashes": {
+            "sha-256": "1602322e18f8d385125134195f47722b781a6931c1fd6aac35f347ba33c3059d"
+          }
+        },
+        {
+          "location": {
+            "uri": "src/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_54c.c"
+          },
+          "length": 1639,
+          "sourceLanguage": "c",
+          "hashes": {
+            "sha-256": "7ef7cbdaf24b73ec08cd15f3955f1ee8cac68123c4c15971b3c5ea4d2f609aa4"
+          }
+        },
+        {
+          "location": {
+            "uri": "src/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_54d.c"
+          },
+          "length": 1639,
+          "sourceLanguage": "c",
+          "hashes": {
+            "sha-256": "419b1303e0ffed2e730fad5322c2f3bfc70ffd625a72474be946a5e80c29c0b6"
+          }
+        },
+        {
+          "location": {
+            "uri": "src/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_54e.c"
+          },
+          "length": 2124,
+          "sourceLanguage": "c",
+          "hashes": {
+            "sha-256": "362fed91e07ff1858b6fe442fbae9c054e1895c4789101ddee113625401c772b"
+          }
+        },
+        {
+          "location": {
+            "uri": "src/testcasesupport/io.c"
+          },
+          "length": 5429,
+          "sourceLanguage": "c",
+          "hashes": {
+            "sha-256": "50ace91d0f9cd9f281d5d8ff3a9ca879ee2779d737030ae84e8e4be3df5b299c"
+          }
+        },
+        {
+          "location": {
+            "uri": "src/testcasesupport/std_testcase.h"
+          },
+          "length": 4004,
+          "sourceLanguage": "c",
+          "hashes": {
+            "sha-256": "a78aaf3a54a6210260ad70123c09c3c283c6edf7808b6244205e00b8f2d9b8d0"
+          }
+        },
+        {
+          "location": {
+            "uri": "src/testcasesupport/std_testcase_io.h"
+          },
+          "length": 1457,
+          "sourceLanguage": "c",
+          "hashes": {
+            "sha-256": "6459df50d22697bb61619e2effd688ebb98915db25f7eb1bdbb767f888066fb6"
+          }
+        }
+      ],
+      "taxonomies": [
+        {
+          "name": "CWE",
+          "version": "4.6",
+          "informationUri": "https://cwe.mitre.org/data/published/cwe_v4.6.pdf",
+          "downloadUri": "https://cwe.mitre.org/data/xml/cwec_v4.6.xml.zip",
+          "organization": "MITRE",
+          "shortDescription": {
+            "text": "The MITRE Common Weakness Enumeration"
+          },
+          "isComprehensive": false,
+          "taxa": [
+            {
+              "id": "122",
+              "name": "Heap-based Buffer Overflow"
+            }
+          ]
+        }
+      ],
+      "results": [
+        {
+          "ruleId": "CWE-122",
+          "message": {
+            "text": "Heap-based Buffer Overflow."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_54e.c",
+                  "index": 4
+                },
+                "region": {
+                  "startLine": 37
+                }
+              }
+            }
+          ],
+          "taxa": [
+            {
+              "toolComponent": {
+                "name": "CWE",
+                "index": 0
+              },
+              "id": "122",
+              "index": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

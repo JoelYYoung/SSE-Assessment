@@ -1,0 +1,15 @@
+Error: memory error: out of bound pointer
+File: ./juliet_testcases/CWE127_Buffer_Underread__CWE839_negative_04.c
+Line: 46
+assembly.ll line: 4071
+State: 1
+Stack: 
+	#000004071 in CWE127_Buffer_Underread__CWE839_negative_04_bad () at ./juliet_testcases/CWE127_Buffer_Underread__CWE839_negative_04.c:46
+	#100004239 in __klee_posix_wrapped_main (=1, =94093554636928) at ./juliet_testcases/CWE127_Buffer_Underread__CWE839_negative_04.c:214
+	#200002425 in __user_main (=1, =94093550557184, =94093550557200) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#300000447 in __uClibc_main (=1, =94093550557184) at libc/misc/internals/__uClibc_main.c:401
+	#400000613 in main (=1, =94093550557184)
+Info: 
+	address: 94093556837308
+	next: object at 94093527651488 of size 240
+		MO268[240] allocated at __uClibc_main():  %11 = alloca [15 x %struct.Elf64_auxv_t], align 16

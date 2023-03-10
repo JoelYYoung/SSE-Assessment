@@ -1,0 +1,15 @@
+Error: memory error: out of bound pointer
+File: ./juliet_testcases/CWE127_Buffer_Underread__malloc_wchar_t_loop_06.c
+Line: 50
+assembly.ll line: 4239
+State: 1
+Stack: 
+	#000004239 in CWE127_Buffer_Underread__malloc_wchar_t_loop_06_bad () at ./juliet_testcases/CWE127_Buffer_Underread__malloc_wchar_t_loop_06.c:50
+	#100004415 in __klee_posix_wrapped_main (=1, =94528516694544) at ./juliet_testcases/CWE127_Buffer_Underread__malloc_wchar_t_loop_06.c:164
+	#200002564 in __user_main (=1, =94528510074368, =94528510074384) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#300000472 in __uClibc_main (=1, =94528510074368) at libc/misc/internals/__uClibc_main.c:401
+	#400000638 in main (=1, =94528510074368)
+Info: 
+	address: 94528492547296
+	next: object at 94528485876832 of size 112
+		MO308[112] allocated at global:_ppwfs_init.invalid_wcs

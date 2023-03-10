@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/memmove.c
+Line: 42
+assembly.ll line: 6352
+State: 1
+Stack: 
+	#000006352 in memmove (=94224230805360, =94224242407520, =400) at libc/string/memmove.c:42
+	#100004235 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memmove_64b_badSink (=94224262243344) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memmove_64b.c:34
+	#200004206 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memmove_64_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memmove_64a.c:35
+	#300004319 in __klee_posix_wrapped_main (=1, =94224262160640) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memmove_64a.c:82
+	#400002564 in __user_main (=1, =94224255813504, =94224255813520) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000472 in __uClibc_main (=1, =94224255813504) at libc/misc/internals/__uClibc_main.c:401
+	#600000638 in main (=1, =94224255813504)
+Info: 
+	address: 94224230805560
+	next: object at 94224230805360 of size 200
+		MO35105[200] allocated at CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memmove_64_bad():  %2 = alloca [50 x i32], align 16

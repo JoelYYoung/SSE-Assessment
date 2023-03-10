@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/strcpy.c
+Line: 27
+assembly.ll line: 5638
+State: 1
+Stack: 
+	#000005638 in wcscpy (=94007310725008, =94007310726640) at libc/string/strcpy.c:27
+	#100004221 in CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_cpy_63b_badSink (=94007309844224) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_cpy_63b.c:34
+	#200004201 in CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_cpy_63_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_cpy_63a.c:37
+	#300004290 in __klee_posix_wrapped_main (=1, =94007310188608) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_cpy_63a.c:82
+	#400002565 in __user_main (=1, =94007303562752, =94007303562768) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000473 in __uClibc_main (=1, =94007303562752) at libc/misc/internals/__uClibc_main.c:401
+	#600000639 in main (=1, =94007303562752)
+Info: 
+	address: 94007310725048
+	next: object at 94007279162240 of size 114
+		MO40[114] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

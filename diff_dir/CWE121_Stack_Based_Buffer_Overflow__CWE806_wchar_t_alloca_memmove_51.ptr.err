@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/memmove.c
+Line: 48
+assembly.ll line: 6402
+State: 1
+Stack: 
+	#000006402 in memmove (=94739369530656, =94739359217344, =396) at libc/string/memmove.c:48
+	#100004229 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_51b_badSink (=94739359217344) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_51b.c:30
+	#200004209 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_51_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_51a.c:34
+	#300004305 in __klee_posix_wrapped_main (=1, =94739380732048) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_51a.c:82
+	#400002564 in __user_main (=1, =94739374295680, =94739374295696) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000472 in __uClibc_main (=1, =94739374295680) at libc/misc/internals/__uClibc_main.c:401
+	#600000638 in main (=1, =94739374295680)
+Info: 
+	address: 94739369531051
+	next: object at 94739349588224 of size 768
+		MO285[768] allocated at global:__C_ctype_toupper_data

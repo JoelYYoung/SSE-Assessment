@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/memcpy.c
+Line: 29
+assembly.ll line: 4098
+State: 1
+Stack: 
+	#000004098 in memcpy (=94513874854304, =94513898242464, =396) at libc/string/memcpy.c:29
+	#100004237 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memcpy_66b_badSink (=94513905066800) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memcpy_66b.c:30
+	#200004211 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memcpy_66_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memcpy_66a.c:37
+	#300004321 in __klee_posix_wrapped_main (=1, =94513901330720) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memcpy_66a.c:86
+	#400002564 in __user_main (=1, =94513898489344, =94513898489360) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000472 in __uClibc_main (=1, =94513898489344) at libc/misc/internals/__uClibc_main.c:401
+	#600000638 in main (=1, =94513898489344)
+Info: 
+	address: 94513874854504
+	next: object at 94513873783040 of size 768
+		MO284[768] allocated at global:__C_ctype_tolower_data

@@ -1,0 +1,16 @@
+Error: memory error: out of bound pointer
+File: ./juliet_testcases/CWE124_Buffer_Underwrite__wchar_t_declare_loop_66b.c
+Line: 35
+assembly.ll line: 4249
+State: 1
+Stack: 
+	#000004249 in CWE124_Buffer_Underwrite__wchar_t_declare_loop_66b_badSink (=93831288573552) at ./juliet_testcases/CWE124_Buffer_Underwrite__wchar_t_declare_loop_66b.c:35
+	#100004211 in CWE124_Buffer_Underwrite__wchar_t_declare_loop_66_bad () at ./juliet_testcases/CWE124_Buffer_Underwrite__wchar_t_declare_loop_66a.c:37
+	#200004364 in __klee_posix_wrapped_main (=1, =93831287996896) at ./juliet_testcases/CWE124_Buffer_Underwrite__wchar_t_declare_loop_66a.c:86
+	#300002564 in __user_main (=1, =93831281314048, =93831281314064) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000472 in __uClibc_main (=1, =93831281314048) at libc/misc/internals/__uClibc_main.c:401
+	#500000638 in main (=1, =93831281314048)
+Info: 
+	address: 93831258494624
+	next: object at 93831256915072 of size 114
+		MO40[114] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

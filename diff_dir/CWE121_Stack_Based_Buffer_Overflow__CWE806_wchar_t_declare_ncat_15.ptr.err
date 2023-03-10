@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/strncat.c
 Line: 27
-assembly.ll line: 14911
+assembly.ll line: 5710
 State: 1
 Stack: 
-	#000014911 in wcsncat (=94480946227440, =94480938019264, =99) at libc/string/strncat.c:27
-	#100009735 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncat_15_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncat_15.c:42
-	#200009816 in __klee_posix_wrapped_main (=1, =94480946061984) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncat_15.c:125
-	#300007343 in __user_main (=1, =94480925960448, =94480925960464) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000587 in __uClibc_main (=94480944889552, =1, =94480925960448, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000752 in main (=1, =94480925960448)
+	#000005710 in wcsncat (=94657815986384, =94657824036128, =99) at libc/string/strncat.c:27
+	#100004213 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncat_15_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncat_15.c:43
+	#200004303 in __klee_posix_wrapped_main (=1, =94657845510480) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncat_15.c:134
+	#300002564 in __user_main (=1, =94657839137152, =94657839137168) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000472 in __uClibc_main (=1, =94657839137152) at libc/misc/internals/__uClibc_main.c:401
+	#500000638 in main (=1, =94657839137152)
 Info: 
-	address: 94480946227640
-	next: object at 94480913593856 of size 114
-		MO41[114] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94657815986584
+	next: object at 94657814467200 of size 114
+		MO40[114] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

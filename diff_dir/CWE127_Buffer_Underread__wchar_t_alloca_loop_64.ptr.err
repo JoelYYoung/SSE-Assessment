@@ -1,0 +1,16 @@
+Error: memory error: out of bound pointer
+File: ./juliet_testcases/CWE127_Buffer_Underread__wchar_t_alloca_loop_64b.c
+Line: 37
+assembly.ll line: 4249
+State: 1
+Stack: 
+	#000004249 in CWE127_Buffer_Underread__wchar_t_alloca_loop_64b_badSink (=93861166914128) at ./juliet_testcases/CWE127_Buffer_Underread__wchar_t_alloca_loop_64b.c:37
+	#100004210 in CWE127_Buffer_Underread__wchar_t_alloca_loop_64_bad () at ./juliet_testcases/CWE127_Buffer_Underread__wchar_t_alloca_loop_64a.c:34
+	#200004368 in __klee_posix_wrapped_main (=1, =93861167251840) at ./juliet_testcases/CWE127_Buffer_Underread__wchar_t_alloca_loop_64a.c:81
+	#300002564 in __user_main (=1, =93861161015296, =93861161015312) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000472 in __uClibc_main (=1, =93861161015296) at libc/misc/internals/__uClibc_main.c:401
+	#500000638 in main (=1, =93861161015296)
+Info: 
+	address: 93861160441504
+	next: object at 93861136170368 of size 114
+		MO40[114] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

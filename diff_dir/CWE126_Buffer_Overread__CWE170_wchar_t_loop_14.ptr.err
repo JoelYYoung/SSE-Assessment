@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: libc/string/strnlen.c
+Line: 30
+assembly.ll line: 12346
+State: 1
+Stack: 
+	#000012346 in wcsnlen (=94378473584320, =18446744073709551615) at libc/string/strnlen.c:30
+	#100010908 in _do_one_spec.305 (=94378473056024, =94378449348096, =94378480534384) at libc/stdio/_vfprintf.c:1702
+	#200010052 in vfwprintf (=94378480141920, =94378480490880) at libc/stdio/_vfprintf.c:1919
+	#300006023 in wprintf (=0) at libc/stdio/wprintf.c:20
+	#400005813 in printWLine (=94378473584320) at io.c:23
+	#500004234 in CWE126_Buffer_Overread__CWE170_wchar_t_loop_14_bad () at ./juliet_testcases/CWE126_Buffer_Overread__CWE170_wchar_t_loop_14.c:37
+	#600004367 in __klee_posix_wrapped_main (=1, =94378480435568) at ./juliet_testcases/CWE126_Buffer_Overread__CWE170_wchar_t_loop_14.c:119
+	#700002564 in __user_main (=1, =94378474176000, =94378474176016) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#800000472 in __uClibc_main (=1, =94378474176000) at libc/misc/internals/__uClibc_main.c:401
+	#900000638 in main (=1, =94378474176000)
+Info: 
+	address: 94378473584720
+	next: object at 94378449329280 of size 114
+		MO40[114] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

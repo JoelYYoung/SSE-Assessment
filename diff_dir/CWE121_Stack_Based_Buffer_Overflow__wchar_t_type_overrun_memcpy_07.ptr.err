@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: libc/string/strnlen.c
+Line: 30
+assembly.ll line: 12258
+State: 1
+Stack: 
+	#000012258 in wcsnlen (=210453397552, =18446744073709551615) at libc/string/strnlen.c:30
+	#100010820 in _do_one_spec.302 (=94286925333144, =94286901603584, =94286932681320) at libc/stdio/_vfprintf.c:1702
+	#200009964 in vfwprintf (=94286932292608, =94286932639520) at libc/stdio/_vfprintf.c:1919
+	#300005935 in wprintf (=0) at libc/stdio/wprintf.c:20
+	#400005725 in printWLine (=210453397552) at io.c:23
+	#500004220 in CWE121_Stack_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_07_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_07.c:52
+	#600004317 in __klee_posix_wrapped_main (=1, =94286932599040) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_07.c:130
+	#700002566 in __user_main (=1, =94286926424704, =94286926424720) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#800000474 in __uClibc_main (=1, =94286926424704) at libc/misc/internals/__uClibc_main.c:401
+	#900000640 in main (=1, =94286926424704)
+Info: 
+	address: 210453397552
+	next: object at 94286901581568 of size 125
+		MO9[125] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

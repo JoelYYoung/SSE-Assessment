@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/strcpy.c
 Line: 27
-assembly.ll line: 14828
+assembly.ll line: 5474
 State: 1
 Stack: 
-	#000014828 in strcpy (=94851884647936, =94851884170576) at libc/string/strcpy.c:27
-	#100009739 in CWE121_Stack_Based_Buffer_Overflow__dest_char_alloca_cpy_01_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__dest_char_alloca_cpy_01.c:37
-	#200009792 in __klee_posix_wrapped_main (=1, =94851884613936) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__dest_char_alloca_cpy_01.c:86
-	#300007343 in __user_main (=1, =94851877308672, =94851877308688) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000587 in __uClibc_main (=94851883367192, =1, =94851877308672, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000752 in main (=1, =94851877308672)
+	#000005474 in strcpy (=94131295347456, =94131278767536) at libc/string/strcpy.c:27
+	#100004075 in CWE121_Stack_Based_Buffer_Overflow__dest_char_alloca_cpy_01_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__dest_char_alloca_cpy_01.c:37
+	#200004135 in __klee_posix_wrapped_main (=1, =94131302864848) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__dest_char_alloca_cpy_01.c:91
+	#300002422 in __user_main (=1, =94131302874240, =94131302874256) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000444 in __uClibc_main (=1, =94131302874240) at libc/misc/internals/__uClibc_main.c:401
+	#500000610 in main (=1, =94131302874240)
 Info: 
-	address: 94851884647986
-	next: object at 94851851274496 of size 768
-		MO510[768] allocated at global:__C_ctype_toupper_data
+	address: 94131295347506
+	next: object at 94131278077680 of size 131
+		MO32[131] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

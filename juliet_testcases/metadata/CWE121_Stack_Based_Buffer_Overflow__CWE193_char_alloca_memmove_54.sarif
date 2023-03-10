@@ -1,0 +1,166 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "properties": {
+        "id": 63180,
+        "version": "1.0.0",
+        "type": "source code",
+        "status": "accepted",
+        "submissionDate": "2013-05-20",
+        "language": "c",
+        "author": "NSA/Center for Assured Software",
+        "description": "CWE: 121 Stack Based Buffer Overflow\n BadSource:  Point data to a buffer that does not have space for a NULL terminator\n GoodSource: Point data to a buffer that includes space for a NULL terminator\n Sink: memmove\n BadSink : Copy string to data using memmove()\n Flow Variant: 54 Data flow: data passed as an argument from one function through three others to a fifth; all five functions are in different source files",
+        "state": "mixed"
+      },
+      "tool": {
+        "driver": {
+          "name": "SARD - SAMATE",
+          "fullName": "Software Assurance Reference Dataset Project",
+          "informationUri": "https://samate.nist.gov/SARD/",
+          "version": "5.0.0",
+          "organization": "NIST",
+          "supportedTaxonomies": [
+            {
+              "name": "CWE",
+              "index": 0
+            }
+          ]
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "src/testcases/CWE121_Stack_Based_Buffer_Overflow/s02/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_54a.c"
+          },
+          "length": 3227,
+          "sourceLanguage": "c",
+          "hashes": {
+            "sha-256": "dfe07a353e07a35264ae0c421bc23fdea04b24888d561124aec30d8011276c13"
+          }
+        },
+        {
+          "location": {
+            "uri": "src/testcases/CWE121_Stack_Based_Buffer_Overflow/s02/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_54b.c"
+          },
+          "length": 1781,
+          "sourceLanguage": "c",
+          "hashes": {
+            "sha-256": "c128fa3eec60416a30f744f6b59f84c27f915993ae7216faabf8732deac46748"
+          }
+        },
+        {
+          "location": {
+            "uri": "src/testcases/CWE121_Stack_Based_Buffer_Overflow/s02/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_54c.c"
+          },
+          "length": 1781,
+          "sourceLanguage": "c",
+          "hashes": {
+            "sha-256": "b1b6ac85f4781df75e68178a3a77579ed75ea3c4a82a11173b4784b1ed7e0cfc"
+          }
+        },
+        {
+          "location": {
+            "uri": "src/testcases/CWE121_Stack_Based_Buffer_Overflow/s02/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_54d.c"
+          },
+          "length": 1781,
+          "sourceLanguage": "c",
+          "hashes": {
+            "sha-256": "da025789d2ea43b4950b07d1ebcc7355797b1b4d1848a5cb41fe8faa2d884c4d"
+          }
+        },
+        {
+          "location": {
+            "uri": "src/testcases/CWE121_Stack_Based_Buffer_Overflow/s02/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_54e.c"
+          },
+          "length": 1932,
+          "sourceLanguage": "c",
+          "hashes": {
+            "sha-256": "dceb31903dec2a4718699132882cff97977d7867f8f1a643ec46fbfdfce9d1af"
+          }
+        },
+        {
+          "location": {
+            "uri": "src/testcasesupport/io.c"
+          },
+          "length": 5429,
+          "sourceLanguage": "c",
+          "hashes": {
+            "sha-256": "50ace91d0f9cd9f281d5d8ff3a9ca879ee2779d737030ae84e8e4be3df5b299c"
+          }
+        },
+        {
+          "location": {
+            "uri": "src/testcasesupport/std_testcase.h"
+          },
+          "length": 4004,
+          "sourceLanguage": "c",
+          "hashes": {
+            "sha-256": "a78aaf3a54a6210260ad70123c09c3c283c6edf7808b6244205e00b8f2d9b8d0"
+          }
+        },
+        {
+          "location": {
+            "uri": "src/testcasesupport/std_testcase_io.h"
+          },
+          "length": 1457,
+          "sourceLanguage": "c",
+          "hashes": {
+            "sha-256": "6459df50d22697bb61619e2effd688ebb98915db25f7eb1bdbb767f888066fb6"
+          }
+        }
+      ],
+      "taxonomies": [
+        {
+          "name": "CWE",
+          "version": "4.6",
+          "informationUri": "https://cwe.mitre.org/data/published/cwe_v4.6.pdf",
+          "downloadUri": "https://cwe.mitre.org/data/xml/cwec_v4.6.xml.zip",
+          "organization": "MITRE",
+          "shortDescription": {
+            "text": "The MITRE Common Weakness Enumeration"
+          },
+          "isComprehensive": false,
+          "taxa": [
+            {
+              "id": "121",
+              "name": "Stack-based Buffer Overflow"
+            }
+          ]
+        }
+      ],
+      "results": [
+        {
+          "ruleId": "CWE-121",
+          "message": {
+            "text": "Stack-based Buffer Overflow."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/testcases/CWE121_Stack_Based_Buffer_Overflow/s02/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_54e.c",
+                  "index": 4
+                },
+                "region": {
+                  "startLine": 36
+                }
+              }
+            }
+          ],
+          "taxa": [
+            {
+              "toolComponent": {
+                "name": "CWE",
+                "index": 0
+              },
+              "id": "121",
+              "index": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

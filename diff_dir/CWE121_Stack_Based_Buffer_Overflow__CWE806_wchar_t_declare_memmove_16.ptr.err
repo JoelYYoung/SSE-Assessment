@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/memmove.c
 Line: 42
-assembly.ll line: 17191
+assembly.ll line: 6360
 State: 1
 Stack: 
-	#000017191 in memmove (=94132719279632, =94132721567776, =396) at libc/string/memmove.c:42
-	#100009744 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memmove_16_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memmove_16.c:38
-	#200009806 in __klee_posix_wrapped_main (=1, =94132728873408) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memmove_16.c:91
-	#300007343 in __user_main (=1, =94132729358592, =94132729358608) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000587 in __uClibc_main (=94132727626992, =1, =94132729358592, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000752 in main (=1, =94132729358592)
+	#000006360 in memmove (=94884562733712, =94884571682496, =396) at libc/string/memmove.c:42
+	#100004222 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memmove_16_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memmove_16.c:38
+	#200004291 in __klee_posix_wrapped_main (=1, =94884591435920) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memmove_16.c:96
+	#300002564 in __user_main (=1, =94884585111040, =94884585111056) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000472 in __uClibc_main (=1, =94884585111040) at libc/misc/internals/__uClibc_main.c:401
+	#500000638 in main (=1, =94884585111040)
 Info: 
-	address: 94132719279832
-	next: object at 94132695576576 of size 114
-		MO41[114] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94884562733912
+	next: object at 94884560425984 of size 125
+		MO9[125] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/memmove.c
+Line: 42
+assembly.ll line: 6380
+State: 1
+Stack: 
+	#000006380 in memmove (=94471837863584, =94471840667328, =396) at libc/string/memmove.c:42
+	#100004233 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_68b_badSink () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_68b.c:34
+	#200004212 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_68_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_68a.c:38
+	#300004311 in __klee_posix_wrapped_main (=1, =94471847379088) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_68a.c:87
+	#400002566 in __user_main (=1, =94471840982144, =94471840982160) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000474 in __uClibc_main (=1, =94471840982144) at libc/misc/internals/__uClibc_main.c:401
+	#600000640 in main (=1, =94471840982144)
+Info: 
+	address: 94471837863784
+	next: object at 94471815987760 of size 112
+		MO311[112] allocated at global:_ppwfs_init.invalid_wcs

@@ -1,0 +1,16 @@
+Error: memory error: out of bound pointer
+File: libc/string/memmove.c
+Line: 48
+assembly.ll line: 5946
+State: 1
+Stack: 
+	#000005946 in memmove (=94621406119000, =94621405691104, =100) at libc/string/memmove.c:48
+	#100004071 in CWE124_Buffer_Underwrite__char_declare_memmove_15_bad () at ./juliet_testcases/CWE124_Buffer_Underwrite__char_declare_memmove_15.c:45
+	#200004162 in __klee_posix_wrapped_main (=1, =94621430028432) at ./juliet_testcases/CWE124_Buffer_Underwrite__char_declare_memmove_15.c:143
+	#300002422 in __user_main (=1, =94621429881984, =94621429882000) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000444 in __uClibc_main (=1, =94621429881984) at libc/misc/internals/__uClibc_main.c:401
+	#500000610 in main (=1, =94621429881984)
+Info: 
+	address: 94621406119007
+	next: object at 94621405142528 of size 57
+		MO196[57] allocated at global:.str.19.45

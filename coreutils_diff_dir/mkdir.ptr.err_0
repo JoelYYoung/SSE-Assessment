@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: ../../lib/quotearg.c
+Line: 248
+assembly.ll line: 6276
+State: 673
+Stack: 
+	#000006276 in quotearg_buffer_restyled (=93857067532544, =256, =0, =18446744073709551615, =5, =93857124108880) at ../../lib/quotearg.c:248
+	#100006145 in quotearg_buffer (=93857067532544, =256, =0, =93857124108880) at ../../lib/quotearg.c:526
+	#200006100 in quotearg_n_options (=0, =93857124108880) at ../../lib/quotearg.c:624
+	#300006069 in quotearg_n_style (=0) at ../../lib/quotearg.c:666
+	#400006057 in quote_n (=0) at ../../lib/quote.c:31
+	#500004732 in quote (=0) at ../../lib/quote.c:39
+	#600004611 in __klee_posix_wrapped_main (=4, =93857106352368) at ../../src/mkdir.c:194
+	#700002836 in __user_main (=15, =93857085144384, =93857085144512) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#800000584 in __uClibc_main (=15, =93857085144384) at libc/misc/internals/__uClibc_main.c:401
+	#900000750 in main (=15, =93857085144384)
+Info: 
+	address: 0
+	next: object at 93857067532544 of size 256
+		MO380[256] allocated at global:slot0

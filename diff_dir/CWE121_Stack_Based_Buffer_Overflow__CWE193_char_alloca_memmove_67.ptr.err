@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/memmove.c
+Line: 42
+assembly.ll line: 5941
+State: 1
+Stack: 
+	#000005941 in memmove (=93922903612512, =93922903612528, =11) at libc/string/memmove.c:42
+	#100004101 in CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_67b_badSink (=93922903612512) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_67b.c:40
+	#200004076 in CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_67_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_67a.c:47
+	#300004185 in __klee_posix_wrapped_main (=1, =93922903611488) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_67a.c:97
+	#400002424 in __user_main (=1, =93922903641088, =93922903641104) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000446 in __uClibc_main (=1, =93922903641088) at libc/misc/internals/__uClibc_main.c:401
+	#600000612 in main (=1, =93922903641088)
+Info: 
+	address: 93922903612522
+	next: object at 93922879272432 of size 131
+		MO32[131] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

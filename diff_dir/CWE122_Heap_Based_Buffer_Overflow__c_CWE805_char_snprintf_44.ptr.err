@@ -1,0 +1,22 @@
+Error: memory error: out of bound pointer
+File: libc/string/memcpy.c
+Line: 29
+assembly.ll line: 4097
+State: 1
+Stack: 
+	#000004097 in memcpy (=93832720944768, =93832737216528, =99) at libc/string/memcpy.c:29
+	#100009134 in __stdio_fwrite (=93832737216528, =99, =93832732139008) at libc/stdio/_fwrite.c:39
+	#200007140 in _do_one_spec (=93832732139008, =93832713533184, =93832744106640) at libc/stdio/_vfprintf.c:1817
+	#300006213 in vfprintf (=93832732139008, =93832744103488, =93832744856320) at libc/stdio/_vfprintf.c:1919
+	#400005728 in vsnprintf (=93832720944768, =100, =93832744103488, =93832744856320) at libc/stdio/vsnprintf.c:64
+	#500005650 in snprintf (=93832720944768, =0, =0) at libc/stdio/snprintf.c:25
+	#600004232 in badSink (=93832720944768) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_snprintf_44.c:36
+	#700004215 in CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_snprintf_44_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_snprintf_44.c:53
+	#800004312 in __klee_posix_wrapped_main (=1, =93832742001888) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_snprintf_44.c:111
+	#900002563 in __user_main (=1, =93832737913600, =93832737913616) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#1000000471 in __uClibc_main (=1, =93832737913600) at libc/misc/internals/__uClibc_main.c:401
+	#1100000637 in main (=1, =93832737913600)
+Info: 
+	address: 93832720944818
+	next: object at 93832713533184 of size 256
+		MO31165[256] allocated at vfprintf():  %7 = alloca %struct.ppfs_t.715, align 16

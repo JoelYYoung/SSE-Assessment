@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/strncpy.c
 Line: 29
-assembly.ll line: 14938
+assembly.ll line: 5731
 State: 1
 Stack: 
-	#000014938 in wcsncpy (=94621491063856, =94621482829856, =99) at libc/string/strncpy.c:29
-	#100009746 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_ncpy_08_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_ncpy_08.c:51
-	#200009862 in __klee_posix_wrapped_main (=1, =94621490897568) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_ncpy_08.c:128
-	#300007343 in __user_main (=1, =94621482273024, =94621482273040) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000587 in __uClibc_main (=94621489708896, =1, =94621482273024, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000752 in main (=1, =94621482273024)
+	#000005731 in wcsncpy (=94388331019376, =94388354040224, =99) at libc/string/strncpy.c:29
+	#100004223 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_ncpy_08_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_ncpy_08.c:51
+	#200004343 in __klee_posix_wrapped_main (=1, =94388357144864) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_ncpy_08.c:135
+	#300002564 in __user_main (=1, =94388354281216, =94388354281232) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000472 in __uClibc_main (=1, =94388354281216) at libc/misc/internals/__uClibc_main.c:401
+	#500000638 in main (=1, =94388354281216)
 Info: 
-	address: 94621491064056
-	next: object at 94621458696832 of size 209
-		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94388331019576
+	next: object at 94388329608832 of size 125
+		MO9[125] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

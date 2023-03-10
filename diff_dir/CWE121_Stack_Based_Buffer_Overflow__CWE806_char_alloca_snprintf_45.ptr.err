@@ -1,0 +1,22 @@
+Error: memory error: out of bound pointer
+File: libc/string/memcpy.c
+Line: 29
+assembly.ll line: 4099
+State: 1
+Stack: 
+	#000004099 in memcpy (=93891938017280, =93891925192976, =99) at libc/string/memcpy.c:29
+	#100009120 in __stdio_fwrite (=93891925192976, =99, =93891936297536) at libc/stdio/_fwrite.c:39
+	#200007126 in _do_one_spec (=93891936297536, =93891917707008, =93891948255920) at libc/stdio/_vfprintf.c:1817
+	#300006199 in vfprintf (=93891936297536, =93891948252744, =93891949109536) at libc/stdio/_vfprintf.c:1919
+	#400005714 in vsnprintf (=93891938017280, =99, =93891948252744, =93891949109536) at libc/stdio/vsnprintf.c:64
+	#500005636 in snprintf (=93891938017280, =99, =0) at libc/stdio/snprintf.c:25
+	#600004228 in badSink () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_snprintf_45.c:38
+	#700004210 in CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_snprintf_45_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_snprintf_45.c:52
+	#800004298 in __klee_posix_wrapped_main (=1, =93891946151152) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_snprintf_45.c:108
+	#900002565 in __user_main (=1, =93891942085888, =93891942085904) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#1000000473 in __uClibc_main (=1, =93891942085888) at libc/misc/internals/__uClibc_main.c:401
+	#1100000639 in main (=1, =93891942085888)
+Info: 
+	address: 93891938017330
+	next: object at 93891917681920 of size 125
+		MO9[125] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

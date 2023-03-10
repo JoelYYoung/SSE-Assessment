@@ -1,0 +1,16 @@
+Error: memory error: out of bound pointer
+File: ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE131_loop_64b.c
+Line: 33
+assembly.ll line: 4100
+State: 1
+Stack: 
+	#000004100 in CWE121_Stack_Based_Buffer_Overflow__CWE131_loop_64b_badSink (=94469723459600) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE131_loop_64b.c:33
+	#100004060 in CWE121_Stack_Based_Buffer_Overflow__CWE131_loop_64_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE131_loop_64a.c:30
+	#200004206 in __klee_posix_wrapped_main (=1, =94469723019264) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE131_loop_64a.c:75
+	#300002423 in __user_main (=1, =94469720644736, =94469720644752) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000445 in __uClibc_main (=1, =94469720644736) at libc/misc/internals/__uClibc_main.c:401
+	#500000611 in main (=1, =94469720644736)
+Info: 
+	address: 94469725151336
+	next: object at 94469695852032 of size 784
+		MO223[784] allocated at global:__exe_env

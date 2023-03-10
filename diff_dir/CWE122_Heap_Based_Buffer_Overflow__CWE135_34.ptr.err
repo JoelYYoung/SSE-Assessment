@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/strcpy.c
 Line: 27
-assembly.ll line: 15005
+assembly.ll line: 5805
 State: 1
 Stack: 
-	#000015005 in wcscpy (=94702300394064, =94702301260224) at libc/string/strcpy.c:27
-	#100009776 in CWE122_Heap_Based_Buffer_Overflow__CWE135_34_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__CWE135_34.c:51
-	#200009934 in __klee_posix_wrapped_main (=1, =94702301430528) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__CWE135_34.c:139
-	#300007344 in __user_main (=1, =94702281386240, =94702281386256) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000588 in __uClibc_main (=94702300389736, =1, =94702281386240, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000753 in main (=1, =94702281386240)
+	#000005805 in wcscpy (=94243080808416, =94243074309024) at libc/string/strcpy.c:27
+	#100004254 in CWE122_Heap_Based_Buffer_Overflow__CWE135_34_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__CWE135_34.c:51
+	#200004422 in __klee_posix_wrapped_main (=1, =94243080757696) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__CWE135_34.c:145
+	#300002565 in __user_main (=1, =94243074510976, =94243074510992) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000473 in __uClibc_main (=1, =94243074510976) at libc/misc/internals/__uClibc_main.c:401
+	#500000639 in main (=1, =94243074510976)
 Info: 
-	address: 94702300394072
-	next: object at 94702269221504 of size 209
-		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94243080808424
+	next: object at 94243049848960 of size 114
+		MO40[114] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

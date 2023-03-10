@@ -22,52 +22,52 @@ import os
 
 # open the db file
 def open_db_file(db_filepath):
-    db = sqlite3.connect(db_filepath)
+    db = sqlite3.connect(db_filepath) if os.path.exists(db_filepath) else None
     return db
 
 
 # get file str
 def get_file_str(filepath):
-    with open(filepath) as fl:
-        return fl.read()
-
-
-# get klee file str
-def get_klee_file_str(dir_path):
-    # search under the dir for .ptr
-    if os.path.exists(dir_path):
-        with open(dir_path) as fl:
+    if os.path.exists(filepath):
+        with open(filepath) as fl:
             return fl.read()
     else:
-        return "no error"
+        return ""
 
 
 # input sse output.db and return list of (ln, status) tuple
 def get_ln_list_sse(db):
-    cur = db.cursor()
-    res = cur.execute("SELECT location, status FROM checks")
-    loc = res.fetchall()
-
     loc_list = []
-    for check_loc in loc:
-        loc_str = check_loc[0]
-        search_res = re.search("ln: (\d*)", loc_str)
-        if search_res is not None:
-            loc_list.append((int(search_res[1]), check_loc[1]))
-        else:
-            loc_list.append((-1, check_loc[1]))
-    cur.close()
-    return loc_list
+    if db is None:
+        return loc_list
+    else:
+        cur = db.cursor()
+        res = cur.execute("SELECT location, status FROM checks")
+        loc = res.fetchall()
+
+        for check_loc in loc:
+            loc_str = check_loc[0]
+            search_res = re.search("ln: (\d*)", loc_str)
+            if search_res is not None:
+                loc_list.append((int(search_res[1]), check_loc[1]))
+            else:
+                loc_list.append((-1, check_loc[1]))
+        cur.close()
+        return loc_list
 
 
 # input ikos output.db and return list of (ln, status) tuple
 def get_ln_list_ikos(db):
-    cur = db.cursor()
-    res = cur.execute("SELECT s.line, c.status FROM checks as c INNER JOIN "
-                      "statements as s WHERE s.id = c.statement_id AND c.status IN(0, 1, 2)")
-    res_all = res.fetchall()
-    cur.close()
-    return res_all
+    res_all = []
+    if db is None:
+        return res_all
+    else:
+        cur = db.cursor()
+        res = cur.execute("SELECT s.line, c.status FROM checks as c INNER JOIN "
+                          "statements as s WHERE s.id = c.statement_id AND c.status IN(0, 1, 2)")
+        res_all = res.fetchall()
+        cur.close()
+        return res_all
 
 
 # input sparrow .output file and return list of ln num
@@ -83,7 +83,8 @@ def get_ln_list_sparrow(output_str):
 # input klee .output file and return list of ln num
 def get_ln_list_klee(output_str, filename):
     ln_list = []
-    search_res = re.findall("{}[.]c:(\d*)".format(filename), output_str)
+    search_res = re.findall("{}[abcde]?[.]c:(\d*)".format(filename), output_str)
+
     # regex match the first filename.c and get line
     if search_res:
         ln_list.append(int(search_res[0]))
@@ -94,7 +95,7 @@ def get_ln_metadata(metadic):
     ln_list = []
     for run in metadic['runs']:
         for res in run['results']:
-            if res['ruleId'] in ('CWE-121', 'CWE-122', 'CWE-126'):
+            if res['ruleId'] in ('CWE-121', 'CWE-122', 'CWE-124', 'CWE-126', 'CWE-127'):
                 for loc in res['locations']:
                     ln_list.append(loc['physicalLocation']['region']['startLine'])
     return ln_list
@@ -147,7 +148,7 @@ def main(argv):
     db_sse = open_db_file(argv[1])
     db_ikos = open_db_file(argv[2])
     output_sparrow = get_file_str(argv[4])
-    output_klee = get_klee_file_str(argv[5])
+    output_klee = get_file_str(argv[5])
     metadata_path = argv[3]
 
     sse_list = get_ln_list_sse(db_sse)
@@ -158,7 +159,7 @@ def main(argv):
 
     sparrow_list = get_ln_list_sparrow(output_sparrow)
 
-    klee_list = get_ln_list_klee(output_klee, argv[5].split('\\')[-1][:-8])
+    klee_list = get_ln_list_klee(output_klee, argv[5].split('/')[-1][:-8])
 
     db_sse.close()
     db_ikos.close()

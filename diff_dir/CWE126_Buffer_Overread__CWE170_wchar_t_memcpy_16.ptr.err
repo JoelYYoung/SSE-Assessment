@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: libc/string/strnlen.c
+Line: 30
+assembly.ll line: 12248
+State: 1
+Stack: 
+	#000012248 in wcsnlen (=94236845373120, =18446744073709551615) at libc/string/strnlen.c:30
+	#100010810 in _do_one_spec.300 (=94236844777560, =94236821060352, =94236852126176) at libc/stdio/_vfprintf.c:1702
+	#200009954 in vfwprintf (=94236851735456, =94236852080640) at libc/stdio/_vfprintf.c:1919
+	#300005925 in wprintf (=0) at libc/stdio/wprintf.c:20
+	#400005715 in printWLine (=94236845373120) at io.c:23
+	#500004211 in CWE126_Buffer_Overread__CWE170_wchar_t_memcpy_16_bad () at ./juliet_testcases/CWE126_Buffer_Overread__CWE170_wchar_t_memcpy_16.c:33
+	#600004269 in __klee_posix_wrapped_main (=1, =94236852035712) at ./juliet_testcases/CWE126_Buffer_Overread__CWE170_wchar_t_memcpy_16.c:86
+	#700002564 in __user_main (=1, =94236844258944, =94236844258960) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#800000472 in __uClibc_main (=1, =94236844258944) at libc/misc/internals/__uClibc_main.c:401
+	#900000638 in main (=1, =94236844258944)
+Info: 
+	address: 94236845373520
+	next: object at 94236820998400 of size 768
+		MO283[768] allocated at global:__C_ctype_toupper_data

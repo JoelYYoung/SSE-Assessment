@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/memcpy.c
+Line: 29
+assembly.ll line: 4099
+State: 1
+Stack: 
+	#000004099 in memcpy (=94093270450176, =94093270444624, =44) at libc/string/memcpy.c:29
+	#100004238 in CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memcpy_65b_badSink (=94093270450176) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memcpy_65b.c:34
+	#200004217 in CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memcpy_65_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memcpy_65a.c:43
+	#300004318 in __klee_posix_wrapped_main (=1, =94093250420720) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memcpy_65a.c:92
+	#400002565 in __user_main (=1, =94093264141824, =94093264141840) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000473 in __uClibc_main (=1, =94093264141824) at libc/misc/internals/__uClibc_main.c:401
+	#600000639 in main (=1, =94093264141824)
+Info: 
+	address: 94093270450216
+	next: object at 94093239167232 of size 768
+		MO284[768] allocated at global:__C_ctype_tolower_data

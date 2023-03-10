@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/strncpy.c
+Line: 29
+assembly.ll line: 5660
+State: 1
+Stack: 
+	#000005660 in wcsncpy (=94822573749920, =94822573750368) at libc/string/strncpy.c:29
+	#100004231 in CWE124_Buffer_Underwrite__wchar_t_alloca_ncpy_68b_badSink () at ./juliet_testcases/CWE124_Buffer_Underwrite__wchar_t_alloca_ncpy_68b.c:36
+	#200004213 in CWE124_Buffer_Underwrite__wchar_t_alloca_ncpy_68_bad () at ./juliet_testcases/CWE124_Buffer_Underwrite__wchar_t_alloca_ncpy_68a.c:38
+	#300004308 in __klee_posix_wrapped_main (=1, =94822595240208) at ./juliet_testcases/CWE124_Buffer_Underwrite__wchar_t_alloca_ncpy_68a.c:87
+	#400002566 in __user_main (=1, =94822588835712, =94822588835728) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000474 in __uClibc_main (=1, =94822588835712) at libc/misc/internals/__uClibc_main.c:401
+	#600000640 in main (=1, =94822588835712)
+Info: 
+	address: 94822573749920
+	next: object at 94822564157440 of size 128
+		MO294[128] allocated at global:randtbl

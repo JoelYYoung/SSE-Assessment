@@ -1,0 +1,16 @@
+Error: memory error: out of bound pointer
+File: ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_loop_51b.c
+Line: 34
+assembly.ll line: 4242
+State: 1
+Stack: 
+	#000004242 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_loop_51b_badSink (=94545439504064) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_loop_51b.c:34
+	#100004206 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_loop_51_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_loop_51a.c:34
+	#200004349 in __klee_posix_wrapped_main (=1, =94545446289696) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_loop_51a.c:82
+	#300002564 in __user_main (=1, =94545440071680, =94545440071696) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000472 in __uClibc_main (=1, =94545440071680) at libc/misc/internals/__uClibc_main.c:401
+	#500000638 in main (=1, =94545440071680)
+Info: 
+	address: 94545430532776
+	next: object at 94545415232000 of size 114
+		MO40[114] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

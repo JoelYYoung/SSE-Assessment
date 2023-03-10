@@ -6,7 +6,6 @@
 # 	assess.sh [-s somevalue] [-d somevalue] [-r] [-p] [-m somevalue] [-t somevalue] 
 # 		-s 	c src dir to input into ikos and sse,
 # 		-d 	dst dir for output db of sse and ikos,
-# 		-r 	should rerun ikos? 
 # 		-p 	should rerun sse?
 #  		-m  metadata dir of NIST,
 # 		-t 	report dir for assess-in-batch output.
@@ -22,58 +21,16 @@ do
 		case "${flag}" in
 			s) srcdir=${OPTARG};;
 			d) dstdir=${OPTARG};;
-			r) rerun=true;;
 			p) rerunsse=true;;
 			t) reportdir=${OPTARG};;
 			m) metadatadir=${OPTARG};;
-			?) echo "script usage: $(basename $0) [-s srcpath] [-d dstpath] [-r]"
+			?) echo "script usage: $(basename $0) [-s srcpath] [-d dstpath] [-t report dir] [-m metadata dir] [-p]"
 		esac
 done
 
 if [ ! -d $dstdir ]; then
   mkdir $dstdir
 fi
-
-
-##########################
-# run ikos for one time, i.e., 
-# if find .ikos.db file in the dst dir, skip, else run ikos again 
-##########################
-if [ "X${rerun}" != "X" ];
-then
-	rm "${srcdir}/ikos_tmp" -rf
-	mkdir "${srcdir}/ikos_tmp"
-
-	rm ${dstdir}/*.ikos.db -f
-	
-	find $srcdir -name "*.c" | while read srcfile
-	do
-		srcfilename="${srcfile##*/}"
-		srcfilename_short="${srcfilename%.*}"
-		/usr/lib/llvm-9/bin/clang -c -emit-llvm -Wall -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -D__IKOS__ -g -O0 -Xclang -disable-O0-optnone -isystem /opt/ikos/include -I./testcasesupport/ -fcolor-diagnostics -DINCLUDEMAIN  $srcfile -o ${srcdir}/ikos_tmp/${srcfilename_short}.bc > /dev/null
-
-		ikos-pp -opt=basic -entry-points=main ${srcdir}/ikos_tmp/${srcfilename_short}.bc -o ${srcdir}/ikos_tmp/${srcfilename_short}.pp.bc > /dev/null
-
-		ikos-analyzer -a=boa  -d=interval -entry-points=main -globals-init=skip-big-arrays -proc=inter -j=1 -widening-strategy=widen -widening-delay=1 -widening-period=1 -narrowing-strategy=narrow -allow-dbg-mismatch -display-checks=no -display-inv=no -log=debug -progress=auto ${srcdir}/ikos_tmp/${srcfilename_short}.pp.bc -o ${dstdir}/${srcfilename_short}.ikos.db > /dev/null
-
-		echo "[ikos] file: ${srcfile} done!"
-	done
-else
-	echo "[ikos] ikos has been run previously, skip ikos on all input!"
-fi
-
-#################################
-# pull designated branch of sse #
-#################################
-
-
-
-
-###############################
-# build the branch of the sse #
-###############################
-
-
 
 ###############################################################
 # run sse on the testcases and put all db into the output dbs #
@@ -82,21 +39,57 @@ if [ "X${rerunsse}" != "X" ]; then
   if [ ! -d ${srcdir}/sse_tmp ]; then
       mkdir ${srcdir}/sse_tmp
   else
-    rm ${srcdir}/sse_tmp/* -f
+    rm ${srcdir}/sse_tmp -rf
+    mkdir ${srcdir}/sse_tmp
   fi
-
-  rm ${dstdir}/*.sse.db -f
-  rm ${dstdir}/*.sse.db-journal -f
 
   find $srcdir -name "*.c" | while read srcfile
   do
     srcfilename="${srcfile##*/}"
     srcfilename_short="${srcfilename%.*}"
-    /home/joelyang/SVF/llvm-13.0.0.obj/bin/clang -S -c -Xclang -disable-O0-optnone -fno-discard-value-names -g -emit-llvm -I./testcasesupport/ -DINCLUDEMAIN $srcfile -o $srcdir/sse_tmp/${srcfilename_short}.ll
-
-    /home/joelyang/SVF-Z3/cmake-build-debug/bin/sse $srcdir/sse_tmp/${srcfilename_short}.ll -overflow -output=$dstdir/${srcfilename_short}.sse.db>/dev/null 2>/dev/null
-    echo "[SSE] file: ${srcfile} done!"
-    rm ./*.ll.stat -f
+    
+    # if filename ends with a, b, c, d, e
+    echo "${srcfilename_short: -1}" | grep -q "[abcde]"
+    if [ $? -ne 0 ];  # the file belongs to a normal single file testcase 
+    then
+      if test -f "${dstdir}/${srcfilename_short}.sse.db";
+      then
+      	echo "[SSE] 4:file: ${srcfilename} skip!"
+      else
+        /home/joelyang/SVF/llvm-13.0.0.obj/bin/clang -S -c -Xclang -disable-O0-optnone -fno-discard-value-names -g -emit-llvm -I./testcasesupport/ -DINCLUDEMAIN $srcfile -o ${srcdir}/sse_tmp/${srcfilename_short}.ll
+        /home/joelyang/SVF-Z3/cmake-build-debug/bin/sse $srcdir/sse_tmp/${srcfilename_short}.ll -overflow -output=$dstdir/${srcfilename_short}.sse.db>/dev/null 2>/dev/null
+        rm ./*.ll.stat -f
+        echo "[SSE] 1:file: ${srcfilename} done!"
+      fi
+    elif [[ "${srcfilename_short: -1}" == 'a' ]];  # the file is the main file of a multi-file testcase
+    then
+      if test -f "$dstdir/${srcfilename_short:0:-1}.sse.db";
+      then
+        echo "[SSE] 4:file: ${srcfilename} skip!"
+      else
+        bcfile_list="${srcdir}/sse_tmp/${srcfilename_short}.ll"
+        appendent_list=('b' 'c' 'd' 'e')
+        #  compile the main file
+        /home/joelyang/SVF/llvm-13.0.0.obj/bin/clang -S -c -Xclang -disable-O0-optnone -fno-discard-value-names -g -emit-llvm -I./testcasesupport/ -DINCLUDEMAIN $srcfile -o "${srcdir}/sse_tmp/${srcfilename_short}.ll"
+        #  compiler each file respectively
+        for character in ${appendent_list}
+        do
+          if test -f "${srcdir}/${srcfilename_short:0:-1}${character}.c";
+          then
+            /home/joelyang/SVF/llvm-13.0.0.obj/bin/clang -S -c -Xclang -disable-O0-optnone -fno-discard-value-names -g -emit-llvm -I./testcasesupport/ -DINCLUDEMAIN ${srcdir}/${srcfilename_short:0:-1}${character}.c -o ${srcdir}/sse_tmp/${srcfilename_short:0:-1}${character}.ll
+            bcfile_list="${bcfile_list} ${srcdir}/sse_tmp/${srcfilename_short:0:-1}${character}.ll"
+          fi
+        done
+        #  use llvm-link to link the bcs into one
+        /home/joelyang/SVF/llvm-13.0.0.obj/bin/llvm-link -o="${srcdir}/sse_tmp/${srcfilename_short:0:-1}.ll" ${bcfile_list}
+        #  use sse to analyze
+        /home/joelyang/SVF-Z3/cmake-build-debug/bin/sse $srcdir/sse_tmp/${srcfilename_short:0:-1}.ll -overflow -output=$dstdir/${srcfilename_short:0:-1}.sse.db>/dev/null 2>/dev/null
+        rm ./*.ll.stat -f
+        echo "[sse] 2:file: ${srcfilename} done!"
+      fi
+    else  # the file is the appendent file of a multi-files testcase
+      echo "[sse] 3:file: ${srcfilename} skip!"
+    fi
   done
 else
   echo "[sse] sse has been run previously, skip sse on all input!"

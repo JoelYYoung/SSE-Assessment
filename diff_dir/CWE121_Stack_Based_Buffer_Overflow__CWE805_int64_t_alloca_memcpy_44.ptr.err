@@ -1,17 +1,17 @@
 Error: memory error: out of bound pointer
 File: libc/string/memcpy.c
 Line: 29
-assembly.ll line: 9620
+assembly.ll line: 3957
 State: 1
 Stack: 
-	#000009620 in memcpy (=94127416051744, =94127413719424, =800) at libc/string/memcpy.c:29
-	#100009752 in badSink (=94127416051744) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memcpy_44.c:26
-	#200009735 in CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memcpy_44_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memcpy_44.c:41
-	#300009818 in __klee_posix_wrapped_main (=1, =94127423414480) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memcpy_44.c:91
-	#400007343 in __user_main (=1, =94127399536896, =94127399536912) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#500000587 in __uClibc_main (=94127422135248, =1, =94127399536896, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#600000752 in main (=1, =94127399536896)
+	#000003957 in memcpy (=93988681955424, =93988668991232, =800) at libc/string/memcpy.c:29
+	#100004089 in badSink (=93988681955424) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memcpy_44.c:26
+	#200004072 in CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memcpy_44_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memcpy_44.c:42
+	#300004166 in __klee_posix_wrapped_main (=1, =93988684863424) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memcpy_44.c:96
+	#400002423 in __user_main (=1, =93988680833792, =93988680833808) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000445 in __uClibc_main (=1, =93988680833792) at libc/misc/internals/__uClibc_main.c:401
+	#600000611 in main (=1, =93988680833792)
 Info: 
-	address: 94127416052144
-	next: object at 94127390077056 of size 114
-		MO41[114] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 93988681955824
+	next: object at 93988657918656 of size 240
+		MO265[240] allocated at __uClibc_main():  %11 = alloca [15 x %struct.Elf64_auxv_t], align 16

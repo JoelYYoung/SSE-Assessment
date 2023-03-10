@@ -1,17 +1,17 @@
 Error: memory error: out of bound pointer
 File: libc/string/memcpy.c
 Line: 29
-assembly.ll line: 9616
+assembly.ll line: 4094
 State: 1
 Stack: 
-	#000009616 in memcpy (=94922553740128, =94922568236352, =396) at libc/string/memcpy.c:29
-	#100009732 in CWE126_Buffer_Overread__malloc_wchar_t_memcpy_41_badSink (=94922568236352) at ./juliet_testcases/CWE126_Buffer_Overread__malloc_wchar_t_memcpy_41.c:31
-	#200009764 in CWE126_Buffer_Overread__malloc_wchar_t_memcpy_41_bad () at ./juliet_testcases/CWE126_Buffer_Overread__malloc_wchar_t_memcpy_41.c:46
-	#300009842 in __klee_posix_wrapped_main (=1, =94922585416224) at ./juliet_testcases/CWE126_Buffer_Overread__malloc_wchar_t_memcpy_41.c:103
-	#400007343 in __user_main (=1, =94922568198400, =94922568198416) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#500000587 in __uClibc_main (=94922584243688, =1, =94922568198400, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#600000752 in main (=1, =94922568198400)
+	#000004094 in memcpy (=94024175111424, =94024165619184, =396) at libc/string/memcpy.c:29
+	#100004210 in CWE126_Buffer_Overread__malloc_wchar_t_memcpy_41_badSink (=94024165619184) at ./juliet_testcases/CWE126_Buffer_Overread__malloc_wchar_t_memcpy_41.c:31
+	#200004244 in CWE126_Buffer_Overread__malloc_wchar_t_memcpy_41_bad () at ./juliet_testcases/CWE126_Buffer_Overread__malloc_wchar_t_memcpy_41.c:47
+	#300004327 in __klee_posix_wrapped_main (=1, =94024178237680) at ./juliet_testcases/CWE126_Buffer_Overread__malloc_wchar_t_memcpy_41.c:108
+	#400002564 in __user_main (=1, =94024150334976, =94024150334992) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000472 in __uClibc_main (=1, =94024150334976) at libc/misc/internals/__uClibc_main.c:401
+	#600000638 in main (=1, =94024150334976)
 Info: 
-	address: 94922568236552
-	next: object at 94922552511104 of size 209
-		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94024165619384
+	next: object at 94024150334976 of size 384
+		MO0[384] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

@@ -1,17 +1,17 @@
 Error: memory error: out of bound pointer
 File: libc/string/strncpy.c
 Line: 29
-assembly.ll line: 14858
+assembly.ll line: 5655
 State: 1
 Stack: 
-	#000014858 in wcsncpy (=94451416972192, =94451428887392, =99) at libc/string/strncpy.c:29
-	#100009749 in badSink (=94451416972192) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_ncpy_44.c:30
-	#200009732 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_ncpy_44_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_ncpy_44.c:47
-	#300009818 in __klee_posix_wrapped_main (=1, =94451434422784) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_ncpy_44.c:101
-	#400007343 in __user_main (=1, =94451425495296, =94451425495312) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#500000587 in __uClibc_main (=94451433143688, =1, =94451425495296, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#600000752 in main (=1, =94451425495296)
+	#000005655 in wcsncpy (=94660076795792, =94660093450752) at libc/string/strncpy.c:29
+	#100004227 in badSink (=94660076795792) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_ncpy_44.c:30
+	#200004210 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_ncpy_44_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_ncpy_44.c:48
+	#300004303 in __klee_posix_wrapped_main (=1, =94660105683184) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_ncpy_44.c:106
+	#400002564 in __user_main (=1, =94660099522048, =94660099522064) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000472 in __uClibc_main (=1, =94660099522048) at libc/misc/internals/__uClibc_main.c:401
+	#600000638 in main (=1, =94660099522048)
 Info: 
-	address: 94451416972392
-	next: object at 94451401144448 of size 114
-		MO41[114] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94660076795992
+	next: object at 94660074547456 of size 768
+		MO286[768] allocated at global:__C_ctype_toupper_data

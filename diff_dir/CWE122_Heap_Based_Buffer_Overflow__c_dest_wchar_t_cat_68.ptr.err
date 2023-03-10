@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/strcat.c
+Line: 24
+assembly.ll line: 5662
+State: 1
+Stack: 
+	#000005662 in wcscat (=94589414982256, =94589418010720) at libc/string/strcat.c:24
+	#100004225 in CWE122_Heap_Based_Buffer_Overflow__c_dest_wchar_t_cat_68b_badSink () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_dest_wchar_t_cat_68b.c:36
+	#200004207 in CWE122_Heap_Based_Buffer_Overflow__c_dest_wchar_t_cat_68_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_dest_wchar_t_cat_68a.c:37
+	#300004297 in __klee_posix_wrapped_main (=1, =94589424804016) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_dest_wchar_t_cat_68a.c:85
+	#400002566 in __user_main (=1, =94589418159232, =94589418159248) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000474 in __uClibc_main (=1, =94589418159232) at libc/misc/internals/__uClibc_main.c:401
+	#600000640 in main (=1, =94589418159232)
+Info: 
+	address: 94589414982456
+	next: object at 94589393753728 of size 128
+		MO295[128] allocated at global:randtbl

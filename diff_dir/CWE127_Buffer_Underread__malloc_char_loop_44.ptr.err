@@ -1,0 +1,16 @@
+Error: memory error: out of bound pointer
+File: ./juliet_testcases/CWE127_Buffer_Underread__malloc_char_loop_44.c
+Line: 33
+assembly.ll line: 4110
+State: 1
+Stack: 
+	#000004110 in badSink (=94776061766936) at ./juliet_testcases/CWE127_Buffer_Underread__malloc_char_loop_44.c:33
+	#100004081 in CWE127_Buffer_Underread__malloc_char_loop_44_bad () at ./juliet_testcases/CWE127_Buffer_Underread__malloc_char_loop_44.c:58
+	#200004232 in __klee_posix_wrapped_main (=1, =94776088959104) at ./juliet_testcases/CWE127_Buffer_Underread__malloc_char_loop_44.c:127
+	#300002422 in __user_main (=1, =94776085927552, =94776085927568) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000444 in __uClibc_main (=1, =94776085927552) at libc/misc/internals/__uClibc_main.c:401
+	#500000610 in main (=1, =94776085927552)
+Info: 
+	address: 94776061766936
+	next: object at 94776061292032 of size 784
+		MO222[784] allocated at global:__exe_env

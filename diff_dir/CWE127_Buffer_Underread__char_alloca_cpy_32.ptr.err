@@ -1,0 +1,16 @@
+Error: memory error: out of bound pointer
+File: libc/string/strcpy.c
+Line: 27
+assembly.ll line: 5505
+State: 1
+Stack: 
+	#000005505 in strcpy (=94272884040928, =94272885282152) at libc/string/strcpy.c:27
+	#100004093 in CWE127_Buffer_Underread__char_alloca_cpy_32_bad () at ./juliet_testcases/CWE127_Buffer_Underread__char_alloca_cpy_32.c:44
+	#200004170 in __klee_posix_wrapped_main (=1, =94272909203568) at ./juliet_testcases/CWE127_Buffer_Underread__char_alloca_cpy_32.c:107
+	#300002422 in __user_main (=1, =94272908775552, =94272908775568) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000444 in __uClibc_main (=1, =94272908775552) at libc/misc/internals/__uClibc_main.c:401
+	#500000610 in main (=1, =94272908775552)
+Info: 
+	address: 94272885282152
+	next: object at 94272884040928 of size 200
+		MO27429[200] allocated at CWE127_Buffer_Underread__char_alloca_cpy_32_bad():  %7 = alloca [200 x i8], align 16

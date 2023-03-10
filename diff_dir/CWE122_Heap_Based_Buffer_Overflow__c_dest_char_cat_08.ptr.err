@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/strcat.c
 Line: 24
-assembly.ll line: 14924
+assembly.ll line: 5566
 State: 1
 Stack: 
-	#000014924 in strcat (=94913992511744, =94913992313472) at libc/string/strcat.c:24
-	#100009749 in CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_08_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_08.c:53
-	#200009871 in __klee_posix_wrapped_main (=1, =94913992679952) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_08.c:134
-	#300007343 in __user_main (=1, =94913970841856, =94913970841872) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000587 in __uClibc_main (=94913991507376, =1, =94913970841856, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000752 in main (=1, =94913970841856)
+	#000005566 in strcat (=94304862494336, =94304886205952) at libc/string/strcat.c:24
+	#100004084 in CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_08_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_08.c:53
+	#200004210 in __klee_posix_wrapped_main (=1, =94304890263600) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_08.c:141
+	#300002422 in __user_main (=1, =94304887188480, =94304887188496) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000444 in __uClibc_main (=1, =94304887188480) at libc/misc/internals/__uClibc_main.c:401
+	#500000610 in main (=1, =94304887188480)
 Info: 
-	address: 94913992511794
-	next: object at 94913959742304 of size 209
-		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94304862494386
+	next: object at 94304862494336 of size 50
+		MO27411[50] allocated at CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_08_bad():  %4 = call noalias i8* @malloc(i64 50) #11, !dbg !1778

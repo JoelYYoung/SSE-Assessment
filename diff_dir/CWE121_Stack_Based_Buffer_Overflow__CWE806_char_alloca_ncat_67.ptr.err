@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/strncat.c
+Line: 27
+assembly.ll line: 5542
+State: 1
+Stack: 
+	#000005542 in strncat (=94726860408896, =94726846873136, =99) at libc/string/strncat.c:27
+	#100004096 in CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_ncat_67b_badSink (=94726846873136) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_ncat_67b.c:34
+	#200004073 in CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_ncat_67_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_ncat_67a.c:41
+	#300004180 in __klee_posix_wrapped_main (=1, =94726868228272) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_ncat_67a.c:90
+	#400002423 in __user_main (=1, =94726868262400, =94726868262416) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000445 in __uClibc_main (=1, =94726868262400) at libc/misc/internals/__uClibc_main.c:401
+	#600000611 in main (=1, =94726868262400)
+Info: 
+	address: 94726860408946
+	next: object at 94726843912896 of size 240
+		MO264[240] allocated at __uClibc_main():  %11 = alloca [15 x %struct.Elf64_auxv_t], align 16

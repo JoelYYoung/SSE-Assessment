@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/strcat.c
 Line: 24
-assembly.ll line: 14847
+assembly.ll line: 5644
 State: 1
 Stack: 
-	#000014847 in wcscat (=94824486318768, =94824497293344) at libc/string/strcat.c:24
-	#100009740 in CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cat_18_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cat_18.c:36
-	#200009794 in __klee_posix_wrapped_main (=1, =94824502804912) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cat_18.c:85
-	#300007343 in __user_main (=1, =94824482007296, =94824482007312) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000587 in __uClibc_main (=94824501525792, =1, =94824482007296, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000752 in main (=1, =94824482007296)
+	#000005644 in wcscat (=93828391912256, =93828404879776) at libc/string/strcat.c:24
+	#100004218 in CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cat_18_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cat_18.c:36
+	#200004279 in __klee_posix_wrapped_main (=1, =93828405944496) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cat_18.c:90
+	#300002564 in __user_main (=1, =93828380139008, =93828380139024) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000472 in __uClibc_main (=1, =93828380139008) at libc/misc/internals/__uClibc_main.c:401
+	#500000638 in main (=1, =93828380139008)
 Info: 
-	address: 94824486318968
-	next: object at 94824469564672 of size 128
-		MO531[128] allocated at global:randtbl
+	address: 93828391912456
+	next: object at 93828380139008 of size 384
+		MO0[384] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

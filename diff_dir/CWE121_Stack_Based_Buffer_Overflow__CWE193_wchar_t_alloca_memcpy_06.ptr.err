@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/memcpy.c
 Line: 29
-assembly.ll line: 9623
+assembly.ll line: 4099
 State: 1
 Stack: 
-	#000009623 in memcpy (=93826518998384, =93826514513520, =44) at libc/string/memcpy.c:29
-	#100009748 in CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memcpy_06_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memcpy_06.c:48
-	#200009843 in __klee_posix_wrapped_main (=1, =93826519548336) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memcpy_06.c:126
-	#300007346 in __user_main (=1, =93826510063872, =93826510063888) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000590 in __uClibc_main (=93826518293856, =1, =93826510063872, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000755 in main (=1, =93826510063872)
+	#000004099 in memcpy (=94097581576416, =94097581649328, =44) at libc/string/memcpy.c:29
+	#100004224 in CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memcpy_06_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memcpy_06.c:48
+	#200004328 in __klee_posix_wrapped_main (=1, =94097581088864) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memcpy_06.c:133
+	#300002565 in __user_main (=1, =94097574960640, =94097574960656) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000473 in __uClibc_main (=1, =94097574960640) at libc/misc/internals/__uClibc_main.c:401
+	#500000639 in main (=1, =94097574960640)
 Info: 
-	address: 93826518998424
-	next: object at 93826486545248 of size 209
-		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94097581576456
+	next: object at 94097550014848 of size 114
+		MO40[114] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

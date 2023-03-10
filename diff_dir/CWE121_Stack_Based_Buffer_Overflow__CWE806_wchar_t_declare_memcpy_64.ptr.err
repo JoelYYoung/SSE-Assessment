@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/memcpy.c
+Line: 29
+assembly.ll line: 4098
+State: 1
+Stack: 
+	#000004098 in memcpy (=94011222234192, =94011226560192, =396) at libc/string/memcpy.c:29
+	#100004236 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memcpy_64b_badSink (=94011233346592) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memcpy_64b.c:32
+	#200004206 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memcpy_64_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memcpy_64a.c:34
+	#300004319 in __klee_posix_wrapped_main (=1, =94011233263840) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_memcpy_64a.c:81
+	#400002564 in __user_main (=1, =94011227128960, =94011227128976) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000472 in __uClibc_main (=1, =94011227128960) at libc/misc/internals/__uClibc_main.c:401
+	#600000638 in main (=1, =94011227128960)
+Info: 
+	address: 94011222234392
+	next: object at 94011201863184 of size 208
+		MO297[208] allocated at global:exp10_table

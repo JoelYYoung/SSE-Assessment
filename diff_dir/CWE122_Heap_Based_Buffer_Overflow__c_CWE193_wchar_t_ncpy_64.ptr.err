@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/strncpy.c
+Line: 29
+assembly.ll line: 5696
+State: 1
+Stack: 
+	#000005696 in wcsncpy (=94318394693008, =94318394244800, =11) at libc/string/strncpy.c:29
+	#100004230 in CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_ncpy_64b_badSink (=94318393794536) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_ncpy_64b.c:38
+	#200004202 in CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_ncpy_64_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_ncpy_64a.c:37
+	#300004308 in __klee_posix_wrapped_main (=1, =94318394138768) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_ncpy_64a.c:82
+	#400002565 in __user_main (=1, =94318387974656, =94318387974672) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000473 in __uClibc_main (=1, =94318387974656) at libc/misc/internals/__uClibc_main.c:401
+	#600000639 in main (=1, =94318387974656)
+Info: 
+	address: 94318394693048
+	next: object at 94318362987520 of size 768
+		MO284[768] allocated at global:__C_ctype_b_data

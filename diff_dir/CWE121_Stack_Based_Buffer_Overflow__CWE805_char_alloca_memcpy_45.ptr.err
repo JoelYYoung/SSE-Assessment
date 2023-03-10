@@ -1,17 +1,17 @@
 Error: memory error: out of bound pointer
 File: libc/string/memcpy.c
 Line: 29
-assembly.ll line: 9622
+assembly.ll line: 3958
 State: 1
 Stack: 
-	#000009622 in memcpy (=94194791327872, =94194791276656, =100) at libc/string/memcpy.c:29
-	#100009753 in badSink () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_memcpy_45.c:34
-	#200009735 in CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_memcpy_45_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_memcpy_45.c:49
-	#300009824 in __klee_posix_wrapped_main (=1, =94194791285072) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_memcpy_45.c:104
-	#400007345 in __user_main (=1, =94194759919872, =94194759919888) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#500000589 in __uClibc_main (=94194790046704, =1, =94194759919872, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#600000754 in main (=1, =94194759919872)
+	#000003958 in memcpy (=94229971119744, =94229954331968, =100) at libc/string/memcpy.c:29
+	#100004089 in badSink () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_memcpy_45.c:34
+	#200004071 in CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_memcpy_45_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_memcpy_45.c:50
+	#300004167 in __klee_posix_wrapped_main (=1, =94229978494880) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_memcpy_45.c:109
+	#400002424 in __user_main (=1, =94229978066304, =94229978066320) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000446 in __uClibc_main (=1, =94229978066304) at libc/misc/internals/__uClibc_main.c:401
+	#600000612 in main (=1, =94229978066304)
 Info: 
-	address: 94194791327922
-	next: object at 94194758241120 of size 209
-		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94229971119794
+	next: object at 94229953652480 of size 125
+		MO9[125] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/strncat.c
+Line: 27
+assembly.ll line: 5720
+State: 1
+Stack: 
+	#000005720 in wcsncat (=94001427493760, =94001452086560, =99) at libc/string/strncat.c:27
+	#100004233 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncat_64b_badSink (=94001459012968) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncat_64b.c:32
+	#200004206 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncat_64_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncat_64a.c:34
+	#300004313 in __klee_posix_wrapped_main (=1, =94001458930016) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncat_64a.c:81
+	#400002564 in __user_main (=1, =94001452226944, =94001452226960) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000472 in __uClibc_main (=1, =94001452226944) at libc/misc/internals/__uClibc_main.c:401
+	#600000638 in main (=1, =94001452226944)
+Info: 
+	address: 94001427493960
+	next: object at 94001427493760 of size 200
+		MO32792[200] allocated at CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncat_64b_badSink():  %5 = alloca [50 x i32], align 16

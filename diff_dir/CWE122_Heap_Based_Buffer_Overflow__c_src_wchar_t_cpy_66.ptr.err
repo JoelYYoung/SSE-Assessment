@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/strcpy.c
+Line: 27
+assembly.ll line: 5659
+State: 1
+Stack: 
+	#000005659 in wcscpy (=94335690606000, =94335713228480) at libc/string/strcpy.c:27
+	#100004231 in CWE122_Heap_Based_Buffer_Overflow__c_src_wchar_t_cpy_66b_badSink (=94335720602464) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_src_wchar_t_cpy_66b.c:30
+	#200004210 in CWE122_Heap_Based_Buffer_Overflow__c_src_wchar_t_cpy_66_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_src_wchar_t_cpy_66a.c:36
+	#300004311 in __klee_posix_wrapped_main (=1, =94335720014112) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_src_wchar_t_cpy_66a.c:84
+	#400002564 in __user_main (=1, =94335713650560, =94335713650576) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000472 in __uClibc_main (=1, =94335713650560) at libc/misc/internals/__uClibc_main.c:401
+	#600000638 in main (=1, =94335713650560)
+Info: 
+	address: 94335690606200
+	next: object at 94335688959392 of size 88
+		MO282[88] allocated at global:__PRETTY_FUNCTION__.__create_new_dfile

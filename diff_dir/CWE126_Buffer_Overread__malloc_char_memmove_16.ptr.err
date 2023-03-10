@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/memmove.c
 Line: 42
-assembly.ll line: 17133
+assembly.ll line: 5921
 State: 1
 Stack: 
-	#000017133 in memmove (=94914906416672, =94914906849536, =99) at libc/string/memmove.c:42
-	#100009752 in CWE126_Buffer_Overread__malloc_char_memmove_16_bad () at ./juliet_testcases/CWE126_Buffer_Overread__malloc_char_memmove_16.c:42
-	#200009826 in __klee_posix_wrapped_main (=1, =94914906857824) at ./juliet_testcases/CWE126_Buffer_Overread__malloc_char_memmove_16.c:101
-	#300007343 in __user_main (=1, =94914907293952, =94914907293968) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000587 in __uClibc_main (=94914905594808, =1, =94914907293952, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000752 in main (=1, =94914907293952)
+	#000005921 in memmove (=94804148124224, =94804164707584, =99) at libc/string/memmove.c:42
+	#100004088 in CWE126_Buffer_Overread__malloc_char_memmove_16_bad () at ./juliet_testcases/CWE126_Buffer_Overread__malloc_char_memmove_16.c:42
+	#200004169 in __klee_posix_wrapped_main (=1, =94804174895072) at ./juliet_testcases/CWE126_Buffer_Overread__malloc_char_memmove_16.c:106
+	#300002422 in __user_main (=1, =94804172173440, =94804172173456) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000444 in __uClibc_main (=1, =94804172173440) at libc/misc/internals/__uClibc_main.c:401
+	#500000610 in main (=1, =94804172173440)
 Info: 
-	address: 94914906849586
-	next: object at 94914873563008 of size 128
-		MO529[128] allocated at global:randtbl
+	address: 94804164707634
+	next: object at 94804147704992 of size 240
+		MO261[240] allocated at __uClibc_main():  %11 = alloca [15 x %struct.Elf64_auxv_t], align 16

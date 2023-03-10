@@ -1,17 +1,17 @@
 Error: memory error: out of bound pointer
 File: libc/string/memmove.c
 Line: 48
-assembly.ll line: 17191
+assembly.ll line: 6360
 State: 1
 Stack: 
-	#000017191 in memmove (=94587313266688, =94587282180960, =400) at libc/string/memmove.c:48
-	#100009729 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memmove_41_badSink (=94587313266688) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memmove_41.c:30
-	#200009750 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memmove_41_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memmove_41.c:44
-	#300009814 in __klee_posix_wrapped_main (=1, =94587313529280) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memmove_41.c:98
-	#400007343 in __user_main (=1, =94587292559616, =94587292559632) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#500000587 in __uClibc_main (=94587312274552, =1, =94587292559616, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#600000752 in main (=1, =94587292559616)
+	#000006360 in memmove (=94809723368112, =94809717667936, =400) at libc/string/memmove.c:48
+	#100004207 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memmove_41_badSink (=94809723368112) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memmove_41.c:30
+	#200004230 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memmove_41_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memmove_41.c:45
+	#300004299 in __klee_posix_wrapped_main (=1, =94809739124928) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memmove_41.c:103
+	#400002564 in __user_main (=1, =94809732755584, =94809732755600) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000472 in __uClibc_main (=1, =94809732755584) at libc/misc/internals/__uClibc_main.c:401
+	#600000638 in main (=1, =94809732755584)
 Info: 
-	address: 94587313267087
-	next: object at 94587280250496 of size 114
-		MO41[114] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94809723368511
+	next: object at 94809708073600 of size 114
+		MO40[114] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

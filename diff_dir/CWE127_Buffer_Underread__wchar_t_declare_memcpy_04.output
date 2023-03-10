@@ -1,0 +1,97 @@
+./juliet_testcases/sparrow_tmp/CWE127_Buffer_Underread__wchar_t_declare_memcpy_04.i 
+
+
+
+--------------------------------------------------------------------------------
+Front-end begins...
+--------------------------------------------------------------------------------
+
+
+Front-end completes: 0.0168590000001
+
+
+
+--------------------------------------------------------------------------------
+Translation to graphs begins...
+--------------------------------------------------------------------------------
+
+
+#nodes all   : 112
+#unreachable : 0
+
+Translation to graphs completes: 0.000762
+
+
+
+--------------------------------------------------------------------------------
+Pre-analysis begins...
+--------------------------------------------------------------------------------
+
+iteration : 1iteration : 2iteration : 3iteration : 4
+mem size : 36
+
+#functions all : 6
+#recursive : 0
+#unreachable   : 0
+
+Pre-analysis completes: 0.00104800000001
+To inline : []
+Excluded variable-arguments functions : []
+Excluded recursive functions : []
+Excluded too large functions : []
+#Procs : 6
+#Nodes : 112
+
+
+
+--------------------------------------------------------------------------------
+Itv Sparse Analysis begins...
+--------------------------------------------------------------------------------
+
+#total abstract locations  = 36
+#flow-sensitive abstract locations  = 36
+Access Analysis begins...
+Access Analysis completes: 0.000411
+Def-use graph construction begins...
+draw intra-procedural edges
+[==========..................................................] (1/6)     [====================........................................] (2/6)     [==============================..............................] (3/6)     [========================================....................] (4/6)     [==================================================..........] (5/6)     [============================================================] (6/6)     
+draw inter-procedural edges
+[==..........................................................] (1/26)     [====........................................................] (2/26)     [======......................................................] (3/26)     [=========...................................................] (4/26)     [===========.................................................] (5/26)     [=============...............................................] (6/26)     [================............................................] (7/26)     [==================..........................................] (8/26)     [====================........................................] (9/26)     [=======================.....................................] (10/26)     [=========================...................................] (11/26)     [===========================.................................] (12/26)     [==============================..............................] (13/26)     [================================............................] (14/26)     [==================================..........................] (15/26)     [====================================........................] (16/26)     [=======================================.....................] (17/26)     [=========================================...................] (18/26)     [===========================================.................] (19/26)     [==============================================..............] (20/26)     [================================================............] (21/26)     [==================================================..........] (22/26)     [=====================================================.......] (23/26)     [=======================================================.....] (24/26)     [=========================================================...] (25/26)     [============================================================] (26/26)     
+Def-use graph construction completes: 0.000906000000001
+#Nodes in def-use graph : 78
+#Locs on def-use graph : 105
+Workorder computation begins...
+Workorder computation completes: 0.000193000000001
+Fixpoint iteration with widening begins...
+
+#iteration in widening : 78
+Fixpoint iteration with widening completes: 0.000768000000001
+
+
+
+--------------------------------------------------------------------------------
+Generate Alarm Report begins...
+--------------------------------------------------------------------------------
+
+[............................................................] (0/112)     
+Generate Alarm Report completes: 9.50000000001e-05
+
+Itv Sparse Analysis completes: 0.00248900000001
+
+= Alarms =
+1. CWE127_Buffer_Underread__wchar_t_declare_memcpy_04.c:46 {CWE127_Buffer_Underread__wchar_t_declare_memcpy_04_bad} UnProven
+  memcpy ((void */* __restrict  */)StartOf(dest), (void const   */* __restrict  */)data, 100UL*SizeOf(wchar_t )) @CWE127_Buffer_Underread__wchar_t_declare_memcpy_04_bad-23:  offset: [401, 401], size: [400, 400] UnProven, allocsite: CWE127_Buffer_Underread__wchar_t_declare_memcpy_04_bad-14
+2. CWE127_Buffer_Underread__wchar_t_declare_memcpy_04.c:79 {goodG2B1} UnProven
+  memcpy ((void */* __restrict  */)StartOf(dest), (void const   */* __restrict  */)data, 100UL*SizeOf(wchar_t )) @goodG2B1-42:  offset: [401, 401], size: [400, 400] UnProven, allocsite: goodG2B1-30
+  memcpy ((void */* __restrict  */)StartOf(dest), (void const   */* __restrict  */)data, 100UL*SizeOf(wchar_t )) @goodG2B1-42:  offset: [401, 401], size: [400, 400] UnProven, allocsite: goodG2B1-32
+3. CWE127_Buffer_Underread__wchar_t_declare_memcpy_04.c:103 {goodG2B2} UnProven
+  memcpy ((void */* __restrict  */)StartOf(dest), (void const   */* __restrict  */)data, 100UL*SizeOf(wchar_t )) @goodG2B2-61:  offset: [401, 401], size: [400, 400] UnProven, allocsite: goodG2B2-50
+  memcpy ((void */* __restrict  */)StartOf(dest), (void const   */* __restrict  */)data, 100UL*SizeOf(wchar_t )) @goodG2B2-61:  offset: [401, 401], size: [400, 400] UnProven, allocsite: goodG2B2-52
+
+#queries                 : 15
+#queries mod alarm point : 12
+#proven                  : 9
+#unproven                : 3
+#bot-involved            : 0
+Finished properly.
+0.0218550000001

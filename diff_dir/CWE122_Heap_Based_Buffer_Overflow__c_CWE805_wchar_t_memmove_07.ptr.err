@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/memmove.c
-Line: 48
-assembly.ll line: 17260
+Line: 42
+assembly.ll line: 6393
 State: 1
 Stack: 
-	#000017260 in memmove (=94433329774800, =94433323149344, =400) at libc/string/memmove.c:48
-	#100009753 in CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_memmove_07_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_memmove_07.c:45
-	#200009883 in __klee_posix_wrapped_main (=1, =94433329701360) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_memmove_07.c:129
-	#300007344 in __user_main (=1, =94433309493504, =94433309493520) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000588 in __uClibc_main (=94433328430560, =1, =94433309493504, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000753 in main (=1, =94433309493504)
+	#000006393 in memmove (=94406705260160, =94406712555200, =400) at libc/string/memmove.c:42
+	#100004228 in CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_memmove_07_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_memmove_07.c:45
+	#200004360 in __klee_posix_wrapped_main (=1, =94406734094480) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_memmove_07.c:136
+	#300002564 in __user_main (=1, =94406727902720, =94406727902736) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000472 in __uClibc_main (=1, =94406727902720) at libc/misc/internals/__uClibc_main.c:401
+	#500000638 in main (=1, =94406727902720)
 Info: 
-	address: 94433329775199
-	next: object at 94433297410432 of size 128
-		MO532[128] allocated at global:randtbl
+	address: 94406705260360
+	next: object at 94406703284224 of size 240
+		MO327[240] allocated at __uClibc_main():  %11 = alloca [15 x %struct.Elf64_auxv_t], align 16

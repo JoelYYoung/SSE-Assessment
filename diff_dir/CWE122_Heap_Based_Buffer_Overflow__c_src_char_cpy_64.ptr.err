@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/strcpy.c
+Line: 27
+assembly.ll line: 5502
+State: 1
+Stack: 
+	#000005502 in strcpy (=94683505791232, =94683489719776) at libc/string/strcpy.c:27
+	#100004087 in CWE122_Heap_Based_Buffer_Overflow__c_src_char_cpy_64b_badSink (=94683516505016) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_src_char_cpy_64b.c:32
+	#200004062 in CWE122_Heap_Based_Buffer_Overflow__c_src_char_cpy_64_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_src_char_cpy_64a.c:33
+	#300004163 in __klee_posix_wrapped_main (=1, =94683516336080) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_src_char_cpy_64a.c:79
+	#400002422 in __user_main (=1, =94683494319232, =94683494319248) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000444 in __uClibc_main (=1, =94683494319232) at libc/misc/internals/__uClibc_main.c:401
+	#600000610 in main (=1, =94683494319232)
+Info: 
+	address: 94683505791282
+	next: object at 94683489342144 of size 240
+		MO264[240] allocated at __uClibc_main():  %11 = alloca [15 x %struct.Elf64_auxv_t], align 16

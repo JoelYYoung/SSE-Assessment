@@ -1,15 +1,15 @@
 Error: memory error: out of bound pointer
 File: ./juliet_testcases/CWE126_Buffer_Overread__malloc_wchar_t_loop_01.c
 Line: 42
-assembly.ll line: 9762
+assembly.ll line: 4240
 State: 1
 Stack: 
-	#000009762 in CWE126_Buffer_Overread__malloc_wchar_t_loop_01_bad () at ./juliet_testcases/CWE126_Buffer_Overread__malloc_wchar_t_loop_01.c:42
-	#100009872 in __klee_posix_wrapped_main (=1, =94510050812544) at ./juliet_testcases/CWE126_Buffer_Overread__malloc_wchar_t_loop_01.c:103
-	#200007343 in __user_main (=1, =94510022920448, =94510022920464) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#300000587 in __uClibc_main (=94510049640040, =1, =94510022920448, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#400000752 in main (=1, =94510022920448)
+	#000004240 in CWE126_Buffer_Overread__malloc_wchar_t_loop_01_bad () at ./juliet_testcases/CWE126_Buffer_Overread__malloc_wchar_t_loop_01.c:42
+	#100004357 in __klee_posix_wrapped_main (=1, =93887402656080) at ./juliet_testcases/CWE126_Buffer_Overread__malloc_wchar_t_loop_01.c:108
+	#200002564 in __user_main (=1, =93887396297472, =93887396297488) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#300000472 in __uClibc_main (=1, =93887396297472) at libc/misc/internals/__uClibc_main.c:401
+	#400000638 in main (=1, =93887396297472)
 Info: 
-	address: 94510038061528
-	next: object at 94510017577440 of size 240
-		MO564[240] allocated at __uClibc_main():  %16 = alloca [15 x %struct.Elf64_auxv_t], align 16
+	address: 93887373930344
+	next: object at 93887371615616 of size 114
+		MO40[114] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

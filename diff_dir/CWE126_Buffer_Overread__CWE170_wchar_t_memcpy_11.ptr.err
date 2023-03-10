@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: libc/string/strnlen.c
+Line: 30
+assembly.ll line: 12298
+State: 1
+Stack: 
+	#000012298 in wcsnlen (=94304629708480, =18446744073709551615) at libc/string/strnlen.c:30
+	#100010860 in _do_one_spec.307 (=94304629187224, =94304605469952, =94304636625672) at libc/stdio/_vfprintf.c:1702
+	#200010004 in vfwprintf (=94304636238080, =94304636881824) at libc/stdio/_vfprintf.c:1919
+	#300005975 in wprintf (=0) at libc/stdio/wprintf.c:20
+	#400005755 in printWLine (=94304629708480) at io.c:23
+	#500004214 in CWE126_Buffer_Overread__CWE170_wchar_t_memcpy_11_bad () at ./juliet_testcases/CWE126_Buffer_Overread__CWE170_wchar_t_memcpy_11.c:33
+	#600004309 in __klee_posix_wrapped_main (=1, =94304636543264) at ./juliet_testcases/CWE126_Buffer_Overread__CWE170_wchar_t_memcpy_11.c:107
+	#700002565 in __user_main (=1, =94304630122368, =94304630122384) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#800000473 in __uClibc_main (=1, =94304630122368) at libc/misc/internals/__uClibc_main.c:401
+	#900000639 in main (=1, =94304630122368)
+Info: 
+	address: 94304629708880
+	next: object at 94304605442432 of size 128
+		MO293[128] allocated at global:randtbl

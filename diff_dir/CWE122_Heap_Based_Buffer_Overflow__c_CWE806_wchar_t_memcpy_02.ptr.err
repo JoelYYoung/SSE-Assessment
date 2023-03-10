@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/memcpy.c
 Line: 29
-assembly.ll line: 9620
+assembly.ll line: 4098
 State: 1
 Stack: 
-	#000009620 in memcpy (=94657421158432, =94657415874592, =396) at libc/string/memcpy.c:29
-	#100009746 in CWE122_Heap_Based_Buffer_Overflow__c_CWE806_wchar_t_memcpy_02_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_wchar_t_memcpy_02.c:37
-	#200009858 in __klee_posix_wrapped_main (=1, =94657421427200) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_wchar_t_memcpy_02.c:117
-	#300007343 in __user_main (=1, =94657399515392, =94657399515408) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000587 in __uClibc_main (=94657420164752, =1, =94657399515392, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000752 in main (=1, =94657399515392)
+	#000004098 in memcpy (=94123404037376, =94123407980224, =396) at libc/string/memcpy.c:29
+	#100004224 in CWE122_Heap_Based_Buffer_Overflow__c_CWE806_wchar_t_memcpy_02_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_wchar_t_memcpy_02.c:37
+	#200004345 in __klee_posix_wrapped_main (=1, =94123414806704) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_wchar_t_memcpy_02.c:124
+	#300002564 in __user_main (=1, =94123408551680, =94123408551696) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000472 in __uClibc_main (=1, =94123408551680) at libc/misc/internals/__uClibc_main.c:401
+	#500000638 in main (=1, =94123408551680)
 Info: 
-	address: 94657421158632
-	next: object at 94657388399232 of size 209
-		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94123404037576
+	next: object at 94123383699968 of size 128
+		MO290[128] allocated at global:randtbl

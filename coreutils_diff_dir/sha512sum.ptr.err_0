@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: ../../src/md5sum.c
+Line: 213
+assembly.ll line: 10972
+State: 301
+Stack: 
+	#000010972 in bsd_split_3 (=94841061983688, =0, =94841063962200, =94841063962632) at ../../src/md5sum.c:213
+	#100010791 in split_3 (=94841061983680, =8, =94841063962200, =94841063962360, =94841063962632) at ../../src/md5sum.c:259
+	#200005040 in digest_check (=94841055267904) at ../../src/md5sum.c:471
+	#300004836 in __klee_posix_wrapped_main (=2, =94841056223392) at ../../src/md5sum.c:667
+	#400002898 in __user_main (=15, =94841043457664, =94841043457792) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000595 in __uClibc_main (=15, =94841043457664) at libc/misc/internals/__uClibc_main.c:401
+	#600000761 in main (=15, =94841043457664)
+Info: 
+	address: 94841061983679
+	next: object at 94841012281600 of size 249
+		MO345[249] allocated at global:.str.9.97

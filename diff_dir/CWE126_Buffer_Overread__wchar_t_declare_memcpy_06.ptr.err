@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/memcpy.c
 Line: 29
-assembly.ll line: 9616
+assembly.ll line: 4094
 State: 1
 Stack: 
-	#000009616 in memcpy (=94239695801184, =94239702094512, =396) at libc/string/memcpy.c:29
-	#100009745 in CWE126_Buffer_Overread__wchar_t_declare_memcpy_06_bad () at ./juliet_testcases/CWE126_Buffer_Overread__wchar_t_declare_memcpy_06.c:47
-	#200009846 in __klee_posix_wrapped_main (=1, =94239702246368) at ./juliet_testcases/CWE126_Buffer_Overread__wchar_t_declare_memcpy_06.c:136
-	#300007343 in __user_main (=1, =94239694170368, =94239694170384) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000587 in __uClibc_main (=94239701073320, =1, =94239694170368, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000752 in main (=1, =94239694170368)
+	#000004094 in memcpy (=94810034911328, =94810025648752, =396) at libc/string/memcpy.c:29
+	#100004223 in CWE126_Buffer_Overread__wchar_t_declare_memcpy_06_bad () at ./juliet_testcases/CWE126_Buffer_Overread__wchar_t_declare_memcpy_06.c:47
+	#200004333 in __klee_posix_wrapped_main (=1, =94810041713344) at ./juliet_testcases/CWE126_Buffer_Overread__wchar_t_declare_memcpy_06.c:143
+	#300002564 in __user_main (=1, =94810035478528, =94810035478544) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000472 in __uClibc_main (=1, =94810035478528) at libc/misc/internals/__uClibc_main.c:401
+	#500000638 in main (=1, =94810035478528)
 Info: 
-	address: 94239702094712
-	next: object at 94239670060160 of size 128
-		MO532[128] allocated at global:randtbl
+	address: 94810025648952
+	next: object at 94810010630400 of size 114
+		MO41[114] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/memmove.c
+Line: 48
+assembly.ll line: 5960
+State: 1
+Stack: 
+	#000005960 in memmove (=94161634072672, =94161621018368, =800) at libc/string/memmove.c:48
+	#100004089 in CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_63b_badSink (=94161637150496) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_63b.c:27
+	#200004067 in CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_63_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_63a.c:32
+	#300004166 in __klee_posix_wrapped_main (=1, =94161636980688) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_63a.c:78
+	#400002423 in __user_main (=1, =94161634115584, =94161634115600) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000445 in __uClibc_main (=1, =94161634115584) at libc/misc/internals/__uClibc_main.c:401
+	#600000611 in main (=1, =94161634115584)
+Info: 
+	address: 94161634073471
+	next: object at 94161610035904 of size 240
+		MO266[240] allocated at __uClibc_main():  %11 = alloca [15 x %struct.Elf64_auxv_t], align 16

@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/strncpy.c
 Line: 29
-assembly.ll line: 14883
+assembly.ll line: 5531
 State: 1
 Stack: 
-	#000014883 in strncpy (=94278398791232, =94278398355536, =99) at libc/string/strncpy.c:29
-	#100009741 in CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_ncpy_02_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_ncpy_02.c:39
-	#200009843 in __klee_posix_wrapped_main (=1, =94278398804448) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_ncpy_02.c:123
-	#300007343 in __user_main (=1, =94278370789632, =94278370789648) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000587 in __uClibc_main (=94278397549936, =1, =94278370789632, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000752 in main (=1, =94278370789632)
+	#000005531 in strncpy (=94242928295808, =94242936207600) at libc/string/strncpy.c:29
+	#100004077 in CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_ncpy_02_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_ncpy_02.c:39
+	#200004188 in __klee_posix_wrapped_main (=1, =94242952845360) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_ncpy_02.c:130
+	#300002422 in __user_main (=1, =94242952811776, =94242952811792) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000444 in __uClibc_main (=1, =94242952811776) at libc/misc/internals/__uClibc_main.c:401
+	#500000610 in main (=1, =94242952811776)
 Info: 
-	address: 94278398791282
-	next: object at 94278365800864 of size 209
-		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94242928295858
+	next: object at 94242928295808 of size 50
+		MO28405[50] allocated at CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_ncpy_02_bad():  %3 = call noalias i8* @malloc(i64 50) #11, !dbg !1775

@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/strncpy.c
 Line: 29
-assembly.ll line: 14961
+assembly.ll line: 5755
 State: 1
 Stack: 
-	#000014961 in wcsncpy (=94268625071776, =94268593539104, =99) at libc/string/strncpy.c:29
-	#100009737 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncpy_21_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncpy_21.c:47
-	#200009885 in __klee_posix_wrapped_main (=1, =94268625265392) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncpy_21.c:142
-	#300007346 in __user_main (=1, =94268608014592, =94268608014608) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000590 in __uClibc_main (=94268624084936, =1, =94268608014592, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000755 in main (=1, =94268608014592)
+	#000005755 in wcsncpy (=94557779454608, =94557801494208, =99) at libc/string/strncpy.c:29
+	#100004214 in CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncpy_21_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncpy_21.c:47
+	#200004367 in __klee_posix_wrapped_main (=1, =94557808312720) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_declare_ncpy_21.c:149
+	#300002566 in __user_main (=1, =94557801828864, =94557801828880) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000474 in __uClibc_main (=1, =94557801828864) at libc/misc/internals/__uClibc_main.c:401
+	#500000640 in main (=1, =94557801828864)
 Info: 
-	address: 94268625071976
-	next: object at 94268592011392 of size 114
-		MO41[114] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94557779454808
+	next: object at 94557777461248 of size 240
+		MO333[240] allocated at __uClibc_main():  %11 = alloca [15 x %struct.Elf64_auxv_t], align 16

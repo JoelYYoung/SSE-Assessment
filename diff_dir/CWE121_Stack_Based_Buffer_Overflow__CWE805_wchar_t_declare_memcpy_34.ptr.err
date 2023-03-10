@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/memcpy.c
 Line: 29
-assembly.ll line: 9621
+assembly.ll line: 4099
 State: 1
 Stack: 
-	#000009621 in memcpy (=94734471364608, =94734470891552, =400) at libc/string/memcpy.c:29
-	#100009748 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memcpy_34_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memcpy_34.c:47
-	#200009815 in __klee_posix_wrapped_main (=1, =94734476403184) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memcpy_34.c:103
-	#300007344 in __user_main (=1, =94734455605504, =94734455605520) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000588 in __uClibc_main (=94734475140248, =1, =94734455605504, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000753 in main (=1, =94734455605504)
+	#000004099 in memcpy (=94112325050368, =94112332371648, =400) at libc/string/memcpy.c:29
+	#100004226 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memcpy_34_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memcpy_34.c:47
+	#200004300 in __klee_posix_wrapped_main (=1, =94112353829072) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memcpy_34.c:108
+	#300002565 in __user_main (=1, =94112347475328, =94112347475344) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000473 in __uClibc_main (=1, =94112347475328) at libc/misc/internals/__uClibc_main.c:401
+	#500000639 in main (=1, =94112347475328)
 Info: 
-	address: 94734471364808
-	next: object at 94734443116160 of size 114
-		MO41[114] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94112325050568
+	next: object at 94112322793984 of size 114
+		MO40[114] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: libc/string/strnlen.c
+Line: 30
+assembly.ll line: 12321
+State: 1
+Stack: 
+	#000012321 in wcsnlen (=210453397552, =18446744073709551615) at libc/string/strnlen.c:30
+	#100010883 in _do_one_spec.304 (=94887094895256, =94887071141120, =94887102235624) at libc/stdio/_vfprintf.c:1702
+	#200010027 in vfwprintf (=94887101859232, =94887102192704) at libc/stdio/_vfprintf.c:1919
+	#300005998 in wprintf (=0) at libc/stdio/wprintf.c:20
+	#400005788 in printWLine (=210453397552) at io.c:23
+	#500004238 in CWE122_Heap_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_14_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_14.c:47
+	#600004380 in __klee_posix_wrapped_main (=1, =94887102153008) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_14.c:130
+	#700002566 in __user_main (=1, =94887095819392, =94887095819408) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#800000474 in __uClibc_main (=1, =94887095819392) at libc/misc/internals/__uClibc_main.c:401
+	#900000640 in main (=1, =94887095819392)
+Info: 
+	address: 210453397552
+	next: object at 94887071118976 of size 128
+		MO291[128] allocated at global:randtbl

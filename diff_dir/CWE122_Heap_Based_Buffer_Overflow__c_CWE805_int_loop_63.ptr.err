@@ -1,0 +1,16 @@
+Error: memory error: out of bound pointer
+File: ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_loop_63b.c
+Line: 31
+assembly.ll line: 4094
+State: 1
+Stack: 
+	#000004094 in CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_loop_63b_badSink (=94378855148480) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_loop_63b.c:31
+	#100004059 in CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_loop_63_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_loop_63a.c:30
+	#200004200 in __klee_posix_wrapped_main (=1, =94378854979552) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_loop_63a.c:75
+	#300002423 in __user_main (=1, =94378850924928, =94378850924944) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000445 in __uClibc_main (=1, =94378850924928) at libc/misc/internals/__uClibc_main.c:401
+	#500000611 in main (=1, =94378850924928)
+Info: 
+	address: 94378827996680
+	next: object at 94378827996480 of size 200
+		MO28382[200] allocated at CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_loop_63_bad():  %2 = call noalias i8* @malloc(i64 200) #11, !dbg !1775

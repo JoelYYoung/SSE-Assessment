@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/memcpy.c
+Line: 29
+assembly.ll line: 3957
+State: 1
+Stack: 
+	#000003957 in memcpy (=94586870159856, =94586869634704, =8) at libc/string/memcpy.c:29
+	#100004123 in CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_declare_loop_63b_badSink (=94586871345304) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_declare_loop_63b.c:40
+	#200004061 in CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_declare_loop_63_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_declare_loop_63a.c:32
+	#300004250 in __klee_posix_wrapped_main (=1, =94586870241664) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_declare_loop_63a.c:78
+	#400002423 in __user_main (=1, =94586870765568, =94586870765584) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000445 in __uClibc_main (=1, =94586870765568) at libc/misc/internals/__uClibc_main.c:401
+	#600000611 in main (=1, =94586870765568)
+Info: 
+	address: 94586870159856
+	next: object at 94586845974016 of size 784
+		MO222[784] allocated at global:__exe_env

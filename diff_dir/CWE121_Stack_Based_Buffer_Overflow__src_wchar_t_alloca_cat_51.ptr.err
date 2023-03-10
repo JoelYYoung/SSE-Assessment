@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/strcat.c
+Line: 24
+assembly.ll line: 5656
+State: 1
+Stack: 
+	#000005656 in wcscat (=94331293435728, =94331316172480) at libc/string/strcat.c:24
+	#100004224 in CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cat_51b_badSink (=94331316172480) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cat_51b.c:30
+	#200004209 in CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cat_51_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cat_51a.c:34
+	#300004291 in __klee_posix_wrapped_main (=1, =94331322982608) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cat_51a.c:82
+	#400002564 in __user_main (=1, =94331316317184, =94331316317200) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000472 in __uClibc_main (=1, =94331316317184) at libc/misc/internals/__uClibc_main.c:401
+	#600000638 in main (=1, =94331316317184)
+Info: 
+	address: 94331293435928
+	next: object at 94331291914496 of size 114
+		MO40[114] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

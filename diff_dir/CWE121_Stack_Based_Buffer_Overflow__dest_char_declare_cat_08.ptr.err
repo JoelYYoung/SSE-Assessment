@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/strcat.c
 Line: 24
-assembly.ll line: 14900
+assembly.ll line: 5542
 State: 1
 Stack: 
-	#000014900 in strcat (=94774894153344, =94774894157936) at libc/string/strcat.c:24
-	#100009743 in CWE121_Stack_Based_Buffer_Overflow__dest_char_declare_cat_08_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__dest_char_declare_cat_08.c:54
-	#200009847 in __klee_posix_wrapped_main (=1, =94774894060144) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__dest_char_declare_cat_08.c:132
-	#300007343 in __user_main (=1, =94774866127104, =94774866127120) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000587 in __uClibc_main (=94774892895504, =1, =94774866127104, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000752 in main (=1, =94774866127104)
+	#000005542 in strcat (=94707948246208, =94707948785040) at libc/string/strcat.c:24
+	#100004078 in CWE121_Stack_Based_Buffer_Overflow__dest_char_declare_cat_08_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__dest_char_declare_cat_08.c:54
+	#200004186 in __klee_posix_wrapped_main (=1, =94707975633040) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__dest_char_declare_cat_08.c:139
+	#300002422 in __user_main (=1, =94707973245952, =94707973245968) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000444 in __uClibc_main (=1, =94707973245952) at libc/misc/internals/__uClibc_main.c:401
+	#500000610 in main (=1, =94707973245952)
 Info: 
-	address: 94774894153394
-	next: object at 94774860818688 of size 768
-		MO514[768] allocated at global:__C_ctype_toupper_data
+	address: 94707948246258
+	next: object at 94707948246208 of size 50
+		MO27445[50] allocated at CWE121_Stack_Based_Buffer_Overflow__dest_char_declare_cat_08_bad():  %2 = alloca [50 x i8], align 16

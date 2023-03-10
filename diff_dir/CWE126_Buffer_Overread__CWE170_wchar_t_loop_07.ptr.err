@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: libc/string/strnlen.c
+Line: 30
+assembly.ll line: 12346
+State: 1
+Stack: 
+	#000012346 in wcsnlen (=94341935118016, =18446744073709551615) at libc/string/strnlen.c:30
+	#100010908 in _do_one_spec.303 (=94341949236152, =94341925530624, =94341956739952) at libc/stdio/_vfprintf.c:1702
+	#200010052 in vfwprintf (=94341956363904, =94341956696480) at libc/stdio/_vfprintf.c:1919
+	#300006023 in wprintf (=0) at libc/stdio/wprintf.c:20
+	#400005813 in printWLine (=94341935118016) at io.c:23
+	#500004234 in CWE126_Buffer_Overread__CWE170_wchar_t_loop_07_bad () at ./juliet_testcases/CWE126_Buffer_Overread__CWE170_wchar_t_loop_07.c:42
+	#600004367 in __klee_posix_wrapped_main (=1, =94341956657520) at ./juliet_testcases/CWE126_Buffer_Overread__CWE170_wchar_t_loop_07.c:124
+	#700002564 in __user_main (=1, =94341950463488, =94341950463504) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#800000472 in __uClibc_main (=1, =94341950463488) at libc/misc/internals/__uClibc_main.c:401
+	#900000638 in main (=1, =94341950463488)
+Info: 
+	address: 94341935118416
+	next: object at 94341925473280 of size 768
+		MO284[768] allocated at global:__C_ctype_tolower_data

@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/memmove.c
-Line: 48
-assembly.ll line: 17125
+Line: 42
+assembly.ll line: 5900
 State: 1
 Stack: 
-	#000017125 in memmove (=94250236649680, =94250235984448, =40) at libc/string/memmove.c:48
-	#100009736 in CWE121_Stack_Based_Buffer_Overflow__CWE131_memmove_16_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE131_memmove_16.c:34
-	#200009786 in __klee_posix_wrapped_main (=1, =94250236649632) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE131_memmove_16.c:83
-	#300007343 in __user_main (=1, =94250212911360, =94250212911376) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000587 in __uClibc_main (=94250235386576, =1, =94250212911360, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000752 in main (=1, =94250212911360)
+	#000005900 in memmove (=94860183164784, =94860185299200, =40) at libc/string/memmove.c:42
+	#100004073 in CWE121_Stack_Based_Buffer_Overflow__CWE131_memmove_16_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE131_memmove_16.c:34
+	#200004134 in __klee_posix_wrapped_main (=1, =94860183164752) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE131_memmove_16.c:88
+	#300002423 in __user_main (=1, =94860179938816, =94860179938832) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000445 in __uClibc_main (=1, =94860179938816) at libc/misc/internals/__uClibc_main.c:401
+	#500000611 in main (=1, =94860179938816)
 Info: 
-	address: 94250236649719
-	next: object at 94250203351296 of size 768
-		MO510[768] allocated at global:__C_ctype_toupper_data
+	address: 94860183164794
+	next: object at 94860156026128 of size 240
+		MO264[240] allocated at __uClibc_main():  %11 = alloca [15 x %struct.Elf64_auxv_t], align 16

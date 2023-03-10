@@ -1,17 +1,17 @@
 Error: memory error: out of bound pointer
 File: libc/string/memcpy.c
 Line: 29
-assembly.ll line: 9620
+assembly.ll line: 3957
 State: 1
 Stack: 
-	#000009620 in memcpy (=94621673146800, =94621670314768, =8) at libc/string/memcpy.c:29
-	#100009767 in CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_41_badSink (=94621673146400) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_41.c:39
-	#200009797 in CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_41_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_41.c:53
-	#300009908 in __klee_posix_wrapped_main (=1, =94621679903344) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_41.c:118
-	#400007343 in __user_main (=1, =94621670501376, =94621670501392) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#500000587 in __uClibc_main (=94621678755168, =1, =94621670501376, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#600000752 in main (=1, =94621670501376)
+	#000003957 in memcpy (=93825327552176, =93825314699792, =8) at libc/string/memcpy.c:29
+	#100004104 in CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_41_badSink (=93825327551776) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_41.c:39
+	#200004137 in CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_41_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_41.c:54
+	#300004254 in __klee_posix_wrapped_main (=1, =93825328142656) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_41.c:123
+	#400002423 in __user_main (=1, =93825328153728, =93825328153744) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000445 in __uClibc_main (=1, =93825328153728) at libc/misc/internals/__uClibc_main.c:401
+	#600000611 in main (=1, =93825328153728)
 Info: 
-	address: 94621673146800
-	next: object at 94621646653696 of size 768
-		MO512[768] allocated at global:__C_ctype_toupper_data
+	address: 93825327552176
+	next: object at 93825303636080 of size 231
+		MO41[231] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

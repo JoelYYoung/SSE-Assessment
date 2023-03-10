@@ -1,0 +1,15 @@
+Error: memory error: out of bound pointer
+File: ./juliet_testcases/CWE124_Buffer_Underwrite__wchar_t_declare_loop_31.c
+Line: 42
+assembly.ll line: 4236
+State: 1
+Stack: 
+	#000004236 in CWE124_Buffer_Underwrite__wchar_t_declare_loop_31_bad () at ./juliet_testcases/CWE124_Buffer_Underwrite__wchar_t_declare_loop_31.c:42
+	#100004338 in __klee_posix_wrapped_main (=1, =94923473666432) at ./juliet_testcases/CWE124_Buffer_Underwrite__wchar_t_declare_loop_31.c:109
+	#200002564 in __user_main (=1, =94923467538432, =94923467538448) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#300000472 in __uClibc_main (=1, =94923467538432) at libc/misc/internals/__uClibc_main.c:401
+	#400000638 in main (=1, =94923467538432)
+Info: 
+	address: 94923467035920
+	next: object at 94923442554272 of size 240
+		MO326[240] allocated at __uClibc_main():  %11 = alloca [15 x %struct.Elf64_auxv_t], align 16

@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: libc/string/strnlen.c
+Line: 30
+assembly.ll line: 12240
+State: 1
+Stack: 
+	#000012240 in wcsnlen (=210453397552, =18446744073709551615) at libc/string/strnlen.c:30
+	#100010802 in _do_one_spec.301 (=94167729652376, =94167705927168, =94167737008696) at libc/stdio/_vfprintf.c:1702
+	#200009946 in vfwprintf (=94167736619200, =94167736966112) at libc/stdio/_vfprintf.c:1919
+	#300005917 in wprintf (=0) at libc/stdio/wprintf.c:20
+	#400005707 in printWLine (=210453397552) at io.c:23
+	#500004217 in CWE121_Stack_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_06_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_06.c:52
+	#600004299 in __klee_posix_wrapped_main (=1, =94167736918272) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_06.c:130
+	#700002566 in __user_main (=1, =94167730727552, =94167730727568) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#800000474 in __uClibc_main (=1, =94167730727552) at libc/misc/internals/__uClibc_main.c:401
+	#900000640 in main (=1, =94167730727552)
+Info: 
+	address: 210453397552
+	next: object at 94167705865216 of size 768
+		MO283[768] allocated at global:__C_ctype_tolower_data

@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/memcpy.c
+Line: 29
+assembly.ll line: 3957
+State: 1
+Stack: 
+	#000003957 in memcpy (=94523063875680, =94523076358528, =800) at libc/string/memcpy.c:29
+	#100004083 in CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_memcpy_63b_badSink (=94523080257264) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_memcpy_63b.c:27
+	#200004061 in CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_memcpy_63_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_memcpy_63a.c:32
+	#300004154 in __klee_posix_wrapped_main (=1, =94523079817184) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_memcpy_63a.c:78
+	#400002423 in __user_main (=1, =94523077454464, =94523077454480) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000445 in __uClibc_main (=1, =94523077454464) at libc/misc/internals/__uClibc_main.c:401
+	#600000611 in main (=1, =94523077454464)
+Info: 
+	address: 94523063876080
+	next: object at 94523052310976 of size 102
+		MO20[102] allocated at main():  tail call fastcc void @__uClibc_main(i32 %0, i8** %1)

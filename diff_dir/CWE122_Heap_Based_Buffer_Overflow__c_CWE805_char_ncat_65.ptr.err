@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/strncat.c
+Line: 27
+assembly.ll line: 5515
+State: 1
+Stack: 
+	#000005515 in strncat (=94009010909056, =94008994548464) at libc/string/strncat.c:27
+	#100004082 in CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_ncat_65b_badSink (=94009010909056) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_ncat_65b.c:30
+	#200004065 in CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_ncat_65_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_ncat_65a.c:36
+	#300004153 in __klee_posix_wrapped_main (=1, =94009018619904) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_ncat_65a.c:83
+	#400002422 in __user_main (=1, =94009018694400, =94009018694416) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000444 in __uClibc_main (=1, =94009018694400) at libc/misc/internals/__uClibc_main.c:401
+	#600000610 in main (=1, =94009018694400)
+Info: 
+	address: 94009010909106
+	next: object at 94008994189296 of size 240
+		MO264[240] allocated at __uClibc_main():  %11 = alloca [15 x %struct.Elf64_auxv_t], align 16

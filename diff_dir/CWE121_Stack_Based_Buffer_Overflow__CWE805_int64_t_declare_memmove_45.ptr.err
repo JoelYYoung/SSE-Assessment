@@ -1,17 +1,17 @@
 Error: memory error: out of bound pointer
 File: libc/string/memmove.c
-Line: 48
-assembly.ll line: 17143
+Line: 42
+assembly.ll line: 5918
 State: 1
 Stack: 
-	#000017143 in memmove (=94648555399200, =94648551272832, =800) at libc/string/memmove.c:48
-	#100009746 in badSink () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_memmove_45.c:30
-	#200009728 in CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_memmove_45_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_memmove_45.c:43
-	#300009804 in __klee_posix_wrapped_main (=1, =94648560894240) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_memmove_45.c:94
-	#400007345 in __user_main (=1, =94648537188608, =94648537188624) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#500000589 in __uClibc_main (=94648559631200, =1, =94648537188608, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#600000754 in main (=1, =94648537188608)
+	#000005918 in memmove (=94618441463904, =94618445956864, =800) at libc/string/memmove.c:42
+	#100004083 in badSink () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_memmove_45.c:30
+	#200004065 in CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_memmove_45_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_memmove_45.c:44
+	#300004152 in __klee_posix_wrapped_main (=1, =94618459215824) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_memmove_45.c:99
+	#400002425 in __user_main (=1, =94618459019264, =94618459019280) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000447 in __uClibc_main (=1, =94618459019264) at libc/misc/internals/__uClibc_main.c:401
+	#600000613 in main (=1, =94618459019264)
 Info: 
-	address: 94648555399999
-	next: object at 94648527595776 of size 768
-		MO514[768] allocated at global:__C_ctype_toupper_data
+	address: 94618441464304
+	next: object at 94618434875616 of size 240
+		MO267[240] allocated at __uClibc_main():  %11 = alloca [15 x %struct.Elf64_auxv_t], align 16

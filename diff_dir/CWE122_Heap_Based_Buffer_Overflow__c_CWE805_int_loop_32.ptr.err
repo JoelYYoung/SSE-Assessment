@@ -1,15 +1,15 @@
 Error: memory error: out of bound pointer
 File: ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_loop_32.c
 Line: 43
-assembly.ll line: 9771
+assembly.ll line: 4108
 State: 1
 Stack: 
-	#000009771 in CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_loop_32_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_loop_32.c:43
-	#100009880 in __klee_posix_wrapped_main (=1, =94460367856048) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_loop_32.c:108
-	#200007343 in __user_main (=1, =94460336335104, =94460336335120) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#300000587 in __uClibc_main (=94460366576968, =1, =94460336335104, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#400000752 in main (=1, =94460336335104)
+	#000004108 in CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_loop_32_bad () at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_loop_32.c:43
+	#100004228 in __klee_posix_wrapped_main (=1, =94228498692160) at ./juliet_testcases/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_loop_32.c:113
+	#200002423 in __user_main (=1, =94228498865280, =94228498865296) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#300000445 in __uClibc_main (=1, =94228498865280) at libc/misc/internals/__uClibc_main.c:401
+	#400000611 in main (=1, =94228498865280)
 Info: 
-	address: 94460351281240
-	next: object at 94460335695264 of size 240
-		MO562[240] allocated at __uClibc_main():  %16 = alloca [15 x %struct.Elf64_auxv_t], align 16
+	address: 94228473966648
+	next: object at 94228473966448 of size 200
+		MO28401[200] allocated at CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_loop_32_bad():  %10 = call noalias i8* @malloc(i64 200) #11, !dbg !1783

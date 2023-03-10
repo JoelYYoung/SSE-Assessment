@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/strncat.c
+Line: 27
+assembly.ll line: 5694
+State: 1
+Stack: 
+	#000005694 in wcsncat (=94536089114928, =94536112653120) at libc/string/strncat.c:27
+	#100004240 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncat_66b_badSink (=94536119945376) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncat_66b.c:32
+	#200004217 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncat_66_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncat_66a.c:38
+	#300004323 in __klee_posix_wrapped_main (=1, =94536119386512) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncat_66a.c:87
+	#400002564 in __user_main (=1, =94536112965120, =94536112965136) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000472 in __uClibc_main (=1, =94536112965120) at libc/misc/internals/__uClibc_main.c:401
+	#600000638 in main (=1, =94536112965120)
+Info: 
+	address: 94536089115128
+	next: object at 94536087970240 of size 112
+		MO311[112] allocated at global:_ppwfs_init.invalid_wcs

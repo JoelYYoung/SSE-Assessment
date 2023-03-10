@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: libc/string/strncpy.c
+Line: 29
+assembly.ll line: 5502
+State: 1
+Stack: 
+	#000005502 in strncpy (=94605924350848, =94605907321504, =99) at libc/string/strncpy.c:29
+	#100004085 in CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncpy_63b_badSink (=94605935177728) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncpy_63b.c:29
+	#200004063 in CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncpy_63_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncpy_63a.c:34
+	#300004159 in __klee_posix_wrapped_main (=1, =94605932296224) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncpy_63a.c:81
+	#400002422 in __user_main (=1, =94605932051200, =94605932051216) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000444 in __uClibc_main (=1, =94605932051200) at libc/misc/internals/__uClibc_main.c:401
+	#600000610 in main (=1, =94605932051200)
+Info: 
+	address: 94605924350898
+	next: object at 94605907321504 of size 100
+		MO26288[100] allocated at CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncpy_63_bad():  %2 = alloca [100 x i8], align 16

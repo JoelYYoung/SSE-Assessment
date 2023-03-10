@@ -1,17 +1,17 @@
 Error: memory error: out of bound pointer
 File: libc/string/memmove.c
-Line: 48
-assembly.ll line: 17203
+Line: 42
+assembly.ll line: 6344
 State: 1
 Stack: 
-	#000017203 in memmove (=94533687451648, =94533665663840, =400) at libc/string/memmove.c:48
-	#100009729 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_memmove_41_badSink (=94533687451648) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_memmove_41.c:30
-	#200009756 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_memmove_41_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_memmove_41.c:44
-	#300009826 in __klee_posix_wrapped_main (=1, =94533687722400) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_memmove_41.c:98
-	#400007343 in __user_main (=1, =94533678795008, =94533678795024) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#500000587 in __uClibc_main (=94533686459624, =1, =94533678795008, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#600000752 in main (=1, =94533678795008)
+	#000006344 in memmove (=94620080670544, =94620105365600, =400) at libc/string/memmove.c:42
+	#100004207 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_memmove_41_badSink (=94620080670544) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_memmove_41.c:30
+	#200004236 in CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_memmove_41_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_memmove_41.c:45
+	#300004311 in __klee_posix_wrapped_main (=1, =94620112052384) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_memmove_41.c:103
+	#400002564 in __user_main (=1, =94620105679616, =94620105679632) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000472 in __uClibc_main (=1, =94620105679616) at libc/misc/internals/__uClibc_main.c:401
+	#600000638 in main (=1, =94620105679616)
 Info: 
-	address: 94533687452047
-	next: object at 94533654425856 of size 128
-		MO532[128] allocated at global:randtbl
+	address: 94620080670744
+	next: object at 94620080670544 of size 200
+		MO35098[200] allocated at CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_memmove_41_bad():  %4 = alloca i8, i64 200, align 16, !dbg !1778

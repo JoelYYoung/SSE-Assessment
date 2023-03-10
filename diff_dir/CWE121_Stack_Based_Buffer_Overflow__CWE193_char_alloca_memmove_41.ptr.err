@@ -1,17 +1,17 @@
 Error: memory error: out of bound pointer
 File: libc/string/memmove.c
-Line: 48
-assembly.ll line: 17157
+Line: 42
+assembly.ll line: 5916
 State: 1
 Stack: 
-	#000017157 in memmove (=94008805981712, =94008805981584, =11) at libc/string/memmove.c:48
-	#100009731 in CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_41_badSink (=94008805981712) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_41.c:34
-	#200009753 in CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_41_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_41.c:47
-	#300009818 in __klee_posix_wrapped_main (=1, =94008811004256) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_41.c:100
-	#400007345 in __user_main (=1, =94008779639040, =94008779639056) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#500000589 in __uClibc_main (=94008809765856, =1, =94008779639040, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#600000754 in main (=1, =94008779639040)
+	#000005916 in memmove (=93965163600800, =93965163600816, =11) at libc/string/memmove.c:42
+	#100004066 in CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_41_badSink (=93965163600800) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_41.c:34
+	#200004090 in CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_41_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_41.c:48
+	#300004160 in __klee_posix_wrapped_main (=1, =93965163599776) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memmove_41.c:105
+	#400002423 in __user_main (=1, =93965163445760, =93965163445776) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#500000445 in __uClibc_main (=1, =93965163445760) at libc/misc/internals/__uClibc_main.c:401
+	#600000611 in main (=1, =93965163445760)
 Info: 
-	address: 94008805981722
-	next: object at 94008778017632 of size 209
-		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 93965163600810
+	next: object at 93965138763648 of size 128
+		MO250[128] allocated at global:randtbl

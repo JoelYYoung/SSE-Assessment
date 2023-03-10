@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/memmove.c
-Line: 42
-assembly.ll line: 17159
+Line: 48
+assembly.ll line: 5983
 State: 1
 Stack: 
-	#000017159 in memmove (=94872670218272, =94872676951808, =800) at libc/string/memmove.c:42
-	#100009748 in CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_05_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_05.c:42
-	#200009848 in __klee_posix_wrapped_main (=1, =94872677532016) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_05.c:114
-	#300007345 in __user_main (=1, =94872667990272, =94872667990288) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000589 in __uClibc_main (=94872676285520, =1, =94872667990272, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000754 in main (=1, =94872667990272)
+	#000005983 in memmove (=94271044704352, =94271024631296, =800) at libc/string/memmove.c:48
+	#100004081 in CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_05_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_05.c:42
+	#200004189 in __klee_posix_wrapped_main (=1, =94271044999120) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_05.c:121
+	#300002423 in __user_main (=1, =94271045017088, =94271045017104) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000445 in __uClibc_main (=1, =94271045017088) at libc/misc/internals/__uClibc_main.c:401
+	#500000611 in main (=1, =94271045017088)
 Info: 
-	address: 94872670218672
-	next: object at 94872644184320 of size 768
-		MO513[768] allocated at global:__C_ctype_toupper_data
+	address: 94271044705151
+	next: object at 94271020667584 of size 240
+		MO264[240] allocated at __uClibc_main():  %11 = alloca [15 x %struct.Elf64_auxv_t], align 16

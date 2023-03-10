@@ -1,16 +1,16 @@
 Error: memory error: out of bound pointer
 File: libc/string/strncpy.c
 Line: 29
-assembly.ll line: 14899
+assembly.ll line: 5537
 State: 1
 Stack: 
-	#000014899 in strncpy (=94744676027072, =94744675511808, =99) at libc/string/strncpy.c:29
-	#100009748 in CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_ncpy_07_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_ncpy_07.c:46
-	#200009859 in __klee_posix_wrapped_main (=1, =94744675934784) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_ncpy_07.c:127
-	#300007344 in __user_main (=1, =94744647952640, =94744647952656) at klee_src/runtime/POSIX/klee_init_env.c:245
-	#400000588 in __uClibc_main (=94744674762136, =1, =94744647952640, =0, =0, =0, =0) at libc/misc/internals/__uClibc_main.c:401
-	#500000753 in main (=1, =94744647952640)
+	#000005537 in strncpy (=94480720409856, =94480704553520) at libc/string/strncpy.c:29
+	#100004081 in CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_ncpy_07_bad () at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_ncpy_07.c:46
+	#200004194 in __klee_posix_wrapped_main (=1, =94480730921056) at ./juliet_testcases/CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_ncpy_07.c:134
+	#300002422 in __user_main (=1, =94480708963328, =94480708963344) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000444 in __uClibc_main (=1, =94480708963328) at libc/misc/internals/__uClibc_main.c:401
+	#500000610 in main (=1, =94480708963328)
 Info: 
-	address: 94744676027122
-	next: object at 94744642980704 of size 209
-		MO42[209] allocated at main():  call void @__uClibc_main(i32 (i32, i8**, i8**)* @__user_main, i32 %0, i8** %1, void ()* null, void ()* null, void ()* null, i8* null)
+	address: 94480720409906
+	next: object at 94480703975648 of size 240
+		MO263[240] allocated at __uClibc_main():  %11 = alloca [15 x %struct.Elf64_auxv_t], align 16
